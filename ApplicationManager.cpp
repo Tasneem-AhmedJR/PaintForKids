@@ -14,6 +14,7 @@
 #include"Draw.h" 
 #include<fstream>
 #include"Undo.h"
+#include"StopRecAction.h"
 
 
 //Constructor
@@ -25,8 +26,7 @@ ApplicationManager::ApplicationManager()
 	
 	SelectedFig = NULL;
 	FigCount = 0;
-	Recording = false;
-	
+		
 
 	//DrwClr = UI.DrawColor;
 		
@@ -79,6 +79,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case START:
 			pAct = new StartRecAction(this);
 			break;
+		case STOP:
+			pAct = new StopRecAction(this);
+			break;
 		case FIG:
 			pAct = new Draw(this);
 			break;
@@ -105,8 +108,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	//Execute the created action
 	if(pAct != NULL)
 	{
-		
-		//if (Recording) actlist.AddAction(&coco);
+		actlist.AddrecList(pAct, ActType);
 		pAct->Execute();                            //Execute
 		actlist.TraceAction(pAct, ActType);
 		pAct = NULL;
@@ -132,9 +134,15 @@ void ApplicationManager::SaveAll(ofstream& OutFile)
 
 Action* ApplicationManager::getLastAct() { return actlist.getList(); }
 
-void ApplicationManager::setrecording(bool b) { Recording = b; }
+ActionType ApplicationManager::getlastType() { return actlist.getLastType(); }
 
-bool ApplicationManager::isRecording() { return Recording; }
+void ApplicationManager::setrecording(bool b) 
+{ 
+	actlist.setRecording(b);
+	if (b == false) pOut->PrintMessage("Recording has ended ");
+}
+
+bool ApplicationManager::isRecording() { return actlist.isRecording(); }
 
 void ApplicationManager::decrease()
 {

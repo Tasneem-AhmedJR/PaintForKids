@@ -1,15 +1,17 @@
 #include "ActionList.h"
 #include "GUI\output.h"
-#include "ApplicationManager.h"
-
+#include"StopRecAction.h"
+#include"ApplicationManager.h"
 
 ActionList::ActionList()
 {
-	lastAct = 1;
+	lastRec = 0;
 	LastAction = 0;
+	recording = false;
 	for (int i = 0; i < 5; i++)
 		ActList[i] = NULL;
-
+	for (int i = 0; i < 20; i++)
+		RecList[i] = NULL;
 }
 
 Action* ActionList::getList()
@@ -21,14 +23,23 @@ Action* ActionList::getList()
 	else return NULL;
 }
 
-void ActionList::AddAction(Action* p)  // should add Tasneem's array to the function
+void ActionList::LastActType(ActionType t) { lastActType = t; }
+
+ActionType ActionList::getLastType() { return lastActType; }
+
+void ActionList::setRecording(bool a) { recording = a; }
+
+bool ActionList::isRecording() { return recording; }
+
+void ActionList::AddrecList(Action* p ,ActionType t)
 {
-	if (lastAct <= 20 && p->isRecorded() ) 
+	if (t == CLEAR_ALL) for (int i = 0; i < 20; i++) RecList[i] = NULL;
+	if (t != START) lastActType = t;
+	if (isRecording())
 	{
-		//List[lastAct] = new Action;
-		//*List[lastAct] = *p; lastAct++;
+		if (lastRec < 20 && p->isRecorded()) { RecList[lastRec] = p; lastRec++; }
+		else if (lastRec >= 20) { setRecording(false); }
 	}
-	
 }
 
 void ActionList::TraceAction(Action* p,ActionType t)
@@ -93,4 +104,6 @@ ActionList::~ActionList()
 			ActList[i] = NULL;
 		}
 	}
+	for(int i=0;i<20;i++)
+		if (RecList[i] != NULL) { delete RecList[i]; RecList[i] = NULL; }
 }

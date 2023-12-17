@@ -6,6 +6,7 @@ public:
 	ToDraw(ApplicationManager* pApp);
 	virtual void ReadActionParameters();
 	void Execute();
+	virtual bool isRecorded();
 
 };
 

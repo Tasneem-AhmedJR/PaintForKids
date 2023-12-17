@@ -36,3 +36,5 @@ void SaveAction::Execute()
 	outfile.close();
 
 }
+
+bool SaveAction::isRecorded() { return false; }

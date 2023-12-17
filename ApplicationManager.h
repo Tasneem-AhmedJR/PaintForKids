@@ -19,8 +19,7 @@ private:
 	
 	ActionType ClrType;              // Figure Color Mode (Fill / Drawing)
 	ActionList actlist;
-	bool Recording;
-
+	
 	//Pointers to Input and Output classes
 	Input *pIn;
 	Output *pOut;
@@ -35,6 +34,7 @@ public:
 	void ExecuteAction(ActionType) ;    // Creates an action and executes it
 	void SaveAll(ofstream& OutFile);    // Saves all figure in drawing area 
 	Action* getLastAct();               // Returns last traced Action 
+	ActionType getlastType();
 	void setrecording(bool);
 	bool isRecording();
 
