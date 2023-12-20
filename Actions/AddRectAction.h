@@ -2,6 +2,7 @@
 #define ADD_RECT_ACTION_H
 
 #include "Action.h"
+#include "..\Figures\CRectangle.h"
 
 //Add Rectangle Action class
 class AddRectAction: public Action
@@ -9,6 +10,7 @@ class AddRectAction: public Action
 private:
 	Point P1, P2; //Rectangle Corners
 	GfxInfo RectGfxInfo;
+	CRectangle* rect;
 public:
 	AddRectAction(ApplicationManager *pApp);
 

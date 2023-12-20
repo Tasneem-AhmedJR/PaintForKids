@@ -1,5 +1,4 @@
 #include "AddCircleAction.h"
-#include "CCircle.h"
 #include "ApplicationManager.h"
 #include "GUI\input.h"
 #include "GUI\Output.h"
@@ -41,12 +40,9 @@ void AddCircleAction::CancelAction()
 
 void AddCircleAction::Execute()
 {
-	//This action needs to read some parameters first
-	ReadActionParameters();
-
 	//Create a Circle with the parameters read from the user
-	CCircle* C = new CCircle(P1, P2, CircleGfxInfo);
+	circ = new CCircle(P1, P2, CircleGfxInfo);
 
 	//Add the Circle to the list of figures
-	pManager->AddFigure(C);
+	pManager->AddFigure(circ);
 }

@@ -11,10 +11,13 @@ void StopRecAction::ReadActionParameters() {}
 void StopRecAction::Execute()
 {
 	//Get a Pointer to the Output Interfaces
-	Output* pOut = pManager->GetOutput();
+		Output* pOut = pManager->GetOutput();
 
-	if (pManager->isRecording())
-		pManager->setrecording(false);
+		if (pManager->getRecorder()->isRecording())
+		{
+			pManager->getRecorder()->setRecording(false);
+			pOut->PrintMessage("Recording has ended ");
+		}
 
-	else pOut->PrintMessage("Error, nothing is being recorded ");
+		else pOut->PrintMessage("Error, nothing is being recorded ");
 }

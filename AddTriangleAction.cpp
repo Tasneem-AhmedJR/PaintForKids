@@ -1,5 +1,4 @@
 #include "AddTriangleAction.h"
-#include"CTriangle.h"
 #include "ApplicationManager.h"
 #include "GUI\input.h"
 #include "GUI\Output.h"
@@ -45,13 +44,10 @@ void AddTriangleAction::CancelAction()
 }
 
 void AddTriangleAction::Execute()
-{
-	//This action needs to read some parameters first
-	ReadActionParameters();
-
+{	
 	//Create a Triangle with the parameters read from the user
-	CTriangle* T = new CTriangle(P1, P2,P3, TriangleGfxInfo);
+	tri = new CTriangle(P1, P2,P3, TriangleGfxInfo);
 
 	//Add the Triangle to the list of figures
-	pManager->AddFigure(T);
+	pManager->AddFigure(tri);
 }

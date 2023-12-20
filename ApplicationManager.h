@@ -4,6 +4,7 @@
 #include "DEFS.h"
 #include "Figures\CFigure.h"
 #include"ActionList.h"
+#include"RecorderAct.h"
 #include "GUI\input.h"
 #include "GUI\output.h"
 
@@ -19,6 +20,7 @@ private:
 	
 	ActionType ClrType;              // Figure Color Mode (Fill / Drawing)
 	ActionList actlist;
+	RecorderAct* Recorder;
 	
 	//Pointers to Input and Output classes
 	Input *pIn;
@@ -34,10 +36,8 @@ public:
 	void ExecuteAction(ActionType) ;    // Creates an action and executes it
 	void SaveAll(ofstream& OutFile);    // Saves all figure in drawing area 
 	Action* getLastAct();               // Returns last traced Action 
-	ActionType getlastType();
-	void setrecording(bool);
-	bool isRecording();
-
+	RecorderAct* getRecorder();
+	
 	// -- Figures Management Functions
 	void decrease();                     // Calls decrement Function of action list class
 	int getfigureCount();                // returns the Actual figure count
