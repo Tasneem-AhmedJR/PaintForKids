@@ -13,6 +13,7 @@ protected:
 	GfxInfo FigGfxInfo;	//Figure graphis info
 	color clr;
 	CFigure* DeletedFig;
+	bool Visible;
 	/// Add more parameters if needed.
 
 public:
@@ -22,7 +23,8 @@ public:
 	bool IsSelected() const;	//check whether fig is selected
 //	virtual CFigure* GetDeletedFig() {}
 	virtual void Draw(Output* pOut)   = 0 ;		//Draw the figure
-	
+	void SetVisibility(bool f);                       //Sets visibilty status for a figure
+	bool GetVisibility();                       //Returns visibility for a figure
 	void ChngDrawClr(color Dclr);	//changes the figure's drawing color
 	void ChngFillClr(color Fclr);	//changes the figure's filling color
 	color getclr();       //returns the current figure's color

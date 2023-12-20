@@ -4,7 +4,6 @@
 Action;
 class ActionList
 {
-	
 	Action* ActList[5];                        //array of last 5 executed actions 
 	int LastAction;                            //has the location of last traced action 
 	

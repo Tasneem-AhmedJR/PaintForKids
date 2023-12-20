@@ -14,6 +14,7 @@ void DeleteFigure::ReadActionParameters()
 
 void DeleteFigure::CancelAction()
 {
+	f->SetVisibility(true);
 	//pManager->AddFigure(f); planA
 	//pManager->AddFigure(pManager->deleted fig);
 }
@@ -23,7 +24,7 @@ void DeleteFigure::Execute()
 	Output* pOut = pManager->GetOutput();
 	if (pManager->getSelectedFig())                    //to only be called if there is a selected fig
 	{
-		//f = pManager->getSelectedFig();planA
+		f = pManager->getSelectedFig();
 		pManager->DeleteFig(false);                    //calls delete func. in applicationManager to access figlist
 		pOut->PrintMessage("Selected Figure Deleted");
 		pOut->ClearDrawArea();

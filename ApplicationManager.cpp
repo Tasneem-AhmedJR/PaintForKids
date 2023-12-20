@@ -170,7 +170,8 @@ void ApplicationManager::ClearingFigures()       //loops on fig list and calls c
 {
 	for (int i = 0; i < FigCount; i++)
 	{
-		FigList[i]->DeleteFig();
+		if (FigList[i])
+			delete FigList[i];
 	}
 	FigCount = 0;
 	setSelectedFig(NULL);
@@ -181,9 +182,8 @@ void ApplicationManager::DeleteFig(bool ToUndo)
 	{
 		if (FigList[FigCount - 1])
 		{
-			FigList[FigCount - 1]->DeleteFig();
+			FigList[FigCount - 1]->SetVisibility(false);
 			pOut->ClearDrawArea();
-			FigCount--;
 		}
 	}
 	else
@@ -194,11 +194,11 @@ void ApplicationManager::DeleteFig(bool ToUndo)
 			if (FigList[i]->IsSelected())                 //Checks which fig has selected as true
 			{
 				swap(FigList[i], FigList[FigCount - 1]);  //swaps selected fig with last fig in order not to leave emptiness between fig ptrs when deleted
-				FigList[FigCount - 1]->DeleteFig();
+				//FigList[FigCount - 1]->DeleteFig();     //TODO: Does the order matter??
+				FigList[FigCount - 1]->SetVisibility(false);
 				notfound = false;
 			}
 		}
-		FigCount--;
 	}
 }
 void ApplicationManager::setSelectedFig(CFigure* fig) { SelectedFig = fig; }
@@ -220,9 +220,12 @@ void ApplicationManager::setcolorType(ActionType act) { ClrType = act; }
 
 //Draw all figures on the user interface
 void ApplicationManager::UpdateInterface() const
-{	
-	for(int i=0; i<FigCount; i++)
-		FigList[i]->Draw(pOut);		//Call Draw function (virtual member fn)
+{
+	for (int i = 0; i < FigCount; i++)
+	{
+		if (FigList[i]->GetVisibility())          //To Only Draw Visible figures to the user
+			FigList[i]->Draw(pOut);		          //Call Draw function (virtual member fn)
+	}
 }
 ////////////////////////////////////////////////////////////////////////////////////
 //Return a pointer to the input

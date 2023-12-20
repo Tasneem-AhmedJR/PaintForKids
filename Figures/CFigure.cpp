@@ -14,6 +14,16 @@ void CFigure::SetSelected(bool s)
 bool CFigure::IsSelected() const
 {	return Selected; }
 
+void CFigure::SetVisibility(bool f)
+{
+	Visible = f;
+}
+
+bool CFigure::GetVisibility()
+{
+	return Visible;
+}
+
 void CFigure::ChngDrawClr(color Dclr)
 {
 	FigGfxInfo.DrawClr = Dclr;

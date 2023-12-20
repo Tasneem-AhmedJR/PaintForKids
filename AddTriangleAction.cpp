@@ -38,7 +38,7 @@ void AddTriangleAction::ReadActionParameters()
 
 void AddTriangleAction::CancelAction()
 {
-	pManager->DeleteFig(true);                     //calls delete func. in applicationManager to access figlist
+	tri->SetVisibility(false);                  //the figure sets its own visibilty to false in order not to be drawn
 	Output* pOut = pManager->GetOutput();      //and delete last added figure
 	pOut->ClearDrawArea();
 }
