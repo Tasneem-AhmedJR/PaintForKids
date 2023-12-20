@@ -40,12 +40,12 @@ void ActionList::TraceAction(Action* p,ActionType t)
 	case DRAW_CIRCLE:
 	case DRAW_TRIANGLE:
 	case DRAW_HEXA:
-	
+	case FILL:
 		ActList[LastAction] = p;
 		IncrementLastAct();
 
 	/*
-	case FILL:
+	
 	case FIG:
 	case ITMDELETE:*/
 	default:
