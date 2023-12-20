@@ -199,6 +199,15 @@
     <ClCompile Include="Undo.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
+    <ClCompile Include="PlayRecAction.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="RecorderAct.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="StopRecAction.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -341,6 +350,15 @@
       <Filter>Action Classes</Filter>
     </ClInclude>
     <ClInclude Include="Undo.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayRecAction.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="RecorderAct.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="StopRecAction.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
   </ItemGroup>

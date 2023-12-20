@@ -182,10 +182,13 @@
     <ClCompile Include="GUI\Output.cpp" />
     <ClCompile Include="ApplicationManager.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="PlayRecAction.cpp" />
+    <ClCompile Include="RecorderAct.cpp" />
     <ClCompile Include="SaveAction.cpp" />
     <ClCompile Include="SelectAction.cpp" />
     <ClCompile Include="setColorAction.cpp" />
     <ClCompile Include="StartRecAction.cpp" />
+    <ClCompile Include="StopRecAction.cpp" />
     <ClCompile Include="ToDraw.cpp" />
     <ClCompile Include="Undo.cpp" />
   </ItemGroup>
@@ -232,10 +235,13 @@
     <ClInclude Include="GUI\UI_Info.h" />
     <ClInclude Include="ApplicationManager.h" />
     <ClInclude Include="DEFS.h" />
+    <ClInclude Include="PlayRecAction.h" />
+    <ClInclude Include="RecorderAct.h" />
     <ClInclude Include="SaveAction.h" />
     <ClInclude Include="SelectAction.h" />
     <ClInclude Include="setColorAction.h" />
     <ClInclude Include="StartRecAction.h" />
+    <ClInclude Include="StopRecAction.h" />
     <ClInclude Include="ToDraw.h" />
     <ClInclude Include="Undo.h" />
   </ItemGroup>
