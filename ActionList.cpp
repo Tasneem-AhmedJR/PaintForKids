@@ -1,15 +1,13 @@
 #include "ActionList.h"
 #include "GUI\output.h"
-#include "ApplicationManager.h"
-
+#include"StopRecAction.h"
+#include"ApplicationManager.h"
 
 ActionList::ActionList()
 {
-	lastAct = 1;
 	LastAction = 0;
 	for (int i = 0; i < 5; i++)
 		ActList[i] = NULL;
-
 }
 
 Action* ActionList::getList()
@@ -19,16 +17,6 @@ Action* ActionList::getList()
 		return ActList[LastAction - 1];
 	}
 	else return NULL;
-}
-
-void ActionList::AddAction(Action* p)  // should add Tasneem's array to the function
-{
-	if (lastAct <= 20 && p->isRecorded() ) 
-	{
-		//List[lastAct] = new Action;
-		//*List[lastAct] = *p; lastAct++;
-	}
-	
 }
 
 void ActionList::TraceAction(Action* p,ActionType t)

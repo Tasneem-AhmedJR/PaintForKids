@@ -1,11 +1,14 @@
 #pragma once
 #include"Actions/Action.h"
+#include"CCircle.h"
+
 class AddCircleAction:public Action
 {
 private:
 	Point P1;
 	Point P2;
 	GfxInfo CircleGfxInfo;
+	CCircle* circ;
 public:
 	AddCircleAction(ApplicationManager* pApp);
 	//Reads Circle parameters

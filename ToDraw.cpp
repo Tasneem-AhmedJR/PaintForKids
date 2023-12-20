@@ -18,3 +18,5 @@ void ToDraw::Execute()
 	pOut->ClearToolBar();
 	pOut->CreateDrawToolBar();
 }
+
+bool ToDraw::isRecorded() { return false; }

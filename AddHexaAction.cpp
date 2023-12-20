@@ -1,5 +1,4 @@
 #include "AddHexaAction.h"
-#include "CHexagon.h"
 #include "ApplicationManager.h"
 #include "GUI\input.h"
 #include "GUI\Output.h"
@@ -36,12 +35,9 @@ void AddHexaAction::CancelAction()
 
 void AddHexaAction::Execute()
 {
-	//This action needs to read some parameters first
-	ReadActionParameters();
-
 	//Create a rectangle with the parameters read from the user
-	CHexagon* H = new CHexagon(P,HexaGfxInfo);
+	hex = new CHexagon(P,HexaGfxInfo);
 
 	//Add the rectangle to the list of figures
-	pManager->AddFigure(H);
+	pManager->AddFigure(hex);
 }

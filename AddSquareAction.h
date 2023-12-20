@@ -1,10 +1,13 @@
 #pragma once
 #include "Actions\Action.h"
+#include "CSquare.h"
+
 class AddSquareAction:public Action
 {
 private:
 	Point P;
 	GfxInfo SquareGfxInfo;
+	CSquare* sq;
 public:
 	AddSquareAction(ApplicationManager* pApp);
 	//Reads Square parameters

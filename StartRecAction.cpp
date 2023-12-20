@@ -1,4 +1,5 @@
 #include "StartRecAction.h"
+#include"ClearAll.h"
 #include"GUI\input.h"
 #include"GUI\Output.h"
 #include"ApplicationManager.h"
@@ -11,13 +12,18 @@ bool StartRecAction::isRecorded() { return false; }
 
 void StartRecAction::Execute()
 {
-	//Get a Pointer to the Input / Output Interfaces
+	//Get a Pointer to the Output Interfaces
 	Output* pOut = pManager->GetOutput();
-	
-	if (pManager->getLastAct() == NULL)
+
+	if (pManager->getRecorder()->isRecording())
+		pOut->PrintMessage("Already recording ");
+	else
 	{
-		pManager->setrecording(true);
-		pOut->PrintMessage("Recording started");
+		if (pManager->getRecorder()->getLastType() == CLEAR_ALL || pManager->getLastAct() == NULL)
+		{
+			pManager->getRecorder()->setRecording(true);
+			pOut->PrintMessage("Recording started");
+		}
+		else pOut->PrintMessage("Error! please restart the program or clear the drawing area first ");
 	}
-	else pOut->PrintMessage("Error! please restart the program or clear the drawing area first ");
 }

@@ -1,5 +1,4 @@
 #include "AddSquareAction.h"
-#include "CSquare.h"
 #include "ApplicationManager.h"
 #include "GUI\input.h"
 #include "GUI\Output.h"
@@ -36,12 +35,9 @@ void AddSquareAction::CancelAction()
 
 void AddSquareAction::Execute()
 {
-	//This action needs to read some parameters first
-	ReadActionParameters();
-
 	//Create a Square with the parameters read from the user
-	CSquare* S = new CSquare(P, SquareGfxInfo);
+	sq = new CSquare(P, SquareGfxInfo);
 
 	//Add the Square to the list of figures
-	pManager->AddFigure(S);
+	pManager->AddFigure(sq);
 }

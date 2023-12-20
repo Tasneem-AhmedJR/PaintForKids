@@ -19,3 +19,5 @@ void ClearAll::Execute()
 	pOut->ClearDrawArea();
 	pManager->ClearingFigures();           //calls a function in Application Manager to get access to figlist
 }
+
+bool ClearAll::isRecorded() { return false; }
