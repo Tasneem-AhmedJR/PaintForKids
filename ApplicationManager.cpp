@@ -28,7 +28,7 @@ ApplicationManager::ApplicationManager()
 	SelectedFig = NULL;
 	FigCount = 0;
 	Recorder = new RecorderAct(this);
-
+	ActList = new ActionList();
 	//DrwClr = UI.DrawColor;
 		
 	//Create an array of figure pointers and set them to NULL		
@@ -115,7 +115,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		Recorder->AddrecList(pAct, ActType);
 		pAct->ReadActionParameters();
 		pAct->Execute();                            //Execute
-		actlist.TraceAction(pAct, ActType);
+		ActList->TraceAction(pAct, ActType);
 		pAct = NULL;
 	}
 }
@@ -137,13 +137,18 @@ void ApplicationManager::SaveAll(ofstream& OutFile)
 		FigList[i]->Save(OutFile);
 }
 
-Action* ApplicationManager::getLastAct() { return actlist.getList(); }
+Action* ApplicationManager::getLastAct() { return ActList->getList(); }
 
 RecorderAct* ApplicationManager::getRecorder() { return Recorder; }
 
+ActionList* ApplicationManager::GetActionList()
+{
+	return ActList;
+}
+
 void ApplicationManager::decrease()
 {
-	actlist.DecrementLastAct();
+	ActList->DecrementLastAct();
 }
 
 int ApplicationManager::getfigureCount() { return FigCount; }
@@ -242,5 +247,5 @@ ApplicationManager::~ApplicationManager()
 		delete FigList[i];
 	delete pIn;
 	delete pOut;
-	
+	delete ActList;
 }

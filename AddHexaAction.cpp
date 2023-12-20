@@ -28,7 +28,7 @@ void AddHexaAction::ReadActionParameters()
 
 void AddHexaAction::CancelAction()
 {
-	pManager->DeleteFig(true);                     //calls delete func. in applicationManager to access figlist
+	hex->SetVisibility(false);                 //the figure sets its own visibilty to false in order not to be drawn
 	Output* pOut = pManager->GetOutput();      //and delete last added figure
 	pOut->ClearDrawArea();
 }

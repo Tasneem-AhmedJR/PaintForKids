@@ -19,7 +19,7 @@ private:
 	CFigure* SelectedFig;            // Pointer to the selected figure
 	
 	ActionType ClrType;              // Figure Color Mode (Fill / Drawing)
-	ActionList actlist;
+	ActionList* ActList;
 	RecorderAct* Recorder;
 	
 	//Pointers to Input and Output classes
@@ -37,7 +37,7 @@ public:
 	void SaveAll(ofstream& OutFile);    // Saves all figure in drawing area 
 	Action* getLastAct();               // Returns last traced Action 
 	RecorderAct* getRecorder();
-	
+	ActionList* GetActionList();        // Returns pointer to actlist array
 	// -- Figures Management Functions
 	void decrease();                     // Calls decrement Function of action list class
 	int getfigureCount();                // returns the Actual figure count

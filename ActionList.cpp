@@ -29,13 +29,15 @@ void ActionList::TraceAction(Action* p,ActionType t)
 	case DRAW_TRIANGLE:
 	case DRAW_HEXA:
 	case FILL:
+	case ITMDELETE:
+		Validate();
 		ActList[LastAction] = p;
 		IncrementLastAct();
 
 	/*
 	
 	case FIG:
-	case ITMDELETE:*/
+	*/
 	default:
 		break;
 	}
@@ -54,7 +56,6 @@ void ActionList::IncrementLastAct()
 {
 	if (LastAction <= 4)
 		LastAction++;
-	Validate();
 }
 
 void ActionList::DecrementLastAct()

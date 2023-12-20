@@ -19,7 +19,9 @@ public:
 		else 
 		{ 
 			f = pManager->getSelectedFig();
-			PreClr = f->getclr();
+			if (f->IsFilled())
+				PreClr = f->GetFillclr();
+			else PreClr = BEIGE;
 			pOut->PrintMessage("Change filling color, Plese choose a color ");
 			pManager->setcolorType(FILL); 
 			setColorAction::Execute(); 
@@ -27,6 +29,9 @@ public:
 	}
 	virtual void CancelAction()
 	{
-		f->ChngFillClr(PreClr);
+		if (PreClr != BEIGE)
+			f->ChngFillClr(PreClr);
+		else
+			f->ChngFillClr(LIGHTGOLDENRODYELLOW);
 	}
 };

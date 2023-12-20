@@ -8,8 +8,8 @@
 class CFigure
 {
 protected:
-	int ID;		//Each figure has an ID
-	bool Selected;	//true if the figure is selected.
+	int ID;		        //Each figure has an ID
+	bool Selected;	    //true if the figure is selected.
 	GfxInfo FigGfxInfo;	//Figure graphis info
 	color clr;
 	CFigure* DeletedFig;
@@ -18,17 +18,15 @@ protected:
 
 public:
 	CFigure(GfxInfo FigureGfxInfo);
-
-	void SetSelected(bool s);	//select/unselect the figure
-	bool IsSelected() const;	//check whether fig is selected
-//	virtual CFigure* GetDeletedFig() {}
+	void SetSelected(bool s);	                //select/unselect the figure
+	bool IsSelected() const;	                //check whether fig is selected
 	virtual void Draw(Output* pOut)   = 0 ;		//Draw the figure
-	void SetVisibility(bool f);                       //Sets visibilty status for a figure
+	void SetVisibility(bool f);                 //Sets visibilty status for a figure
 	bool GetVisibility();                       //Returns visibility for a figure
-	void ChngDrawClr(color Dclr);	//changes the figure's drawing color
-	void ChngFillClr(color Fclr);	//changes the figure's filling color
-	color getclr();       //returns the current figure's color
-		
+	void ChngDrawClr(color Dclr);	            //changes the figure's drawing color
+	void ChngFillClr(color Fclr);	            //changes the figure's filling color
+	color GetFillclr();                             //returns the current figure's color
+	bool IsFilled();
 	///The following functions should be supported by the figure class
 	///It should be overridden by each inherited figure
 

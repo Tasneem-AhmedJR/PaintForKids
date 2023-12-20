@@ -16,7 +16,8 @@ bool CFigure::IsSelected() const
 
 void CFigure::SetVisibility(bool f)
 {
-	Visible = f;
+	if (this)
+		Visible = f;
 }
 
 bool CFigure::GetVisibility()
@@ -36,7 +37,14 @@ void CFigure::ChngFillClr(color Fclr)
 	FigGfxInfo.FillClr = Fclr; 
 }
 
-color CFigure::getclr() { return clr; }
+color CFigure::GetFillclr() { return FigGfxInfo.FillClr; }
+
+bool CFigure::IsFilled()
+{
+	if (FigGfxInfo.isFilled)
+		return true;
+	else return false;
+}
 
 void CFigure::PrintInfo(Output* pOut)
 {
