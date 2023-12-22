@@ -28,5 +28,5 @@ public:
 		f->ChngDrawClr(PreClr);
 		pOut->setCurrentDrawColor(PreClr);
 	}
-	void PlayAct() { setColorAction::PlayAct(); }
+	//void PlayAct() { setColorAction::PlayAct(); }
 };
