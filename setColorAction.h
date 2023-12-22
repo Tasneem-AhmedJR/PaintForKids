@@ -11,6 +11,6 @@ public:
 	setColorAction(ApplicationManager* pApp);
 	void ReadActionParameters();
 	void changecolorAct(bool, CFigure*, color);
-	void PlayAct();
+	void setColorAct();
 	void Execute();
 };

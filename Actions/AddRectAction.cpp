@@ -39,15 +39,11 @@ void AddRectAction::CancelAction()
 	pOut->ClearDrawArea();
 }
 
-void AddRectAction::PlayAct()
-{
-	Output* pOut = pManager->GetOutput();
-	rect->Draw(pOut);
-}
-
 //Execute the action
 void AddRectAction::Execute() 
 {
+	if (!pManager->getRecorder()->isPlayingNow())
+
 	ReadActionParameters();  //must read Action parameters first
 	//Create a rectangle with the parameters read from the user
 	rect = new CRectangle(P1, P2, RectGfxInfo);

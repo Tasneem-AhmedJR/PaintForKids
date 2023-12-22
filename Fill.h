@@ -31,5 +31,4 @@ public:
 		else
 			f->ChngFillClr(LIGHTGOLDENRODYELLOW);
 	}
-	void PlayAct() { setColorAction::PlayAct(); }
 };

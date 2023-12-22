@@ -18,6 +18,4 @@ public:
 			setColorAction::Execute(); 
 		}
 	}
-
-	void PlayAct() { setColorAction::PlayAct(); }
 };

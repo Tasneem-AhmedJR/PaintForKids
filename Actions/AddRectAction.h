@@ -17,7 +17,6 @@ public:
 	//Reads rectangle parameters
 	virtual void ReadActionParameters();
 	virtual void CancelAction();
-	void PlayAct();
 	//Add rectangle to the ApplicationManager
 	virtual void Execute() ;
 	

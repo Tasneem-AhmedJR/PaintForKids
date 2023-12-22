@@ -43,14 +43,10 @@ void AddTriangleAction::CancelAction()
 	pOut->ClearDrawArea();
 }
 
-void AddTriangleAction::PlayAct()
-{
-	Output* pOut = pManager->GetOutput();
-	tri->Draw(pOut);
-}
-
 void AddTriangleAction::Execute()
 {	
+	if (!pManager->getRecorder()->isPlayingNow())
+
 	ReadActionParameters();  //must read Action parameters first
 	//Create a Triangle with the parameters read from the user
 	tri = new CTriangle(P1, P2,P3, TriangleGfxInfo);

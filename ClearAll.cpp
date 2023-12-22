@@ -17,6 +17,7 @@ void ClearAll::Execute()
 	Output* pOut = pManager->GetOutput();
 	pOut->PrintMessage("Cleared All Figures");
 	pOut->ClearDrawArea();
+	pManager->getRecorder()->setRecording(false);
 	pManager->ClearingFigures();           //calls a function in Application Manager to get access to figlist
 }
 
