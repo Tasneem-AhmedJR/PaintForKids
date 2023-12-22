@@ -18,7 +18,7 @@ void AddSquareAction::ReadActionParameters()
 	//Read one point store in point P
 	pIn->GetPointClicked(P.x, P.y);
 
-	SquareGfxInfo.isFilled = false;	//default is not filled
+	SquareGfxInfo.isFilled = pOut->isFilled();	//default is not filled
 	//get drawing, filling colors and pen width from the interface
 	SquareGfxInfo.DrawClr = pOut->getCrntDrawColor();
 	SquareGfxInfo.FillClr = pOut->getCrntFillColor();

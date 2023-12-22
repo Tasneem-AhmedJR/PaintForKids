@@ -18,6 +18,7 @@ Output::Output()
 	
 	UI.DrawColor = BLUE;	//Drawing color
 	UI.FillColor = GREEN;	//Filling color
+	UI.isfilled = false;
 	UI.MsgColor = WHITE;		//Messages color
 	UI.BkGrndColor = LIGHTGOLDENRODYELLOW;	//Background color
 	UI.HighlightColor = MAGENTA;	//This color should NOT be used to draw figures. use if for highlight only
@@ -174,8 +175,22 @@ color Output::getCrntDrawColor() const	//get current drawing color
 {	return UI.DrawColor;	}
 //////////////////////////////////////////////////////////////////////////////////////////
 
+void Output::setCurrentDrawColor(color c)
+{	UI.DrawColor = c;       }
+//////////////////////////////////////////////////////////////////////////////////////////
+
 color Output::getCrntFillColor() const	//get current filling color
 {	return UI.FillColor;	}
+//////////////////////////////////////////////////////////////////////////////////////////
+
+void Output::setCurrentFillColor(color c)
+{	UI.FillColor = c;       }
+//////////////////////////////////////////////////////////////////////////////////////////
+
+bool Output::isFilled() { return UI.isfilled; }
+//////////////////////////////////////////////////////////////////////////////////////////
+
+void Output::setStyle(bool b) { UI.isfilled = b; }
 //////////////////////////////////////////////////////////////////////////////////////////
 	
 int Output::getCrntPenWidth() const		//get current pen width

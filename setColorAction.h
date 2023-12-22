@@ -7,5 +7,6 @@ class setColorAction :public Action
 public:
 	setColorAction(ApplicationManager* pApp);
 	void ReadActionParameters();
+	void changecolorAct(bool, CFigure*, color);
 	void Execute();
 };

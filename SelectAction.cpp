@@ -37,8 +37,6 @@ void SelectAction::Unselect(CFigure* f)
 
 void SelectAction::Execute()
 {
-	ReadActionParameters(); //must read action parameters first 
-
 	Fig = pManager->GetFigure(&P);
 
 	if (Fig)  // if the kid clickes on or inside the figure there will be three cases:         

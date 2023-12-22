@@ -18,7 +18,7 @@ void AddHexaAction::ReadActionParameters()
 	//Read point and store in point P1
 	pIn->GetPointClicked(P.x, P.y);
 
-	HexaGfxInfo.isFilled = false;	//default is not filled
+	HexaGfxInfo.isFilled = pOut->isFilled();;	//default is not filled
 	//get drawing, filling colors and pen width from the interface
 	HexaGfxInfo.DrawClr = pOut->getCrntDrawColor();
 	HexaGfxInfo.FillClr = pOut->getCrntFillColor();

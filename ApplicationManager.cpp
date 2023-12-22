@@ -29,6 +29,7 @@ ApplicationManager::ApplicationManager()
 	FigCount = 0;
 	Recorder = new RecorderAct(this);
 	ActList = new ActionList();
+	filled = false;
 	//DrwClr = UI.DrawColor;
 		
 	//Create an array of figure pointers and set them to NULL		
@@ -214,10 +215,9 @@ CFigure* ApplicationManager::getSelectedFig() { return SelectedFig; }
 //						Colours Management Functions								//
 //==================================================================================//
 
-ActionType ApplicationManager::getcolorType() { return ClrType; }
+bool ApplicationManager::getcolorType() { return filled; }
 
-void ApplicationManager::setcolorType(ActionType act) { ClrType = act; }
-
+void ApplicationManager::setcolorType(bool b) { filled = b; }
 
 //==================================================================================//
 //							Interface Management Functions							//

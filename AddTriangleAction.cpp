@@ -28,7 +28,7 @@ void AddTriangleAction::ReadActionParameters()
 
 	//Read 3th Point and store in Point P3
 	pIn->GetPointClicked(P3.x, P3.y);
-	TriangleGfxInfo.isFilled = false;	//default is not filled
+	TriangleGfxInfo.isFilled = pOut->isFilled();;	//default is not filled
 	//get drawing, filling colors and pen width from the interface
 	TriangleGfxInfo.DrawClr = pOut->getCrntDrawColor();
 	TriangleGfxInfo.FillClr = pOut->getCrntFillColor();

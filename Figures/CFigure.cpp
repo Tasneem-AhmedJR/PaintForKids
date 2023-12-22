@@ -5,7 +5,6 @@ CFigure::CFigure(GfxInfo FigureGfxInfo)
 	FigGfxInfo = FigureGfxInfo;	//Default status is non-filled.
 	Selected = false;
 	ID = 0;
-	//7clr = FigGfxInfo.DrawClr;
 }
 
 void CFigure::SetSelected(bool s)

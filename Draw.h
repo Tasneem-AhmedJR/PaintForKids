@@ -9,15 +9,11 @@ public:
 	{
 		Output* pOut = pManager->GetOutput();
 
-		if (pManager->getSelectedFig() == NULL)
-		{
-			pManager->setcolorType(NO_ACION);
-			pOut->PrintMessage("Please select a figure first ");
-		}
+		if (pManager->getSelectedFig() == NULL) { pOut->PrintMessage("Please select a figure first "); }
 		else 
 		{
 			pOut->PrintMessage("changing drawing color, Please choose a color");
-			pManager->setcolorType(FIG);
+			pManager->setcolorType(false);
 			setColorAction::Execute(); 
 		}
 	}

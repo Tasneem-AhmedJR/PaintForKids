@@ -18,7 +18,7 @@ private:
 	CFigure* FigList[MaxFigCount];	 // List of all figures (Array of pointers)
 	CFigure* SelectedFig;            // Pointer to the selected figure
 	
-	ActionType ClrType;              // Figure Color Mode (Fill / Drawing)
+	bool filled;                     // Figure Color Mode (Fill / Drawing)
 	ActionList* ActList;
 	RecorderAct* Recorder;
 	
@@ -50,8 +50,8 @@ public:
 
 	// -- Colours Management Functions 
 
-	ActionType getcolorType();        // Sets the selected colour mode (Fill colour / Drawing colour)
-	void setcolorType(ActionType);    // Returns the selected colour mode (Fill colour / Drawing colour)
+	bool getcolorType();        // Sets the selected colour mode (Fill colour / Drawing colour)
+	void setcolorType(bool);    // Returns the selected colour mode (Fill colour / Drawing colour)
 	
 
 	// -- Interface Management Functions
