@@ -61,7 +61,7 @@ void ActionList::DecrementLastAct()
 
 void ActionList::SortActions()
 {
-	delete ActList[0];
+	ActList[0] = NULL;
 	for (int i = 0; i < 4; i++)
 	{
 		swap(ActList[i], ActList[i + 1]);

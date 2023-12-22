@@ -31,7 +31,7 @@ bool CRectangle::isInside(Point* p)
 
 void CRectangle::PrintInfo(Output* pOut)
 { 
-	CFigure::PrintInfo(pOut);
+	pOut->PrintMessage(("ID : ") + to_string(ID) + (" Corner 1: ") + to_string(Corner1.x) + (" , ") + to_string(Corner1.y) + (" Corner 2: ") + to_string(Corner2.x) + (" , ") + to_string(Corner2.y));
 }
 
 

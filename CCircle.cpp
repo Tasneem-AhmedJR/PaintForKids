@@ -33,9 +33,9 @@ bool CCircle::isInside(Point* p)
 
 void CCircle::PrintInfo(Output* pOut)
 {
-	CFigure::PrintInfo(pOut);
-	pOut->PrintMessage("Redius : " + CalcRadius(&gen_P));
+	pOut->PrintMessage(("ID : ") + to_string(ID) + (" Rasius : ") + to_string(CalcRadius(&gen_P)) + ("Center : ") + to_string(Cent_P.x) + (", ") + to_string(Cent_P.y));
 }
+
 
 void CCircle::Save(ofstream& OutFile)
 {

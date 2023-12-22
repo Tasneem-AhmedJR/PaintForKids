@@ -6,6 +6,7 @@ CFigure::CFigure(GfxInfo FigureGfxInfo)
 	Selected = false;
 	count++;
 	ID = count;
+	Preclr = UI.DrawColor;
 }
 
 void CFigure::SetSelected(bool s)
@@ -26,10 +27,10 @@ bool CFigure::GetVisibility()
 	return Visible;
 }
 
-void CFigure::ChngDrawClr(color Dclr)
+void CFigure::ChngDrawClr (color Dclr)
 {
 	FigGfxInfo.DrawClr = Dclr;
-	//if (Preclr != UI.HighlightColor) clr = Dclr;
+	if (Dclr != UI.HighlightColor) Preclr = Dclr;
 }
 
 void CFigure::ChngFillClr(color Fclr)
@@ -40,18 +41,11 @@ void CFigure::ChngFillClr(color Fclr)
 
 color CFigure::GetFillclr() { return FigGfxInfo.FillClr; }
 
+color CFigure::GetDrawClr() { return Preclr; }
+
 bool CFigure::IsFilled()
 {
 	if (FigGfxInfo.isFilled)
 		return true;
 	else return false;
 }
-
-void CFigure::PrintInfo(Output* pOut)
-{
-	pOut->PrintMessage("ID : " + ID);
-}
-
-
-
-

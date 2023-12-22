@@ -31,7 +31,7 @@ void SelectAction::Unselect(CFigure* f)
 	Output* pOut = pManager->GetOutput();
 	pManager->setSelectedFig(NULL);
 	f->SetSelected(false);
-	f->ChngDrawClr(UI.DrawColor);
+	f->ChngDrawClr(f->GetDrawClr());
 	pOut->ClearStatusBar();
 }
 

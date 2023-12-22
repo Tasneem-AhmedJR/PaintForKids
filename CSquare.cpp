@@ -21,7 +21,7 @@ bool CSquare::isInside(Point* p)
 
 void CSquare::PrintInfo(Output* pOut)
 {
-	CFigure::PrintInfo(pOut);
+	pOut->PrintMessage(("ID: ") + to_string(ID) + (" Center: ") + to_string(Center.x) + (" , ") + to_string(Center.y));
 }
 
 void CSquare::DeleteFig()
