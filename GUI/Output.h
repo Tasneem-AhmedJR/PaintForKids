@@ -35,6 +35,7 @@ public:
 	void setCurrentFillColor(color);
 	bool isFilled();
 	void setStyle(bool);
+	void reset();   //resets the programm to the default seetings 
 	int getCrntPenWidth() const;		//get current pen width
 
 	

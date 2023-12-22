@@ -9,6 +9,7 @@ private:
 	Point Corner1;	
 	Point Corner2;
 public:
+	CRectangle(){}
 	CRectangle(Point , Point, GfxInfo FigureGfxInfo );
 	virtual void Draw(Output* pOut) ;
 	double CalcArea(Point* p);
@@ -17,7 +18,7 @@ public:
 	virtual void DeleteFig();
 	//virtual CFigure* GetDeletedFig();
 	void Save(ofstream& OutFile);
-	//void Load(ifstream& Infile);
+	void Load(ifstream& Infile);
 	
 };
 

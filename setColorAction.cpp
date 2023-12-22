@@ -26,18 +26,8 @@ void setColorAction::changecolorAct(bool b, CFigure* fig, color c)
 		}
 	}
 }
-
-void setColorAction::PlayAct()
+void setColorAction::setColorAct()
 {
-	changecolorAct(typ, fig, Clr);
-}
-
-void setColorAction::Execute()
-{
-	Output* pOut = pManager->GetOutput();
-	fig = pManager->getSelectedFig();
-	typ = pManager->getcolorType();
-
 	act = pManager->GetUserAction();
 	switch (act)
 	{
@@ -49,7 +39,16 @@ void setColorAction::Execute()
 	case BLU: Clr = BLUE; break;
 	default: Clr = WHITE; break;
 	}
-	
+}
+void setColorAction::Execute()
+{
+	Output* pOut = pManager->GetOutput();
+	fig = pManager->getSelectedFig();
+	typ = pManager->getcolorType();
+
+	if (!pManager->getRecorder()->isPlayingNow())
+		setColorAct();
+
 	changecolorAct(typ, fig, Clr);
 
 	pOut->ClearStatusBar();

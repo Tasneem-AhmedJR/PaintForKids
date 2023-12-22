@@ -1,10 +1,11 @@
 #include "CFigure.h"
-
+int CFigure::count = 0;
 CFigure::CFigure(GfxInfo FigureGfxInfo)
 { 
 	FigGfxInfo = FigureGfxInfo;	//Default status is non-filled.
 	Selected = false;
-	ID = 0;
+	count++;
+	ID = count;
 }
 
 void CFigure::SetSelected(bool s)
@@ -21,6 +22,7 @@ void CFigure::SetVisibility(bool f)
 
 bool CFigure::GetVisibility()
 {
+	if(this)
 	return Visible;
 }
 

@@ -192,6 +192,15 @@ bool Output::isFilled() { return UI.isfilled; }
 
 void Output::setStyle(bool b) { UI.isfilled = b; }
 //////////////////////////////////////////////////////////////////////////////////////////
+
+void Output::reset()
+{
+	setCurrentDrawColor(BLUE);
+	setCurrentFillColor(GREEN);
+	setStyle(false);
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////
 	
 int Output::getCrntPenWidth() const		//get current pen width
 {	return UI.PenWidth;	}

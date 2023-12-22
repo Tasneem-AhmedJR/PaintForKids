@@ -10,6 +10,7 @@ private:
 	Point B;
 	Point C;
 public:
+	CTriangle(){}
 	CTriangle(Point, Point, Point, GfxInfo FigureGfxInfo);
 	virtual void Draw(Output* pOut);
 	double CalcArea(Point* a, Point* b, Point* c);
@@ -17,7 +18,7 @@ public:
 	void PrintInfo(Output* pOut);
 	virtual void DeleteFig();
 	void Save(ofstream& OutFile);
-	//void Load(ifstream& Infile);
+	void Load(ifstream& Infile);
 
 };
 

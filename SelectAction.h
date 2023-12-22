@@ -9,6 +9,5 @@ public:
 	void ReadActionParameters();
 	void Select(CFigure*);
 	void Unselect(CFigure*);
-	void PlayAct();
 	void Execute();
 };

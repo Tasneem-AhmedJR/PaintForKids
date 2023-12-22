@@ -17,6 +17,7 @@
 #include"StopRecAction.h"
 #include"PlayRecAction.h"
 #include"RecorderAct.h"
+#include"LoadAction.h"
 
 //Constructor
 ApplicationManager::ApplicationManager()
@@ -99,6 +100,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case SAVE:
 			pAct = new SaveAction(this);
 			break;
+		case LOAD:
+			pAct = new LoadAction(this);
+			break;
 		case EXIT:
 			///create ExitAction here
 			break;
@@ -113,7 +117,8 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	//Execute the created action
 	if(pAct != NULL)
 	{
-		pAct->Execute();                            //Execute
+		if (!Recorder->isPlayingNow())
+			pAct->Execute();                            //Execute
 		Recorder->AddrecList(pAct, ActType);
 		ActList->TraceAction(pAct, ActType);
 		pAct = NULL;
@@ -134,7 +139,19 @@ void ApplicationManager::AddFigure(CFigure* pFig)
 void ApplicationManager::SaveAll(ofstream& OutFile)
 {
 	for (int i = 0; i < FigCount; i++)
+		if(FigList[i]->GetVisibility())
+			if(FigList[i])
 		FigList[i]->Save(OutFile);
+}
+
+void ApplicationManager::WhenLoad()
+{
+	for (int i = 0; i < FigCount; i++)
+	{
+		FigList[i] = NULL;
+		delete FigList[i];
+	}
+	FigCount = 0;
 }
 
 Action* ApplicationManager::getLastAct() { return ActList->getList(); }
@@ -152,6 +169,10 @@ void ApplicationManager::decrease()
 }
 
 int ApplicationManager::getfigureCount() { return FigCount; }
+void ApplicationManager::setfigureCount(int x)
+{
+	FigCount = x;
+}
 ////////////////////////////////////////////////////////////////////////////////////
 CFigure *ApplicationManager::GetFigure(Point* p) const
 {
@@ -160,6 +181,7 @@ CFigure *ApplicationManager::GetFigure(Point* p) const
 
 	for (int i = 0; i < FigCount; i++)
 	{
+	    if(FigList[i])
 		if (FigList[i]->isInside(p)) return FigList[i];
 		else continue;
 	}
@@ -173,6 +195,7 @@ CFigure *ApplicationManager::GetFigure(Point* p) const
 ////////////////////////////////////////////////////////////////////////////////////
 void ApplicationManager::ClearingFigures()       //loops on fig list and calls clearfig of each class
 {
+	pOut->reset();
 	for (int i = 0; i < FigCount; i++)
 	{
 		if (FigList[i])
@@ -233,8 +256,8 @@ void ApplicationManager::UpdateInterface() const
 {
 	for (int i = 0; i < FigCount; i++)
 	{
-		if (!Recorder->isPlayingNow())
-			if (FigList[i]->GetVisibility())          //To Only Draw Visible figures to the user
+		if (FigList[i]->GetVisibility())          //To Only Draw Visible figures to the user
+			if (FigList[i])
 				FigList[i]->Draw(pOut);		          //Call Draw function (virtual member fn)
 	}
 }

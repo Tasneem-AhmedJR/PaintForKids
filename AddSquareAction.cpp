@@ -33,14 +33,10 @@ void AddSquareAction::CancelAction()
 	pOut->ClearDrawArea();
 }
 
-void AddSquareAction::PlayAct()
-{
-	Output* pOut = pManager->GetOutput();
-	sq->Draw(pOut);
-}
-
 void AddSquareAction::Execute()
 {
+	if (!pManager->getRecorder()->isPlayingNow())
+
 	ReadActionParameters();  //must read Action parameters first
 	//Create a Square with the parameters read from the user
 	sq = new CSquare(P, SquareGfxInfo);

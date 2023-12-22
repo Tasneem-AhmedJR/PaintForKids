@@ -8,6 +8,7 @@ private:
 	Point Cent_P;
 	Point gen_P;
 public:
+	CCircle(){}
 	CCircle(Point, Point, GfxInfo FigureGfxInfo);
 	virtual void Draw(Output* pOut);
 	virtual void DeleteFig();
@@ -16,6 +17,6 @@ public:
 	bool isInside(Point* p);              // checks if a given point is inside or on the circle
 	void PrintInfo(Output* pOut);
     void Save(ofstream& OutFile);
-	//void Load(ifstream& Infile);
+	void Load(ifstream& Infile);
 };
 

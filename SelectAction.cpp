@@ -35,10 +35,6 @@ void SelectAction::Unselect(CFigure* f)
 	pOut->ClearStatusBar();
 }
 
-void SelectAction::PlayAct()
-{
-}
-
 void SelectAction::Execute()
 {
 	if(!pManager->getRecorder()->isPlayingNow())

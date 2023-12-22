@@ -33,14 +33,10 @@ void AddHexaAction::CancelAction()
 	pOut->ClearDrawArea();
 }
 
-void AddHexaAction::PlayAct()
-{
-	Output* pOut = pManager->GetOutput();
-	hex->Draw(pOut);
-}
-
 void AddHexaAction::Execute()
 {
+	if (!pManager->getRecorder()->isPlayingNow())
+
 	ReadActionParameters();  //must read Action parameters first
 	//Create a rectangle with the parameters read from the user
 	hex = new CHexagon(P,HexaGfxInfo);

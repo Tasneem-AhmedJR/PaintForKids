@@ -19,13 +19,14 @@ void PlayRecAction::Execute()
 	else if (pManager->getRecorder()->hasRecordes())
 	{
 		pManager->getRecorder()->setNowPlaying(true);
-		pManager->reset();
+		pManager->ClearingFigures();
 
 		pOut->ClearDrawArea();
 		Sleep(1000);
 		for (int i = 0; i < n; i++)
 		{
-			list[i]->PlayAct();
+			list[i]->Execute();
+			pManager->UpdateInterface();
 			Sleep(1000);
 		}
 		pManager->getRecorder()->setNowPlaying(false);

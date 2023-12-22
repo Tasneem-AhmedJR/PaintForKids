@@ -38,5 +38,4 @@ public:
 			pOut->setCurrentFillColor(LIGHTGOLDENRODYELLOW);
 		}
 	}
-	void PlayAct() { setColorAction::PlayAct(); }
 };
