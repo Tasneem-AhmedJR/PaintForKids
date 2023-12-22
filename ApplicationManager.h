@@ -35,6 +35,7 @@ public:
 	ActionType GetUserAction() const;   // Reads the input command from the user and returns the corresponding action type
 	void ExecuteAction(ActionType) ;    // Creates an action and executes it
 	void SaveAll(ofstream& OutFile);    // Saves all figure in drawing area 
+	void WhenLoad();
 	Action* getLastAct();               // Returns last traced Action 
 	RecorderAct* getRecorder();
 	ActionList* GetActionList();        // Returns pointer to actlist array
@@ -43,6 +44,7 @@ public:
 	// -- Figures Management Functions
 	void decrease();                     // Calls decrement Function of action list class
 	int getfigureCount();                // returns the Actual figure count
+	void setfigureCount(int);
 	void AddFigure(CFigure* pFig);       // Adds a new figure to the FigList
 	CFigure *GetFigure(Point* p) const;  // Search for a figure given a point inside the figure
 	void setSelectedFig(CFigure* fig);   // sets the selected figure

@@ -7,14 +7,16 @@ This file was last modified on 05.16.1999
 #define COLORS_H
 
 #include "version.h"
-#include<cstring>
+#include<string.h>
+#include<iostream>
+using namespace std;
 class color {
 
   public:
-      char name[30] ="";
+      
     // Default constructor creates black
-      color(char n[30] = "", unsigned char Red = 0, unsigned char Green = 0, unsigned char Blue = 0) {
-          strcpy_s(name, 30, n);
+      color(string n="", unsigned char Red = 0, unsigned char Green = 0, unsigned char Blue = 0) {
+          name = n;
         ucRed = Red;  ucGreen = Green;  ucBlue = Blue; 
     }
 
@@ -23,7 +25,7 @@ class color {
     unsigned char ucRed;
     unsigned char ucGreen;
     unsigned char ucBlue;
-
+    string name;
 };
 
 bool operator==(color a, color b);
