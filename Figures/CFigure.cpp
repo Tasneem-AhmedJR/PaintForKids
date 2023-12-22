@@ -27,7 +27,7 @@ bool CFigure::GetVisibility()
 void CFigure::ChngDrawClr(color Dclr)
 {
 	FigGfxInfo.DrawClr = Dclr;
-	//if (Dclr != UI.HighlightColor) clr = Dclr;
+	//if (Preclr != UI.HighlightColor) clr = Dclr;
 }
 
 void CFigure::ChngFillClr(color Fclr)

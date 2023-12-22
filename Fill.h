@@ -26,10 +26,17 @@ public:
 	}
 	virtual void CancelAction()
 	{
+		Output* pOut = pManager->GetOutput();
 		if (PreClr != BEIGE)
+		{
 			f->ChngFillClr(PreClr);
+			pOut->setCurrentFillColor(PreClr);
+		}
 		else
+		{
 			f->ChngFillClr(LIGHTGOLDENRODYELLOW);
+			pOut->setCurrentFillColor(LIGHTGOLDENRODYELLOW);
+		}
 	}
 	void PlayAct() { setColorAction::PlayAct(); }
 };

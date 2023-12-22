@@ -30,14 +30,10 @@ void ActionList::TraceAction(Action* p,ActionType t)
 	case DRAW_HEXA:
 	case FILL:
 	case ITMDELETE:
+	case FIG:
 		Validate();
 		ActList[LastAction] = p;
 		IncrementLastAct();
-
-	/*
-	
-	case FIG:
-	*/
 	default:
 		break;
 	}
