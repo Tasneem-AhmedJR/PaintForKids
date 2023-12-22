@@ -12,6 +12,7 @@ enum ActionType //The actions supported (you can add more if needed)
 	DRAW_TRIANGLE,  //Draw Triangle
 	DRAW_HEXA,      //Draw Hexa
 	SELECT,         //Select any Fig
+	SOUND,
 	FILL,           //To Filled The fig with color
 	FIG,            //To Highlite The Fig
 	BLCK,           // Black Color

@@ -188,6 +188,7 @@
     <ClCompile Include="SaveAction.cpp" />
     <ClCompile Include="SelectAction.cpp" />
     <ClCompile Include="setColorAction.cpp" />
+    <ClCompile Include="SoundAction.cpp" />
     <ClCompile Include="StartRecAction.cpp" />
     <ClCompile Include="StopRecAction.cpp" />
     <ClCompile Include="ToDraw.cpp" />
@@ -242,6 +243,7 @@
     <ClInclude Include="SaveAction.h" />
     <ClInclude Include="SelectAction.h" />
     <ClInclude Include="setColorAction.h" />
+    <ClInclude Include="SoundAction.h" />
     <ClInclude Include="StartRecAction.h" />
     <ClInclude Include="StopRecAction.h" />
     <ClInclude Include="ToDraw.h" />

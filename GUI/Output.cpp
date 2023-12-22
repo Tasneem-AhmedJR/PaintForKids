@@ -87,6 +87,7 @@ void Output::CreateDrawToolBar() const
 	MenuItemImages[ITM_TRI] = "images\\MenuItems\\tri.jpg";
 	MenuItemImages[ITM_HEXA] = "images\\MenuItems\\hexa.jpg";
 	MenuItemImages[ITM_SELECT] = "images\\MenuItems\\select.jpg";
+	MenuItemImages[ITM_SOUND] = "images\\MenuItems\\Capture.jpg";
 	MenuItemImages[ITM_FILLED] = "images\\MenuItems\\fill.jpg";
 	MenuItemImages[ITM_FIG] = "images\\MenuItems\\figure.jpg";
 	MenuItemImages[ITM_BLACK] = "images\\MenuItems\\black.jpg";
