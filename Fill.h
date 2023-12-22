@@ -5,6 +5,7 @@ class Fill :public setColorAction
 {
 	CFigure* f;
 	color PreClr;
+	color CurrentClr;
 public:
 	Fill(ApplicationManager* pApp) :setColorAction(pApp) {}
 	void Execute()
@@ -22,20 +23,34 @@ public:
 			pManager->setcolorType(true);
 			pOut->setStyle(true);
 			setColorAction::Execute();
+			CurrentClr = pOut->getCrntFillColor();
 		}
 	}
+	virtual void RedoAction()
+	{
+		Output* pOut = pManager->GetOutput();
+		if (CurrentClr != LIGHTGOLDENRODYELLOW)
+			pOut->setStyle(true);
+		f->ChngFillClr(CurrentClr);
+		pOut->setCurrentFillColor(CurrentClr);
+	}
+
 	virtual void CancelAction()
 	{
 		Output* pOut = pManager->GetOutput();
 		if (PreClr != BEIGE)
 		{
 			f->ChngFillClr(PreClr);
+			pOut->setStyle(true);
 			pOut->setCurrentFillColor(PreClr);
+			pOut->ClearDrawArea();
 		}
 		else
 		{
 			f->ChngFillClr(LIGHTGOLDENRODYELLOW);
-			pOut->setCurrentFillColor(LIGHTGOLDENRODYELLOW);
+			pOut->setStyle(false);
+			pOut->ClearDrawArea();
+
 		}
 	}
 };

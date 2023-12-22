@@ -14,6 +14,7 @@ public:
 	AddTriangleAction( ApplicationManager* pApp);
 	//Reads Triangle parameters
 	virtual void ReadActionParameters();
+	virtual void RedoAction();
 	virtual void CancelAction();
 	//Add Triangle to the ApplicationManager
 	virtual void Execute();

@@ -5,6 +5,7 @@ class Draw :public setColorAction
 {
 	CFigure* f;
 	color PreClr;
+	color CurrentClr;
 public:
 	Draw(ApplicationManager* pApp) :setColorAction(pApp) {}
 
@@ -20,7 +21,15 @@ public:
 			pOut->PrintMessage("changing drawing color, Please choose a color");
 			pManager->setcolorType(false);
 			setColorAction::Execute(); 
+			CurrentClr = pOut->getCrntDrawColor();
 		}
+	}
+	virtual void RedoAction()
+	{
+		Output* pOut = pManager->GetOutput();
+		f->ChngDrawClr(CurrentClr);
+		pOut->setCurrentDrawColor(CurrentClr);
+
 	}
 	virtual void CancelAction()
 	{

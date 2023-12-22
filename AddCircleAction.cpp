@@ -31,6 +31,13 @@ void AddCircleAction::ReadActionParameters()
 	pOut->ClearStatusBar();
 }
 
+void AddCircleAction::RedoAction()
+{
+	circ->SetVisibility(true);
+	Output* pOut = pManager->GetOutput();
+	pOut->ClearDrawArea();
+}
+
 void AddCircleAction::CancelAction()
 {
 	circ->SetVisibility(false);                 //the figure sets its own visibilty to false in order not to be drawn

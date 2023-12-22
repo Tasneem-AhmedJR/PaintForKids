@@ -36,6 +36,13 @@ void AddTriangleAction::ReadActionParameters()
 	pOut->ClearStatusBar();
 }
 
+void AddTriangleAction::RedoAction()
+{
+	tri->SetVisibility(true);
+	Output* pOut = pManager->GetOutput();
+	pOut->ClearDrawArea();
+}
+
 void AddTriangleAction::CancelAction()
 {
 	tri->SetVisibility(false);                  //the figure sets its own visibilty to false in order not to be drawn

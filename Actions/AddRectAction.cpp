@@ -35,7 +35,14 @@ void AddRectAction::ReadActionParameters()
 void AddRectAction::CancelAction()
 {
 	rect->SetVisibility(false);                     //the figure sets its own visibilty to false in order not to be drawn 
-	Output* pOut = pManager->GetOutput();          //and delete last added figure
+	Output* pOut = pManager->GetOutput();        
+	pOut->ClearDrawArea();
+}
+
+void AddRectAction::RedoAction()
+{
+	rect->SetVisibility(true);
+	Output* pOut = pManager->GetOutput();
 	pOut->ClearDrawArea();
 }
 

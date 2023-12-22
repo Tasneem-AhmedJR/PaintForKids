@@ -22,6 +22,7 @@ public:
 	//Execute action (code depends on action type)
 	virtual void Execute() = 0;
 	virtual void CancelAction(){}
+	virtual void RedoAction(){}
 	virtual bool isRecorded() { return true; }
 };
 

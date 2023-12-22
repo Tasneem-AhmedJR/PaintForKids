@@ -26,6 +26,13 @@ void AddHexaAction::ReadActionParameters()
 	pOut->ClearStatusBar();
 }
 
+void AddHexaAction::RedoAction()
+{
+	hex->SetVisibility(true);
+	Output* pOut = pManager->GetOutput();
+	pOut->ClearDrawArea();
+}
+
 void AddHexaAction::CancelAction()
 {
 	hex->SetVisibility(false);                 //the figure sets its own visibilty to false in order not to be drawn

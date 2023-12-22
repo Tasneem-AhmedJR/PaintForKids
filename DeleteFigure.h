@@ -7,6 +7,7 @@ class DeleteFigure:public Action
 public:
 	DeleteFigure(ApplicationManager* pApp);
 	virtual void ReadActionParameters();
+	virtual void RedoAction();
 	virtual void CancelAction();
 	virtual void Execute();
 };

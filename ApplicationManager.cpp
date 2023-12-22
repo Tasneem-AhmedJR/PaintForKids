@@ -18,7 +18,7 @@
 #include"PlayRecAction.h"
 #include"RecorderAct.h"
 #include"LoadAction.h"
-
+#include"Redo.h"
 //Constructor
 ApplicationManager::ApplicationManager()
 {
@@ -97,6 +97,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case UNDO:
 			pAct = new Undo(this);
 			break;
+		case REDO:
+			pAct = new Redo(this);
+			break;
 		case SAVE:
 			pAct = new SaveAction(this);
 			break;
@@ -154,6 +157,11 @@ void ApplicationManager::WhenLoad()
 	FigCount = 0;
 }
 
+Action* ApplicationManager::GetRedoAction()
+{
+	return ActList->getRedo();
+}
+
 Action* ApplicationManager::getLastAct() { return ActList->getList(); }
 
 RecorderAct* ApplicationManager::getRecorder() { return Recorder; }
@@ -166,6 +174,16 @@ ActionList* ApplicationManager::GetActionList()
 void ApplicationManager::decrease()
 {
 	ActList->DecrementLastAct();
+}
+
+void ApplicationManager::IncrRedo()
+{
+	ActList->IncrementRedo();
+}
+
+bool ApplicationManager::Redoable()
+{
+	return ActList->canredo();
 }
 
 int ApplicationManager::getfigureCount() { return FigCount; }

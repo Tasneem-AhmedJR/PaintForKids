@@ -33,9 +33,14 @@ void CFigure::ChngDrawClr(color Dclr)
 }
 
 void CFigure::ChngFillClr(color Fclr)
-{	
-	FigGfxInfo.isFilled = true;
-	FigGfxInfo.FillClr = Fclr; 
+{
+	if (Fclr == LIGHTGOLDENRODYELLOW)
+		FigGfxInfo.isFilled = false;
+	else
+	{
+		FigGfxInfo.isFilled = true;
+		FigGfxInfo.FillClr = Fclr;
+	}
 }
 
 color CFigure::GetFillclr() { return FigGfxInfo.FillClr; }

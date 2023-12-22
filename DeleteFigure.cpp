@@ -12,11 +12,16 @@ void DeleteFigure::ReadActionParameters()
 {  
 }
 
+void DeleteFigure::RedoAction()
+{
+	f->SetVisibility(false);
+	Output* pOut = pManager->GetOutput();
+	pOut->ClearDrawArea();
+}
+
 void DeleteFigure::CancelAction()
 {
 	f->SetVisibility(true);
-	//pManager->AddFigure(f); planA
-	//pManager->AddFigure(pManager->deleted fig);
 }
 
 void DeleteFigure::Execute()

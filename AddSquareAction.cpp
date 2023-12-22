@@ -26,6 +26,13 @@ void AddSquareAction::ReadActionParameters()
 	pOut->ClearStatusBar();
 }
 
+void AddSquareAction::RedoAction()
+{
+	sq->SetVisibility(true);
+	Output* pOut = pManager->GetOutput();
+	pOut->ClearDrawArea();
+}
+
 void AddSquareAction::CancelAction()
 {
 	sq->SetVisibility(false);                       //the figure sets its own visibilty to false in order not to be drawn
