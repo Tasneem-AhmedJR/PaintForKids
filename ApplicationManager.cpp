@@ -18,6 +18,8 @@
 #include"PlayRecAction.h"
 #include"RecorderAct.h"
 #include"LoadAction.h"
+#include"SoundAction.h"
+
 #include"Redo.h"
 //Constructor
 ApplicationManager::ApplicationManager()
@@ -105,6 +107,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			break;
 		case LOAD:
 			pAct = new LoadAction(this);
+			break;
+		case SOUND:
+			pAct = new SoundAction(this);
 			break;
 		case EXIT:
 			///create ExitAction here

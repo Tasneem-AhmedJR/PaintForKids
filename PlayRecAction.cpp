@@ -21,15 +21,17 @@ void PlayRecAction::Execute()
 		pManager->getRecorder()->setNowPlaying(true);
 		pManager->ClearingFigures();
 
+		pOut->PrintMessage("Playing recording");
 		pOut->ClearDrawArea();
 		Sleep(1000);
 		for (int i = 0; i < n; i++)
 		{
-			list[i]->Execute();
+			if (list[i] != NULL) list[i]->Execute();
 			pManager->UpdateInterface();
 			Sleep(1000);
 		}
 		pManager->getRecorder()->setNowPlaying(false);
+		pOut->ClearStatusBar();
 	}
 	else pOut->PrintMessage("No recording to play ");
 }

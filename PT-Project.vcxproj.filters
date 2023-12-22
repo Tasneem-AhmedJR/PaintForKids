@@ -211,6 +211,9 @@
     <ClCompile Include="LoadAction.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
+    <ClCompile Include="SoundAction.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
     <ClCompile Include="Redo.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
@@ -368,6 +371,9 @@
       <Filter>Action Classes</Filter>
     </ClInclude>
     <ClInclude Include="LoadAction.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundAction.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
     <ClInclude Include="Redo.h">

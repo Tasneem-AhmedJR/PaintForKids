@@ -73,7 +73,8 @@ ActionType Input::GetUserAction() const
 			case ITM_CIRC:return DRAW_CIRCLE;
 			case ITM_TRI:return DRAW_TRIANGLE;
 			case ITM_HEXA:return DRAW_HEXA;
-			case SELECT:return SELECT;
+			case ITM_SOUND:return SOUND;
+			case ITM_SELECT:return SELECT;
 			case FILL:return FILL;
 			case FIG:return FIG;
 			case BLCK:return BLCK;

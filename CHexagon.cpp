@@ -28,7 +28,8 @@ bool CHexagon::isInside(Point* p)
 
 void CHexagon::PrintInfo(Output* pOut)
 {
-	CFigure::PrintInfo(pOut);
+	pOut->PrintMessage(("ID : ") + to_string(ID) + (" Center : ") + to_string(Center.x) + (", ") + to_string(Center.y));
+
 }
 
 void CHexagon::DeleteFig()
