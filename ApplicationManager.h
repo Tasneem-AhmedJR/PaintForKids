@@ -38,6 +38,8 @@ public:
 	Action* getLastAct();               // Returns last traced Action 
 	RecorderAct* getRecorder();
 	ActionList* GetActionList();        // Returns pointer to actlist array
+
+
 	// -- Figures Management Functions
 	void decrease();                     // Calls decrement Function of action list class
 	int getfigureCount();                // returns the Actual figure count
@@ -47,6 +49,7 @@ public:
 	CFigure* getSelectedFig();           // returns the selected Figure
 	void ClearingFigures();              // Deletes all figures in figure list
 	void DeleteFig(bool ToUndo);         // Deletes the selected figure
+	void reset();
 
 	// -- Colours Management Functions 
 

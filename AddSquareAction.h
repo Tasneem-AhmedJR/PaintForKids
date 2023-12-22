@@ -13,6 +13,7 @@ public:
 	//Reads Square parameters
 	virtual void ReadActionParameters();
 	virtual void CancelAction();
+	void PlayAct();
 	//Add Square to the ApplicationManager
 	virtual void Execute();
 };

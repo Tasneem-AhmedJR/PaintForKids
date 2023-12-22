@@ -14,6 +14,7 @@ public:
 	//Reads Hexagon parameters
 	virtual void ReadActionParameters();
 	virtual void CancelAction();
+	void PlayAct();
 	//Add Hexagon to the ApplicationManager
 	virtual void Execute();
 };

@@ -113,9 +113,8 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	//Execute the created action
 	if(pAct != NULL)
 	{
-		Recorder->AddrecList(pAct, ActType);
-		pAct->ReadActionParameters();
 		pAct->Execute();                            //Execute
+		Recorder->AddrecList(pAct, ActType);
 		ActList->TraceAction(pAct, ActType);
 		pAct = NULL;
 	}
@@ -207,6 +206,12 @@ void ApplicationManager::DeleteFig(bool ToUndo)
 		}
 	}
 }
+void ApplicationManager::reset()
+{
+	pOut->setCurrentDrawColor(BLUE);
+	pOut->setCurrentFillColor(GREEN);
+	pOut->setStyle(false);
+}
 void ApplicationManager::setSelectedFig(CFigure* fig) { SelectedFig = fig; }
 
 CFigure* ApplicationManager::getSelectedFig() { return SelectedFig; }
@@ -228,8 +233,9 @@ void ApplicationManager::UpdateInterface() const
 {
 	for (int i = 0; i < FigCount; i++)
 	{
-		if (FigList[i]->GetVisibility())          //To Only Draw Visible figures to the user
-			FigList[i]->Draw(pOut);		          //Call Draw function (virtual member fn)
+		if (!Recorder->isPlayingNow())
+			if (FigList[i]->GetVisibility())          //To Only Draw Visible figures to the user
+				FigList[i]->Draw(pOut);		          //Call Draw function (virtual member fn)
 	}
 }
 ////////////////////////////////////////////////////////////////////////////////////

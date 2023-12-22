@@ -38,8 +38,15 @@ void AddCircleAction::CancelAction()
 	pOut->ClearDrawArea();
 }
 
+void AddCircleAction::PlayAct()
+{
+	Output* pOut = pManager->GetOutput();
+	circ->Draw(pOut);
+}
+
 void AddCircleAction::Execute()
 {
+	ReadActionParameters();  //must read Action parameters first
 	//Create a Circle with the parameters read from the user
 	circ = new CCircle(P1, P2, CircleGfxInfo);
 

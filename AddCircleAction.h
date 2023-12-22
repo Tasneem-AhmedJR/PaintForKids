@@ -14,6 +14,8 @@ public:
 	//Reads Circle parameters
 	virtual void ReadActionParameters();
 	virtual void CancelAction();
+	void PlayAct();
+
 	//Add Circle to the ApplicationManager
 	virtual void Execute();
 };

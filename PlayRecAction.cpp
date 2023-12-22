@@ -18,13 +18,17 @@ void PlayRecAction::Execute()
 
 	else if (pManager->getRecorder()->hasRecordes())
 	{
+		pManager->getRecorder()->setNowPlaying(true);
+		pManager->reset();
+
 		pOut->ClearDrawArea();
+		Sleep(1000);
 		for (int i = 0; i < n; i++)
 		{
-			list[i]->Execute();
+			list[i]->PlayAct();
 			Sleep(1000);
 		}
-		pOut->PrintMessage("playsquare called");
+		pManager->getRecorder()->setNowPlaying(false);
 	}
 	else pOut->PrintMessage("No recording to play ");
 }

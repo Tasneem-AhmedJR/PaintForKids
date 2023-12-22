@@ -23,7 +23,7 @@ void AddRectAction::ReadActionParameters()
 	//Read 2nd corner and store in point P2
 	pIn->GetPointClicked(P2.x, P2.y);
 
-	RectGfxInfo.isFilled = false;	//default is not filled
+	RectGfxInfo.isFilled = pOut->isFilled();;	//default is not filled
 	//get drawing, filling colors and pen width from the interface
 	RectGfxInfo.DrawClr = pOut->getCrntDrawColor();
 	RectGfxInfo.FillClr = pOut->getCrntFillColor();
@@ -39,9 +39,16 @@ void AddRectAction::CancelAction()
 	pOut->ClearDrawArea();
 }
 
+void AddRectAction::PlayAct()
+{
+	Output* pOut = pManager->GetOutput();
+	rect->Draw(pOut);
+}
+
 //Execute the action
 void AddRectAction::Execute() 
 {
+	ReadActionParameters();  //must read Action parameters first
 	//Create a rectangle with the parameters read from the user
 	rect = new CRectangle(P1, P2, RectGfxInfo);
 

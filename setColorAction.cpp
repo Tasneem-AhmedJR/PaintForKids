@@ -11,28 +11,35 @@ void setColorAction::ReadActionParameters() {}
 void setColorAction::changecolorAct(bool b, CFigure* fig, color c)
 {
 	Output* pOut = pManager->GetOutput();
-
-	if(b)
-	{
-		fig->ChngFillClr(c);
-		pOut->setCurrentFillColor(c);
-	}
+	if (c == WHITE) pOut->PrintMessage("no colour was chosen ");
 	else
 	{
-		fig->ChngDrawClr(c);
-		pOut->setCurrentDrawColor(c);
+		if (b)
+		{
+			fig->ChngFillClr(c);
+			pOut->setCurrentFillColor(c);
+		}
+		else
+		{
+			fig->ChngDrawClr(c);
+			pOut->setCurrentDrawColor(c);
+		}
 	}
+}
+
+void setColorAction::PlayAct()
+{
+	changecolorAct(typ, fig, Clr);
 }
 
 void setColorAction::Execute()
 {
 	Output* pOut = pManager->GetOutput();
-	CFigure* fig = pManager->getSelectedFig();
-	bool typ = pManager->getcolorType();
+	fig = pManager->getSelectedFig();
+	typ = pManager->getcolorType();
 
-	ActionType clr = pManager->GetUserAction();
-
-	switch (clr)
+	act = pManager->GetUserAction();
+	switch (act)
 	{
 	case BLCK: Clr = BLACK; break;
 	case YELLW: Clr = YELLOW; break;
@@ -40,10 +47,11 @@ void setColorAction::Execute()
 	case RD: Clr = RED; break;
 	case GREN: Clr = GREEN; break;
 	case BLU: Clr = BLUE; break;
-	default: break;
+	default: Clr = WHITE; break;
 	}
-
+	
 	changecolorAct(typ, fig, Clr);
 
 	pOut->ClearStatusBar();
 }
+

@@ -15,6 +15,7 @@ public:
 	//Reads Triangle parameters
 	virtual void ReadActionParameters();
 	virtual void CancelAction();
+	void PlayAct();
 	//Add Triangle to the ApplicationManager
 	virtual void Execute();
 };

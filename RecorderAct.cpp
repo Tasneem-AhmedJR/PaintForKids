@@ -6,7 +6,8 @@
 RecorderAct::RecorderAct(ApplicationManager* pApp) :Action(pApp)
 {
 	lastRec = 0;
-	recording = false;
+	recording = false; 
+	NowPlaying = false;
 	for (int i = 0; i < 20; i++)
 		RecList[i] = NULL;
 }
@@ -43,6 +44,10 @@ void RecorderAct::AddrecList(Action* p, ActionType t)
 void RecorderAct::setRecording(bool b) { recording = b; }
 
 bool RecorderAct::isRecording() { return recording; }
+
+void RecorderAct::setNowPlaying(bool b) { NowPlaying = b; }
+
+bool RecorderAct::isPlayingNow() { return NowPlaying; }
 
 Action** RecorderAct::getRecList() { return RecList; }
 

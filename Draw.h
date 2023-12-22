@@ -5,6 +5,7 @@ class Draw :public setColorAction
 {
 public:
 	Draw(ApplicationManager* pApp) :setColorAction(pApp) {}
+
 	void Execute()
 	{
 		Output* pOut = pManager->GetOutput();
@@ -17,4 +18,6 @@ public:
 			setColorAction::Execute(); 
 		}
 	}
+
+	void PlayAct() { setColorAction::PlayAct(); }
 };

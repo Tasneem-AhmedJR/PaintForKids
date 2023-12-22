@@ -23,7 +23,7 @@ public:
 	virtual void Execute() = 0;
 	virtual void CancelAction(){}
 	virtual bool isRecorded() { return true; }
-	
+	virtual void PlayAct(){}
 };
 
 #endif

@@ -7,6 +7,7 @@ class RecorderAct:public Action
 	ActionType lastActType;
 	Action* RecList[20];
 	bool recording;
+	bool NowPlaying;
 public:
 	RecorderAct(ApplicationManager* pApp);
 	void LastActType(ActionType);
@@ -14,6 +15,8 @@ public:
 	void AddrecList(Action*, ActionType);
 	void setRecording(bool);
 	bool isRecording();
+	void setNowPlaying(bool);
+	bool isPlayingNow();
 	Action** getRecList();
 	int getlastRec();
 	bool hasRecordes();
