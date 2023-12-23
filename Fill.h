@@ -53,4 +53,5 @@ public:
 
 		}
 	}
+	bool canUndone() { return true; }
 };

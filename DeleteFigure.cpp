@@ -19,6 +19,8 @@ void DeleteFigure::RedoAction()
 	pOut->ClearDrawArea();
 }
 
+bool DeleteFigure::canUndone() { return true; }
+
 void DeleteFigure::CancelAction()
 {
 	f->SetVisibility(true);

@@ -26,23 +26,13 @@ Action* ActionList::getRedo()
 	else return NULL;
 }
 
-void ActionList::TraceAction(Action* p,ActionType t)
+void ActionList::TraceAction(Action* p)
 {
-	switch (t)
+	if (p->canUndone())
 	{
-	case DRAW_RECT:
-	case DRAW_SQUARE:
-	case DRAW_CIRCLE:
-	case DRAW_TRIANGLE:
-	case DRAW_HEXA:
-	case FILL:
-	case ITMDELETE:
-	case FIG:
 		Validate();
 		ActList[LastAction] = p;
 		IncrementLastAct();
-	default:
-		break;
 	}
 }
 

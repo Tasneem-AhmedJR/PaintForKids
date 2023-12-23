@@ -24,6 +24,7 @@ public:
 	virtual void CancelAction(){}
 	virtual void RedoAction(){}
 	virtual bool isRecorded() { return true; }
+	virtual bool canUndone() { return false; }
 };
 
 #endif

@@ -11,7 +11,7 @@ public:
 	ActionList();
 	Action* getList();
 	Action* getRedo();                          //Returns action to be redoed 
-	void TraceAction(Action*,ActionType);       //traces last 5 actions done by the kid
+	void TraceAction(Action*);       //traces last 5 actions done by the kid
 	void Validate();                            //makes sure LastAction index never exceeds scope size
 	void IncrementLastAct();                    //increments LastAction index
 	void DecrementLastAct();                    //decrements LastAction index

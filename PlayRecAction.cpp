@@ -26,7 +26,8 @@ void PlayRecAction::Execute()
 		Sleep(1000);
 		for (int i = 0; i < n; i++)
 		{
-			if (list[i] != NULL) list[i]->Execute();
+			list[i]->Execute();
+			pManager->GetActionList()->TraceAction(list[i]);
 			pManager->UpdateInterface();
 			Sleep(1000);
 		}

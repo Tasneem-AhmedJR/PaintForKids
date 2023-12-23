@@ -55,6 +55,8 @@ void AddTriangleAction::CancelAction()
 	pOut->ClearDrawArea();
 }
 
+bool AddTriangleAction::canUndone() { return true; }
+
 void AddTriangleAction::Execute()
 {	
 	if (!pManager->getRecorder()->isPlayingNow())

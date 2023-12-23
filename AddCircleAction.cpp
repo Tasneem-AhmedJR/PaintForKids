@@ -55,6 +55,8 @@ void AddCircleAction::CancelAction()
 	pOut->ClearDrawArea();
 }
 
+bool AddCircleAction::canUndone() { return true; }
+
 void AddCircleAction::Execute()
 {
 	if (!pManager->getRecorder()->isPlayingNow())

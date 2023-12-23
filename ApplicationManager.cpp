@@ -127,8 +127,8 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	{
 		if (!Recorder->isPlayingNow())
 			pAct->Execute();                            //Execute
+		ActList->TraceAction(pAct);
 		Recorder->AddrecList(pAct, ActType);
-		ActList->TraceAction(pAct, ActType);
 		pAct = NULL;
 	}
 }

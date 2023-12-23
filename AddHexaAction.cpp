@@ -42,6 +42,8 @@ void AddHexaAction::RedoAction()
 	pOut->ClearDrawArea();
 }
 
+bool AddHexaAction::canUndone() { return true; }
+
 void AddHexaAction::CancelAction()
 {
 	hex->SetVisibility(false);                 //the figure sets its own visibilty to false in order not to be drawn

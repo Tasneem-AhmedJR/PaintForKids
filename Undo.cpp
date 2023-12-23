@@ -11,6 +11,7 @@ void Undo::ReadActionParameters()
 {
 
 }
+
 void Undo::Execute()
 {
 	if ((pManager->getLastAct()) != NULL)

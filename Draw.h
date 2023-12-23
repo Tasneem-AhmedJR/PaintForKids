@@ -37,5 +37,5 @@ public:
 		f->ChngDrawClr(PreClr);
 		pOut->setCurrentDrawColor(PreClr);
 	}
-	//void PlayAct() { setColorAction::PlayAct(); }
+	bool canUndone() { return true; }
 };

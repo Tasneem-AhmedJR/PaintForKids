@@ -35,6 +35,8 @@ void AddSquareAction::ReadActionParameters()
 	pOut->ClearStatusBar();
 }
 
+bool AddSquareAction::canUndone() { return true; }
+
 void AddSquareAction::RedoAction()
 {
 	sq->SetVisibility(true);
