@@ -13,7 +13,6 @@ protected:
 	bool Selected;	    //true if the figure is selected.
 	GfxInfo FigGfxInfo;	//Figure graphis info
 	color Preclr;
-	CFigure* DeletedFig;
 	bool Visible;
 	/// Add more parameters if needed.
 

@@ -34,8 +34,10 @@ void DeleteFigure::Execute()
 		f = pManager->getSelectedFig();
 		pManager->DeleteFig(false);                    //calls delete func. in applicationManager to access figlist
 		pOut->PrintMessage("Selected Figure Deleted");
-		pOut->ClearDrawArea();
 		pManager->setSelectedFig(NULL);
+		f->SetSelected(false);
+		f->ChngDrawClr(f->GetDrawClr());
+		pOut->ClearDrawArea();
 	}
 	else
 		pOut->PrintMessage("Select a Figure to Delete");
