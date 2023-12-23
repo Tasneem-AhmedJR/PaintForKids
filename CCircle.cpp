@@ -40,6 +40,8 @@ void CCircle::PrintInfo(Output* pOut)
 void CCircle::Save(ofstream& OutFile)
 {
 	color DrawColor = FigGfxInfo.DrawClr;
+	if (DrawColor == MAGENTA)
+		DrawColor = Preclr;
 	color FillColor = FigGfxInfo.FillClr;
 	if (FigGfxInfo.isFilled == 0)
 		FillColor.name = "NO_FILL";
@@ -61,8 +63,6 @@ void CCircle::Load(ifstream& Infile)
 		FigGfxInfo.DrawClr = BLUE;
 	else if (C_D == "BLACK")
 		FigGfxInfo.DrawClr = BLACK;
-	else if (C_D == "MAGENTA")
-		FigGfxInfo.DrawClr = BLUE;
 	else if (C_D == "GREEN")
 		FigGfxInfo.DrawClr = GREEN;
 	else if (C_D == "YELLOW")
