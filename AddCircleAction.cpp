@@ -12,17 +12,27 @@ void AddCircleAction::ReadActionParameters()
 	//Get a Pointer to the Input / Output Interfaces
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
+	double r; int i = 0;
 
-	pOut->PrintMessage("New Circle: Click at first Point");
+	do
+	{
+		if (i > 0)
+		{
+			pOut->PrintMessage("Invalid. Please click another two points :) ");
+			Sleep(1000);
+		}
 
-	//Read 1st Point and store in point P1
-	pIn->GetPointClicked(P1.x, P1.y);
+		pOut->PrintMessage("New Circle: Click at first Point");
+		pIn->GetPointClicked(P1.x, P1.y);              //Read 1st Point and store in point P1
 
-	pOut->PrintMessage("New Circle: Click at second Point");
+		pOut->PrintMessage("New Circle: Click at second Point");
+		pIn->GetPointClicked(P2.x, P2.y);              //Read 2nd Point and store in point P2
 
-	//Read 2nd Point and store in point P2
-	pIn->GetPointClicked(P2.x, P2.y);
-
+		r = sqrt(pow((P1.x - P2.x), 2) + pow((P1.y - P2.y), 2));    //calculate radius of the circle
+		i++;
+		 
+	} while (!(P1.y > 50 && P1.y < 600 && P1.y - r > 50 && P1.y + r < 600));   //make sure the figure is not drawn outside drawing area
+	
 	CircleGfxInfo.isFilled = pOut->isFilled();;	//default is not filled
 	//get drawing, filling colors and pen width from the interface
 	CircleGfxInfo.DrawClr = pOut->getCrntDrawColor();

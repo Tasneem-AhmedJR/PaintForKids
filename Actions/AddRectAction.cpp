@@ -12,16 +12,24 @@ void AddRectAction::ReadActionParameters()
 	//Get a Pointer to the Input / Output Interfaces
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
+	int i = 0;
+	do
+	{
+		if (i > 0)
+		{
+			pOut->PrintMessage("Invalid. Please click another two points :) ");
+			Sleep(1000);
+		}
 
-	pOut->PrintMessage("New Rectangle: Click at first corner");
+		pOut->PrintMessage("New Rectangle: Click at first corner");
+		pIn->GetPointClicked(P1.x, P1.y);  //Read 1st corner and store in point P1
+
+		pOut->PrintMessage("New Rectangle: Click at second corner");
+		pIn->GetPointClicked(P2.x, P2.y);   //Read 2nd corner and store in point P2
+
+		i++;
+	} while (!(P1.y > 50 && P2.y > 50 && P1.y < 600 && P2.y < 600));
 	
-	//Read 1st corner and store in point P1
-	pIn->GetPointClicked(P1.x, P1.y);
-
-	pOut->PrintMessage("New Rectangle: Click at second corner");
-
-	//Read 2nd corner and store in point P2
-	pIn->GetPointClicked(P2.x, P2.y);
 
 	RectGfxInfo.isFilled = pOut->isFilled();;	//default is not filled
 	//get drawing, filling colors and pen width from the interface

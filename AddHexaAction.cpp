@@ -12,11 +12,20 @@ void AddHexaAction::ReadActionParameters()
 	//Get a Pointer to the Input / Output Interfaces
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
+	int i = 0;
 
-	pOut->PrintMessage("New Hexagon: Click at One Point ");
+	do
+	{
+		if (i > 0)
+		{
+			pOut->PrintMessage("Invalid. Please click another point :) ");
+			Sleep(1000);
+		}
+		pOut->PrintMessage("New Hexagon: Click at One Point ");
+		pIn->GetPointClicked(P.x, P.y);   //Read point and store in point P1
 
-	//Read point and store in point P1
-	pIn->GetPointClicked(P.x, P.y);
+		i++;
+	} while (P.y < 130 || P.y>530);
 
 	HexaGfxInfo.isFilled = pOut->isFilled();;	//default is not filled
 	//get drawing, filling colors and pen width from the interface

@@ -12,11 +12,20 @@ void AddSquareAction::ReadActionParameters()
 	//Get a Pointer to the Input / Output Interfaces
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
+	int i = 0;
 
-	pOut->PrintMessage("New Square: Click at One Point");
+	do
+	{
+		if (i > 0)
+		{
+			pOut->PrintMessage("Invalid. Please click another point :) ");
+			Sleep(1000);
+		}
+		pOut->PrintMessage("New Square: Click at One Point");
+		pIn->GetPointClicked(P.x, P.y);      //Read one point store in point P
 
-	//Read one point store in point P
-	pIn->GetPointClicked(P.x, P.y);
+		i++;
+	} while (!(P.y > 130 && P.y < 520));
 
 	SquareGfxInfo.isFilled = pOut->isFilled();	//default is not filled
 	//get drawing, filling colors and pen width from the interface

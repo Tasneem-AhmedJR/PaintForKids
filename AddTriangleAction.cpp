@@ -13,21 +13,26 @@ void AddTriangleAction::ReadActionParameters()
 	//Get a Pointer to the Input / Output Interfaces
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
+	int i = 0;
 
-	pOut->PrintMessage("New Triangle: Click at first Point");
+	do {
+		if (i > 0)
+		{
+			pOut->PrintMessage("Invalid. Please click another three points :) ");
+			Sleep(1000);
+		}
+		pOut->PrintMessage("New Triangle: Click at first Point");
+		pIn->GetPointClicked(P1.x, P1.y);    //Read 1st Point and store in point P1
 
-	//Read 1st Point and store in point P1
-	pIn->GetPointClicked(P1.x, P1.y);
+		pOut->PrintMessage("New Triangle: Click at second Point");
+		pIn->GetPointClicked(P2.x, P2.y);    //Read 2nd Point and store in point P2
 
-	pOut->PrintMessage("New Triangle: Click at second Point");
+		pOut->PrintMessage("New Triangle: Click at Third Point");
+		pIn->GetPointClicked(P3.x, P3.y);    //Read 3th Point and store in Point P3
 
-	//Read 2nd Point and store in point P2
-	pIn->GetPointClicked(P2.x, P2.y);
+		i++;
+	} while (!(P1.y > 50 && P2.y > 50 && P3.y > 50) || !(P1.y < 600 && P2.y < 600 && P3.y < 600));
 
-	pOut->PrintMessage("New Triangle: Click at Third Point");
-
-	//Read 3th Point and store in Point P3
-	pIn->GetPointClicked(P3.x, P3.y);
 	TriangleGfxInfo.isFilled = pOut->isFilled();;	//default is not filled
 	//get drawing, filling colors and pen width from the interface
 	TriangleGfxInfo.DrawClr = pOut->getCrntDrawColor();
