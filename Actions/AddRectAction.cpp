@@ -44,6 +44,7 @@ bool AddRectAction::canUndone() { return true; }
 
 void AddRectAction::CancelAction()
 {
+	pManager->setfigureCount(pManager->getfigureCount() - 1);
 	rect->SetVisibility(false);                     //the figure sets its own visibilty to false in order not to be drawn 
 	Output* pOut = pManager->GetOutput();        
 	pOut->ClearDrawArea();
@@ -51,6 +52,7 @@ void AddRectAction::CancelAction()
 
 void AddRectAction::RedoAction()
 {
+	pManager->setfigureCount(pManager->getfigureCount() + 1);
 	rect->SetVisibility(true);
 	Output* pOut = pManager->GetOutput();
 	pOut->ClearDrawArea();

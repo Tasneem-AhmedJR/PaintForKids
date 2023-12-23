@@ -43,6 +43,7 @@ void AddTriangleAction::ReadActionParameters()
 
 void AddTriangleAction::RedoAction()
 {
+	pManager->setfigureCount(pManager->getfigureCount() + 1);
 	tri->SetVisibility(true);
 	Output* pOut = pManager->GetOutput();
 	pOut->ClearDrawArea();
@@ -50,6 +51,7 @@ void AddTriangleAction::RedoAction()
 
 void AddTriangleAction::CancelAction()
 {
+	pManager->setfigureCount(pManager->getfigureCount() - 1);
 	tri->SetVisibility(false);                  //the figure sets its own visibilty to false in order not to be drawn
 	Output* pOut = pManager->GetOutput();      //and delete last added figure
 	pOut->ClearDrawArea();

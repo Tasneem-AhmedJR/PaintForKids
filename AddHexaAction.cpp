@@ -37,6 +37,7 @@ void AddHexaAction::ReadActionParameters()
 
 void AddHexaAction::RedoAction()
 {
+	pManager->setfigureCount(pManager->getfigureCount() + 1);
 	hex->SetVisibility(true);
 	Output* pOut = pManager->GetOutput();
 	pOut->ClearDrawArea();
@@ -46,6 +47,7 @@ bool AddHexaAction::canUndone() { return true; }
 
 void AddHexaAction::CancelAction()
 {
+	pManager->setfigureCount(pManager->getfigureCount() - 1);
 	hex->SetVisibility(false);                 //the figure sets its own visibilty to false in order not to be drawn
 	Output* pOut = pManager->GetOutput();      //and delete last added figure
 	pOut->ClearDrawArea();

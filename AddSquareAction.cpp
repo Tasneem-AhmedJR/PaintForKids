@@ -39,6 +39,7 @@ bool AddSquareAction::canUndone() { return true; }
 
 void AddSquareAction::RedoAction()
 {
+	pManager->setfigureCount(pManager->getfigureCount() + 1);
 	sq->SetVisibility(true);
 	Output* pOut = pManager->GetOutput();
 	pOut->ClearDrawArea();
@@ -46,6 +47,7 @@ void AddSquareAction::RedoAction()
 
 void AddSquareAction::CancelAction()
 {
+	pManager->setfigureCount(pManager->getfigureCount() - 1);
 	sq->SetVisibility(false);                       //the figure sets its own visibilty to false in order not to be drawn
 	Output* pOut = pManager->GetOutput();          //and delete last added figure
 	pOut->ClearDrawArea();

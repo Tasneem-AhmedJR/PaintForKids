@@ -43,6 +43,7 @@ void AddCircleAction::ReadActionParameters()
 
 void AddCircleAction::RedoAction()
 {
+	pManager->setfigureCount(pManager->getfigureCount() + 1);
 	circ->SetVisibility(true);
 	Output* pOut = pManager->GetOutput();
 	pOut->ClearDrawArea();
@@ -50,6 +51,7 @@ void AddCircleAction::RedoAction()
 
 void AddCircleAction::CancelAction()
 {
+	pManager->setfigureCount(pManager->getfigureCount() - 1);
 	circ->SetVisibility(false);                 //the figure sets its own visibilty to false in order not to be drawn
 	Output* pOut = pManager->GetOutput();      //and delete last added figure
 	pOut->ClearDrawArea();

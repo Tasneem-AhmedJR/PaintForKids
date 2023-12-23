@@ -48,4 +48,9 @@ void SoundAction::Execute()
 		PlaySound(TEXT("bubble.wav"), NULL, SND_SYNC);
 		PlaySound(TEXT("square.wav"), NULL, SND_SYNC);
 	}
+	else if (ActType == TO_PLAY)
+	{
+
+		PlaySound(TEXT("play.wav"), NULL, SND_SYNC);
+	}
 }

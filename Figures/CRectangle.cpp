@@ -71,6 +71,8 @@ void CRectangle::Load(ifstream& Infile)
 		FigGfxInfo.DrawClr = BLUE;
 	else if (C_D == "BLACK")
 		FigGfxInfo.DrawClr = BLACK;
+	else if (C_D == "MAGENTA")
+		FigGfxInfo.DrawClr = BLUE;
 	else if (C_D == "GREEN")
 		FigGfxInfo.DrawClr = GREEN;
 	else if (C_D == "YELLOW")

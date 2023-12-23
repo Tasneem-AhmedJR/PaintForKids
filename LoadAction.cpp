@@ -69,7 +69,6 @@ void LoadAction::Execute()
 		else if (C_F == "RED")
 			UI.FillColor = RED;
 		infile >> num_fig;
-		pManager->setfigureCount(num_fig);
 		for (int i = 0; i < num_fig; i++)
 		{
 			infile >> FigureType;
