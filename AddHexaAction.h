@@ -10,9 +10,10 @@ private:
 	CHexagon* hex;
 public:
 	AddHexaAction(ApplicationManager* pApp);
-
 	//Reads Hexagon parameters
 	virtual void ReadActionParameters();
+	virtual void RedoAction();
+	virtual bool canUndone();
 	virtual void CancelAction();
 	//Add Hexagon to the ApplicationManager
 	virtual void Execute();

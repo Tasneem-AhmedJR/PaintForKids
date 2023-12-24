@@ -87,6 +87,7 @@ void Output::CreateDrawToolBar() const
 	MenuItemImages[ITM_TRI] = "images\\MenuItems\\tri.jpg";
 	MenuItemImages[ITM_HEXA] = "images\\MenuItems\\hexa.jpg";
 	MenuItemImages[ITM_SELECT] = "images\\MenuItems\\select.jpg";
+	MenuItemImages[ITM_SOUND] = "images\\MenuItems\\Capture.jpg";
 	MenuItemImages[ITM_FILLED] = "images\\MenuItems\\fill.jpg";
 	MenuItemImages[ITM_FIG] = "images\\MenuItems\\figure.jpg";
 	MenuItemImages[ITM_BLACK] = "images\\MenuItems\\black.jpg";
@@ -176,7 +177,9 @@ color Output::getCrntDrawColor() const	//get current drawing color
 //////////////////////////////////////////////////////////////////////////////////////////
 
 void Output::setCurrentDrawColor(color c)
-{	UI.DrawColor = c;       }
+{
+	UI.DrawColor = c;
+}
 //////////////////////////////////////////////////////////////////////////////////////////
 
 color Output::getCrntFillColor() const	//get current filling color
@@ -211,14 +214,6 @@ int Output::getCrntPenWidth() const		//get current pen width
 
 void Output::DrawRect(Point &P1, Point &P2, GfxInfo RectGfxInfo, bool selected) const
 {
-	while (!(P1.y > 50 && P2.y > 50 && P1.y < 600 && P2.y < 600))
-	{
-		PrintMessage("Invalid, Please click another two Points :) ");
-		Input* I = CreateInput();
-		I->GetPointClicked(P1.x, P1.y);
-		I->GetPointClicked(P2.x, P2.y);
-		ClearStatusBar();
-	}
 	color DrawingClr;
 	if(selected)	
 		DrawingClr = UI.HighlightColor; //Figure should be drawn highlighted
@@ -242,14 +237,6 @@ void Output::DrawRect(Point &P1, Point &P2, GfxInfo RectGfxInfo, bool selected) 
 void Output::DrawSquare(Point &p, GfxInfo SquGfxInfo, bool selected) const
 
 {
-	while (!(p.y > 130 && p.y < 520))
-	{
-		PrintMessage("Invalid, Please click another Point :) ");
-		Input* I = CreateInput();
-		I->GetPointClicked(p.x, p.y);
-		ClearStatusBar();
-	}
-
 	color DrawingClr;
 	if (selected)
 		DrawingClr = UI.HighlightColor; //Figure should be drawn highlighted
@@ -271,17 +258,6 @@ void Output::DrawSquare(Point &p, GfxInfo SquGfxInfo, bool selected) const
 
 void Output::DrawCircle(Point &p1,Point &p2, GfxInfo CircGfxInfo, bool selected) const
 {
-	double r = sqrt(pow((p1.x - p2.x), 2) + pow((p1.y - p2.y), 2));
-	while (!(p1.y > 50 && p1.y < 600 && p1.y - r > 50 && p1.y + r < 600))
-	{
-		PrintMessage("Invalid, Please click another two points :) ");
-		Input* I = CreateInput();
-		I->GetPointClicked(p1.x, p1.y);
-		I->GetPointClicked(p2.x, p2.y);
-		r = sqrt(pow((p1.x - p2.x), 2) + pow((p1.y - p2.y), 2));
-		ClearStatusBar();
-	}
-
 	color DrawingClr;
 	if (selected)
 		DrawingClr = UI.HighlightColor; //Figure should be drawn highlighted
@@ -298,20 +274,12 @@ void Output::DrawCircle(Point &p1,Point &p2, GfxInfo CircGfxInfo, bool selected)
 	else
 		style = FRAME;
 
+	double r = sqrt(pow((p1.x - p2.x), 2) + pow((p1.y - p2.y), 2));
 	pWind->DrawCircle(p1.x, p1.y,r, style);
 }
 
 void Output::DrawTria(Point &P1, Point &P2, Point &P3, GfxInfo TriaGfxInfo, bool selected) const
 {
-	while (!(P1.y > 50 && P2.y > 50 && P3.y > 50) || !(P1.y < 600 && P2.y < 600 && P3.y < 600))
-	{
-		PrintMessage("Invalid ,Please click another three Points :)");
-		Input* I = CreateInput();
-		I->GetPointClicked(P1.x, P1.y);
-		I->GetPointClicked(P2.x, P2.y);
-		I->GetPointClicked(P3.x, P3.y);
-		ClearStatusBar();
-	}
 	color DrawingClr;
 	if (selected)
 		DrawingClr = UI.HighlightColor; //Figure should be drawn highlighted
@@ -334,13 +302,6 @@ void Output::DrawTria(Point &P1, Point &P2, Point &P3, GfxInfo TriaGfxInfo, bool
 
 void Output::DrawHexa(Point &P1, GfxInfo HexaInfo, bool selected) const
 {
-	while (P1.y < 130 || P1.y>530)
-	{
-		PrintMessage("Invalid ,Please click another Point :)");
-		Input* I = CreateInput();
-		I->GetPointClicked(P1.x, P1.y);
-		ClearStatusBar();
-	}
 	float a = 0.8660254038;
 	int Length = 80; //length of hexagon
 	const float X[6] = { P1.x + (Length * 0.5),P1.x - (Length * 0.5),P1.x - Length, P1.x - (Length * 0.5),P1.x + (Length * 0.5),P1.x + Length };

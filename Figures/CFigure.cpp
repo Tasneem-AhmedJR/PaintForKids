@@ -6,8 +6,12 @@ CFigure::CFigure(GfxInfo FigureGfxInfo)
 	Selected = false;
 	count++;
 	ID = count;
+<<<<<<< HEAD
 	Visible = true;
 	hide = true;
+=======
+	Preclr = UI.DrawColor;
+>>>>>>> 509b57b18b676642a70f66a2c5f1035fae7946fd
 }
 
 void CFigure::SetSelected(bool s)
@@ -28,18 +32,29 @@ bool CFigure::GetVisibility()
 	return Visible;
 }
 
-void CFigure::ChngDrawClr(color Dclr)
+void CFigure::ChngDrawClr (color Dclr)
 {
 	FigGfxInfo.DrawClr = Dclr;
-	//if (Preclr != UI.HighlightColor) clr = Dclr;
+	if (Dclr != UI.HighlightColor) Preclr = Dclr;
 }
 
 void CFigure::ChngFillClr(color Fclr)
+<<<<<<< HEAD
 {	if(Fclr== LIGHTGOLDENRODYELLOW)
 FigGfxInfo.isFilled = false;
 else {
 	FigGfxInfo.isFilled = true;
 	FigGfxInfo.FillClr = Fclr;
+=======
+{
+	if (Fclr == LIGHTGOLDENRODYELLOW)
+		FigGfxInfo.isFilled = false;
+	else
+	{
+		FigGfxInfo.isFilled = true;
+		FigGfxInfo.FillClr = Fclr;
+	}
+>>>>>>> 509b57b18b676642a70f66a2c5f1035fae7946fd
 }
 
 }
@@ -80,18 +95,11 @@ int CFigure::filledcolor()
 
 color CFigure::GetFillclr() {return FigGfxInfo.FillClr; }
 
+color CFigure::GetDrawClr() { return Preclr; }
+
 bool CFigure::IsFilled()
 {
 	if (FigGfxInfo.isFilled)
 		return true;
 	else return false;
 }
-
-void CFigure::PrintInfo(Output* pOut)
-{
-	pOut->PrintMessage("ID : " + ID);
-}
-
-
-
-

@@ -28,7 +28,8 @@ bool CHexagon::isInside(Point* p)
 
 void CHexagon::PrintInfo(Output* pOut)
 {
-	CFigure::PrintInfo(pOut);
+	pOut->PrintMessage(("ID : ") + to_string(ID) + (" Center : ") + to_string(Center.x) + (", ") + to_string(Center.y));
+
 }
 
 void CHexagon::DeleteFig()
@@ -50,6 +51,8 @@ int CHexagon::getnum()
 void CHexagon::Save(ofstream& OutFile)
 {
 	color DrawColor = FigGfxInfo.DrawClr;
+	if (DrawColor == MAGENTA)
+		DrawColor = Preclr;
 	color FillColor = FigGfxInfo.FillClr;
 	if (FigGfxInfo.isFilled == 0)
 		FillColor.name = "NO_FILL";

@@ -13,8 +13,9 @@ public:
 	AddCircleAction(ApplicationManager* pApp);
 	//Reads Circle parameters
 	virtual void ReadActionParameters();
+	virtual void RedoAction();
 	virtual void CancelAction();
-	
+	bool canUndone();
 	//Add Circle to the ApplicationManager
 	virtual void Execute();
 };

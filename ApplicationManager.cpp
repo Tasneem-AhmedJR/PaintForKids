@@ -19,10 +19,15 @@
 #include"PlayRecAction.h"
 #include"RecorderAct.h"
 #include"LoadAction.h"
+<<<<<<< HEAD
 #include"ToPlay.h"
 #include "pickbyfill.h"
 #include "pickbytype.h"
+=======
+#include"SoundAction.h"
+>>>>>>> 509b57b18b676642a70f66a2c5f1035fae7946fd
 
+#include"Redo.h"
 //Constructor
 ApplicationManager::ApplicationManager()
 {
@@ -101,16 +106,28 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case UNDO:
 			pAct = new Undo(this);
 			break;
+<<<<<<< HEAD
 		
+=======
+		case REDO:
+			pAct = new Redo(this);
+			break;
+>>>>>>> 509b57b18b676642a70f66a2c5f1035fae7946fd
 		case SAVE:
 			pAct = new SaveAction(this);
 			break;
 		case LOAD:
 			pAct = new LoadAction(this);
 			break;
+<<<<<<< HEAD
 		case MOVE:
 			pAct = new Move(this);
 		
+=======
+		case SOUND:
+			pAct = new SoundAction(this);
+			break;
+>>>>>>> 509b57b18b676642a70f66a2c5f1035fae7946fd
 		case EXIT:
 			///create ExitAction here
 			break;
@@ -136,8 +153,8 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	{
 		if (!Recorder->isPlayingNow())
 			pAct->Execute();                            //Execute
+		ActList->TraceAction(pAct);
 		Recorder->AddrecList(pAct, ActType);
-		ActList->TraceAction(pAct, ActType);
 		pAct = NULL;
 	}
 }
@@ -169,6 +186,11 @@ void ApplicationManager::WhenLoad()
 		delete FigList[i];
 	}
 	FigCount = 0;
+}
+
+Action* ApplicationManager::GetRedoAction()
+{
+	return ActList->getRedo();
 }
 
 Action* ApplicationManager::getLastAct() { return ActList->getList(); }
@@ -308,6 +330,16 @@ void ApplicationManager::unhide()
 void ApplicationManager::decrease()
 {
 	ActList->DecrementLastAct();
+}
+
+void ApplicationManager::IncrRedo()
+{
+	ActList->IncrementRedo();
+}
+
+bool ApplicationManager::Redoable()
+{
+	return ActList->canredo();
 }
 
 int ApplicationManager::getfigureCount() { return FigCount; }

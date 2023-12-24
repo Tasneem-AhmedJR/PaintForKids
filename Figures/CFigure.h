@@ -12,8 +12,7 @@ protected:
 	int ID;		        //Each figure has an ID
 	bool Selected;	    //true if the figure is selected.
 	GfxInfo FigGfxInfo;	//Figure graphis info
-	color clr;
-	CFigure* DeletedFig;
+	color Preclr;
 	bool Visible;
 	bool hide;
 	/// Add more parameters if needed.
@@ -34,6 +33,7 @@ public:
 	virtual int getnum() =0;
 	int filledcolor();
 	color GetFillclr();                         //returns the current figure's fill color
+	color GetDrawClr();
 	bool IsFilled();
 	///The following functions should be supported by the figure class
 	///It should be overridden by each inherited figure
@@ -45,8 +45,7 @@ public:
 	virtual void DeleteFig() = 0;     //Each shape is responsible of deleting itself
 	virtual void Save(ofstream &OutFile) = 0;	//Save the figure parameters to the file
 	virtual void Load(ifstream &Infile) = 0;	//Load the figure parameters to the file
-	virtual void PrintInfo(Output* pOut);	//print all figure info on the status bar
-	//virtual void PrintInfo(Output* pOut) = 0;	//print all figure info on the status bar
+	virtual void PrintInfo(Output* pOut) = 0;	//print all figure info on the status bar
 };
 
 #endif

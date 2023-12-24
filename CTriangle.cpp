@@ -28,7 +28,7 @@ bool CTriangle::isInside(Point* p)
 
 void CTriangle::PrintInfo(Output* pOut)
 {
-	CFigure::PrintInfo(pOut);
+	pOut->PrintMessage(("ID : ") + to_string(ID) + (" Corner 1: ") + to_string(A.x) + (" , ") + to_string(A.y) + (" Corner 2: ") + to_string(B.x) + (" , ") + to_string(B.y) + (" Corner 3: ") + to_string(C.x) + (" , ") + to_string(C.y));
 }
 
 void CTriangle::Movefi(Output* pOut, Point p)
@@ -59,6 +59,8 @@ void CTriangle::DeleteFig()
 void CTriangle::Save(ofstream& OutFile)
 {
 	color DrawColor = FigGfxInfo.DrawClr;
+	if (DrawColor == MAGENTA)
+		DrawColor = Preclr;
 	color FillColor = FigGfxInfo.FillClr;
 	if (FigGfxInfo.isFilled == 0)
 		FillColor.name = "NO_FILL";

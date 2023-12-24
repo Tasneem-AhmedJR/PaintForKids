@@ -33,18 +33,22 @@ bool CCircle::isInside(Point* p)
 
 void CCircle::PrintInfo(Output* pOut)
 {
-	CFigure::PrintInfo(pOut);
-	pOut->PrintMessage("Redius : " + CalcRadius(&gen_P));
+	pOut->PrintMessage(("ID : ") + to_string(ID) + (" Rasius : ") + to_string(CalcRadius(&gen_P)) + ("Center : ") + to_string(Cent_P.x) + (", ") + to_string(Cent_P.y));
 }
 
+<<<<<<< HEAD
 int CCircle::getnum()
 {
 	return 2;
 }
+=======
+>>>>>>> 509b57b18b676642a70f66a2c5f1035fae7946fd
 
 void CCircle::Save(ofstream& OutFile)
 {
 	color DrawColor = FigGfxInfo.DrawClr;
+	if (DrawColor == MAGENTA)
+		DrawColor = Preclr;
 	color FillColor = FigGfxInfo.FillClr;
 	if (FigGfxInfo.isFilled == 0)
 		FillColor.name = "NO_FILL";

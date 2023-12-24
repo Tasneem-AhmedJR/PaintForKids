@@ -211,10 +211,19 @@
     <ClCompile Include="LoadAction.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="Move.cpp" />
     <ClCompile Include="ToPlay.cpp" />
     <ClCompile Include="pickbyfill.cpp" />
     <ClCompile Include="pickbytype.cpp" />
+=======
+    <ClCompile Include="SoundAction.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Redo.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+>>>>>>> 509b57b18b676642a70f66a2c5f1035fae7946fd
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -371,10 +380,19 @@
     <ClInclude Include="LoadAction.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="Move.h" />
     <ClInclude Include="ToPlay.h" />
     <ClInclude Include="pickbyfill.h" />
     <ClInclude Include="pickbytype.h" />
+=======
+    <ClInclude Include="SoundAction.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Redo.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+>>>>>>> 509b57b18b676642a70f66a2c5f1035fae7946fd
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

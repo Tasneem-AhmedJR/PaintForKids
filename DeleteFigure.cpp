@@ -12,11 +12,18 @@ void DeleteFigure::ReadActionParameters()
 {  
 }
 
+void DeleteFigure::RedoAction()
+{
+	f->SetVisibility(false);
+	Output* pOut = pManager->GetOutput();
+	pOut->ClearDrawArea();
+}
+
+bool DeleteFigure::canUndone() { return true; }
+
 void DeleteFigure::CancelAction()
 {
 	f->SetVisibility(true);
-	//pManager->AddFigure(f); planA
-	//pManager->AddFigure(pManager->deleted fig);
 }
 
 void DeleteFigure::Execute()
@@ -27,8 +34,10 @@ void DeleteFigure::Execute()
 		f = pManager->getSelectedFig();
 		pManager->DeleteFig(false);                    //calls delete func. in applicationManager to access figlist
 		pOut->PrintMessage("Selected Figure Deleted");
-		pOut->ClearDrawArea();
 		pManager->setSelectedFig(NULL);
+		f->SetSelected(false);
+		f->ChngDrawClr(f->GetDrawClr());
+		pOut->ClearDrawArea();
 	}
 	else
 		pOut->PrintMessage("Select a Figure to Delete");
