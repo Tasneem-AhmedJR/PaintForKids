@@ -39,8 +39,12 @@ public:
 	Action* getLastAct();               // Returns last traced Action 
 	RecorderAct* getRecorder();
 	ActionList* GetActionList();        // Returns pointer to actlist array
-
-
+	void Movefig(Point p);
+	int getn( int n);
+	int getm(int n);
+	int inside2(Point p, int y);
+	int inside(Point p,int y);
+	void unhide();
 	// -- Figures Management Functions
 	void decrease();                     // Calls decrement Function of action list class
 	int getfigureCount();                // returns the Actual figure count

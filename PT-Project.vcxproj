@@ -183,6 +183,9 @@
     <ClCompile Include="ApplicationManager.cpp" />
     <ClCompile Include="LoadAction.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Move.cpp" />
+    <ClCompile Include="pickbyfill.cpp" />
+    <ClCompile Include="pickbytype.cpp" />
     <ClCompile Include="PlayRecAction.cpp" />
     <ClCompile Include="RecorderAct.cpp" />
     <ClCompile Include="SaveAction.cpp" />
@@ -191,6 +194,7 @@
     <ClCompile Include="StartRecAction.cpp" />
     <ClCompile Include="StopRecAction.cpp" />
     <ClCompile Include="ToDraw.cpp" />
+    <ClCompile Include="ToPlay.cpp" />
     <ClCompile Include="Undo.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -237,6 +241,9 @@
     <ClInclude Include="ApplicationManager.h" />
     <ClInclude Include="DEFS.h" />
     <ClInclude Include="LoadAction.h" />
+    <ClInclude Include="Move.h" />
+    <ClInclude Include="pickbyfill.h" />
+    <ClInclude Include="pickbytype.h" />
     <ClInclude Include="PlayRecAction.h" />
     <ClInclude Include="RecorderAct.h" />
     <ClInclude Include="SaveAction.h" />
@@ -245,6 +252,7 @@
     <ClInclude Include="StartRecAction.h" />
     <ClInclude Include="StopRecAction.h" />
     <ClInclude Include="ToDraw.h" />
+    <ClInclude Include="ToPlay.h" />
     <ClInclude Include="Undo.h" />
   </ItemGroup>
   <ItemGroup>

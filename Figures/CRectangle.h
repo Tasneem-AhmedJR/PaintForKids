@@ -16,6 +16,8 @@ public:
 	bool isInside(Point* p);
 	void PrintInfo(Output* pOut);
 	virtual void DeleteFig();
+	virtual int getnum();
+	virtual void Movefi(Output* pOut, Point p);
 	//virtual CFigure* GetDeletedFig();
 	void Save(ofstream& OutFile);
 	void Load(ifstream& Infile);

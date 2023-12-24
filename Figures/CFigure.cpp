@@ -6,6 +6,8 @@ CFigure::CFigure(GfxInfo FigureGfxInfo)
 	Selected = false;
 	count++;
 	ID = count;
+	Visible = true;
+	hide = true;
 }
 
 void CFigure::SetSelected(bool s)
@@ -33,12 +35,50 @@ void CFigure::ChngDrawClr(color Dclr)
 }
 
 void CFigure::ChngFillClr(color Fclr)
-{	
+{	if(Fclr== LIGHTGOLDENRODYELLOW)
+FigGfxInfo.isFilled = false;
+else {
 	FigGfxInfo.isFilled = true;
-	FigGfxInfo.FillClr = Fclr; 
+	FigGfxInfo.FillClr = Fclr;
 }
 
-color CFigure::GetFillclr() { return FigGfxInfo.FillClr; }
+}
+
+void CFigure::Movefi(Output* pOut, Point p)
+{
+}
+
+void CFigure::sethide(bool l)
+{
+	hide = l;
+}
+
+bool CFigure::gethide()
+{
+	return hide;
+}
+
+
+
+int CFigure::filledcolor() 
+{
+	if(FigGfxInfo.FillClr==BLACK)
+	    return 0;
+	else if (FigGfxInfo.FillClr == YELLOW)
+		return 1;
+	else if (FigGfxInfo.FillClr == ORANGE)
+		return 2;
+	else if (FigGfxInfo.FillClr == RED)
+		return 3;
+	else if (FigGfxInfo.FillClr == GREEN)
+		return 4;
+	else if (FigGfxInfo.FillClr == BLUE)
+		return 5;
+	else if (FigGfxInfo.FillClr == LIGHTGOLDENRODYELLOW)
+		return 6;
+}
+
+color CFigure::GetFillclr() {return FigGfxInfo.FillClr; }
 
 bool CFigure::IsFilled()
 {

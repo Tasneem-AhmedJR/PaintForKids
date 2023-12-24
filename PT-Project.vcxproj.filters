@@ -211,6 +211,10 @@
     <ClCompile Include="LoadAction.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
+    <ClCompile Include="Move.cpp" />
+    <ClCompile Include="ToPlay.cpp" />
+    <ClCompile Include="pickbyfill.cpp" />
+    <ClCompile Include="pickbytype.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -367,6 +371,10 @@
     <ClInclude Include="LoadAction.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
+    <ClInclude Include="Move.h" />
+    <ClInclude Include="ToPlay.h" />
+    <ClInclude Include="pickbyfill.h" />
+    <ClInclude Include="pickbytype.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

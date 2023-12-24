@@ -16,9 +16,12 @@ public:
 	double CalcArea(Point* a, Point* b, Point* c);
 	bool isInside(Point*);
 	void PrintInfo(Output* pOut);
+	virtual void Movefi(Output* pOut, Point p);
+	virtual int getnum();
 	virtual void DeleteFig();
 	void Save(ofstream& OutFile);
 	void Load(ifstream& Infile);
+	
 
 };
 

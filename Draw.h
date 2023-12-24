@@ -20,6 +20,7 @@ public:
 			pOut->PrintMessage("changing drawing color, Please choose a color");
 			pManager->setcolorType(false);
 			setColorAction::Execute(); 
+			pManager->UpdateInterface();
 		}
 	}
 	virtual void CancelAction()
@@ -27,6 +28,7 @@ public:
 		Output* pOut = pManager->GetOutput();
 		f->ChngDrawClr(PreClr);
 		pOut->setCurrentDrawColor(PreClr);
+		pManager->UpdateInterface();
 	}
 	//void PlayAct() { setColorAction::PlayAct(); }
 };

@@ -37,6 +37,11 @@ void CCircle::PrintInfo(Output* pOut)
 	pOut->PrintMessage("Redius : " + CalcRadius(&gen_P));
 }
 
+int CCircle::getnum()
+{
+	return 2;
+}
+
 void CCircle::Save(ofstream& OutFile)
 {
 	color DrawColor = FigGfxInfo.DrawClr;
@@ -90,4 +95,12 @@ void CCircle::Load(ifstream& Infile)
 void CCircle::DeleteFig()
 {
 	delete this;
+}
+
+void CCircle::Movefi(Output* pOut, Point p)
+{
+	gen_P.x = gen_P.x + p.x - Cent_P.x;
+	gen_P.y = gen_P.y + p.x - Cent_P.y;
+	Cent_P = p;
+	pOut->DrawCircle(Cent_P, gen_P, FigGfxInfo, Selected);
 }

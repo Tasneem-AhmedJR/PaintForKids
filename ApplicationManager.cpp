@@ -14,10 +14,14 @@
 #include"Draw.h" 
 #include<fstream>
 #include"Undo.h"
+#include "Move.h"
 #include"StopRecAction.h"
 #include"PlayRecAction.h"
 #include"RecorderAct.h"
 #include"LoadAction.h"
+#include"ToPlay.h"
+#include "pickbyfill.h"
+#include "pickbytype.h"
 
 //Constructor
 ApplicationManager::ApplicationManager()
@@ -97,17 +101,30 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case UNDO:
 			pAct = new Undo(this);
 			break;
+		
 		case SAVE:
 			pAct = new SaveAction(this);
 			break;
 		case LOAD:
 			pAct = new LoadAction(this);
 			break;
+		case MOVE:
+			pAct = new Move(this);
+		
 		case EXIT:
 			///create ExitAction here
 			break;
 		case TO_DRAW:
 			pAct = new ToDraw(this);
+			break;
+		case FILLCOLOR:
+			pAct = new pickbyfill(this);
+			break;
+		case TYPE:
+			pAct = new pickbytype(this);
+			break;
+		case TO_PLAY:
+			pAct = new ToPlay(this);
 			break;
 		
 		case STATUS:	//a click on the status bar ==> no action
@@ -161,6 +178,131 @@ RecorderAct* ApplicationManager::getRecorder() { return Recorder; }
 ActionList* ApplicationManager::GetActionList()
 {
 	return ActList;
+}
+
+void ApplicationManager::Movefig(Point p)
+{
+	bool notfound = true;
+	for (int i = 0; i < FigCount && notfound; i++)                         //loops on figlist 
+	{
+		if (FigList[i]->IsSelected())                          //Checks which fig has selected as true
+		{
+			FigList[i]->Movefi(pOut, p);
+			notfound = false;
+
+		}
+	}
+}
+
+int ApplicationManager::getn( int n)
+{
+//	for (int i = 0; i < FigCount; i++)
+	//{
+		/*	if (FigList[i]->GetFillclr() == BLACK && FigList[i]->IsFilled() && FigList[i]->GetVisibility())
+				a[0]++;
+			else if (FigList[i]->GetFillclr() == YELLOW && FigList[i]->IsFilled() && FigList[i]->GetVisibility())
+				a[1]++;
+			else if (FigList[i]->GetFillclr() == ORANGE && FigList[i]->IsFilled() && FigList[i]->GetVisibility())
+				a[2]++;
+			else if (FigList[i]->GetFillclr() == RED && FigList[i]->IsFilled() && FigList[i]->GetVisibility())
+				a[3]++;
+			else if (FigList[i]->GetFillclr() == GREEN && FigList[i]->IsFilled() && FigList[i]->GetVisibility())
+				a[4]++;
+			else if (FigList[i]->GetFillclr() == BLUE && FigList[i]->IsFilled() && FigList[i]->GetVisibility())
+				a[5]++;
+		}
+		*/
+		if (FigList[n]->GetFillclr() == BLACK && FigList[n]->IsFilled() && FigList[n]->GetVisibility())
+			return 0;
+		else if (FigList[n]->GetFillclr() == YELLOW && FigList[n]->IsFilled() && FigList[n]->GetVisibility())
+			return 1;
+		else if (FigList[n]->GetFillclr() == ORANGE && FigList[n]->IsFilled() && FigList[n]->GetVisibility())
+			return 2;
+		else if (FigList[n]->GetFillclr() == RED && FigList[n]->IsFilled() && FigList[n]->GetVisibility())
+			return 3;
+		else if (FigList[n]->GetFillclr() == GREEN && FigList[n]->IsFilled() && FigList[n]->GetVisibility())
+			return 4;
+		else if (FigList[n]->GetFillclr() == BLUE && FigList[n]->IsFilled() && FigList[n]->GetVisibility())
+			return 5;
+		else
+			return -1;
+	
+}
+
+int ApplicationManager::getm( int n)
+{
+	/*for (int i = 0; i < FigCount; i++) {
+		if (FigList[i]->getnum() == 1 && FigList[i]->GetVisibility() )
+			a[1]++;
+		else if (FigList[i]->getnum() == 2 && FigList[i]->GetVisibility() )
+			a[2]++;
+		else if (FigList[i]->getnum() == 3 && FigList[i]->GetVisibility() )
+			a[3]++;
+		else if (FigList[i]->getnum() == 4 && FigList[i]->GetVisibility() )
+			a[4]++;
+		else if (FigList[i]->getnum() == 0 && FigList[i]->GetVisibility())
+			a[0]++;
+	}
+	*/
+	if (FigList[n]->getnum() == 1 && FigList[n]->GetVisibility())
+		return 1;
+	else if (FigList[n]->getnum() == 2 && FigList[n]->GetVisibility())
+		return 2;
+	else if (FigList[n]->getnum() == 3 && FigList[n]->GetVisibility())
+		return 3;
+	else if (FigList[n]->getnum() == 4 && FigList[n]->GetVisibility())
+		return 4;
+	else if (FigList[n]->getnum() == 0 && FigList[n]->GetVisibility())
+		return 0;
+
+}
+int ApplicationManager::inside2(Point p, int y)
+{
+	for (int i = 0; i < FigCount; i++)
+	{
+		if (FigList[i]->isInside(&p) && FigList[i]->getnum() == y) {
+			FigList[i]->sethide(false);
+			return 1;
+		}
+		else if (FigList[i]->isInside(&p) && FigList[i]->getnum() != y)
+		{
+			return 0;
+		}
+
+
+	}
+	return -1;
+	
+}
+int ApplicationManager::inside(Point p, int y)
+{
+	for (int i = 0; i < FigCount; i++)
+	{
+		if (FigList[i]->isInside(&p) && FigList[i]->filledcolor() == y && FigList[i]->IsFilled()) {
+			FigList[i]->sethide(false);
+			return 1;
+		}
+		else if (FigList[i]->isInside(&p) && FigList[i]->filledcolor() !=y&&FigList[i]->IsFilled())
+			{
+			return 0;
+		}
+		else if (FigList[i]->isInside(&p) &&!(FigList[i]->IsFilled()))
+		{
+			return 0;
+		}
+		
+
+	}
+	return -1;
+
+}
+void ApplicationManager::unhide()
+{
+	for (int i = 0; i < FigCount; i++)
+	{
+
+		FigList[i]->sethide(true);
+	}
 }
 
 void ApplicationManager::decrease()
@@ -254,11 +396,14 @@ void ApplicationManager::setcolorType(bool b) { filled = b; }
 //Draw all figures on the user interface
 void ApplicationManager::UpdateInterface() const
 {
+	pOut->ClearDrawArea();
 	for (int i = 0; i < FigCount; i++)
 	{
-		if (FigList[i]->GetVisibility())          //To Only Draw Visible figures to the user
-			if (FigList[i])
-				FigList[i]->Draw(pOut);		          //Call Draw function (virtual member fn)
+		if (FigList[i]) {
+			if (FigList[i]->gethide())
+				if (FigList[i]->GetVisibility()  )        //To Only Draw Visible figures to the user
+				   FigList[i]->Draw(pOut);
+		}	          //Call Draw function (virtual member fn)
 	}
 }
 ////////////////////////////////////////////////////////////////////////////////////

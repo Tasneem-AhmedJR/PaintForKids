@@ -15,6 +15,7 @@ protected:
 	color clr;
 	CFigure* DeletedFig;
 	bool Visible;
+	bool hide;
 	/// Add more parameters if needed.
 
 public:
@@ -27,6 +28,11 @@ public:
 	bool GetVisibility();                       //Returns visibility for a figure
 	void ChngDrawClr(color Dclr);	            //changes the figure's drawing color
 	void ChngFillClr(color Fclr);	            //changes the figure's filling color
+	virtual void Movefi(Output* pOut, Point p);
+	void sethide(bool l);
+	bool gethide();
+	virtual int getnum() =0;
+	int filledcolor();
 	color GetFillclr();                         //returns the current figure's fill color
 	bool IsFilled();
 	///The following functions should be supported by the figure class

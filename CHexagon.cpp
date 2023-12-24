@@ -36,6 +36,17 @@ void CHexagon::DeleteFig()
 	delete this;
 }
 
+void CHexagon::Movefi(Output* pOut, Point p)
+{
+	Center = p;
+	pOut->DrawHexa(Center, FigGfxInfo, Selected);
+}
+
+int CHexagon::getnum()
+{
+	return 3;
+}
+
 void CHexagon::Save(ofstream& OutFile)
 {
 	color DrawColor = FigGfxInfo.DrawClr;

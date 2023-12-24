@@ -37,7 +37,7 @@ void setColorAction::setColorAct()
 	case RD: Clr = RED; break;
 	case GREN: Clr = GREEN; break;
 	case BLU: Clr = BLUE; break;
-	default: Clr = WHITE; break;
+	default: Clr = LIGHTGOLDENRODYELLOW; break;
 	}
 }
 void setColorAction::Execute()

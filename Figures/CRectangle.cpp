@@ -40,6 +40,23 @@ void CRectangle::DeleteFig()
 	//DeletedFig = this;
 	delete this;
 }
+int CRectangle::getnum()
+{
+	return 0;
+}
+void CRectangle::Movefi(Output* pOut, Point p)
+{
+	Point o;
+	o.x = (Corner1.x + Corner2.x) / 2;
+	o.y = (Corner1.y + Corner2.y) / 2;
+	Corner1.x = Corner1.x +p.x - o.x;
+
+	Corner1.y = Corner1.y+p.y - o.y;
+	Corner2.x= Corner2.x+p.x - o.x;
+	Corner2.y = Corner2.y+p.y - o.y;
+
+	pOut->DrawRect(Corner1, Corner2, FigGfxInfo, 1);
+}
 /*
 CFigure* CRectangle::GetDeletedFig()
 {

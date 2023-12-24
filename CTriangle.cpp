@@ -31,6 +31,26 @@ void CTriangle::PrintInfo(Output* pOut)
 	CFigure::PrintInfo(pOut);
 }
 
+void CTriangle::Movefi(Output* pOut, Point p)
+{
+	Point o;
+	o.x = (A.x + B.x + C.x) / 3;
+	o.y = (A.y + B.y + C.y) / 3;
+	A.x = A.x + p.x - o.x;
+
+	A.y =A.y + p.y - o.y;
+	B.x = B.x + p.x - o.x;
+	B.y = B.y + p.y - o.y;
+	C.x = C.x + p.x - o.x;
+	C.y = C.y + p.y - o.y;
+	pOut->DrawTria(A, B, C, FigGfxInfo, Selected);
+}
+
+int CTriangle::getnum()
+{
+	return 4;
+}
+
 void CTriangle::DeleteFig()
 {
 	delete this;

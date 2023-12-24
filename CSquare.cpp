@@ -29,6 +29,17 @@ void CSquare::DeleteFig()
 	delete this;
 }
 
+void CSquare::Movefi(Output* pOut, Point p)
+{
+	Center = p;
+	pOut->DrawSquare(Center, FigGfxInfo, 1);
+}
+
+int CSquare::getnum()
+{
+	return 1;
+}
+
 void CSquare::Save(ofstream& OutFile)
 {
 	color DrawColor = FigGfxInfo.DrawClr;

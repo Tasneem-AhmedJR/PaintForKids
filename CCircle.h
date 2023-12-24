@@ -12,10 +12,12 @@ public:
 	CCircle(Point, Point, GfxInfo FigureGfxInfo);
 	virtual void Draw(Output* pOut);
 	virtual void DeleteFig();
+	virtual void Movefi(Output* pOut, Point p);
 	int CalcRadius(Point* p);              //Calculate radius of the circle between the center and any point
 	double CalcArea(Point* p);            // Calculate Area of the circle between the center and any point
 	bool isInside(Point* p);              // checks if a given point is inside or on the circle
 	void PrintInfo(Output* pOut);
+	virtual int getnum();
     void Save(ofstream& OutFile);
 	void Load(ifstream& Infile);
 };

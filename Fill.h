@@ -23,6 +23,7 @@ public:
 			pOut->setStyle(true);
 			setColorAction::Execute();
 		}
+		pManager->UpdateInterface();
 	}
 	virtual void CancelAction()
 	{
@@ -31,11 +32,14 @@ public:
 		{
 			f->ChngFillClr(PreClr);
 			pOut->setCurrentFillColor(PreClr);
+			
 		}
 		else
 		{
 			f->ChngFillClr(LIGHTGOLDENRODYELLOW);
 			pOut->setCurrentFillColor(LIGHTGOLDENRODYELLOW);
 		}
+		pManager->UpdateInterface();
 	}
+
 };
