@@ -19,14 +19,10 @@
 #include"PlayRecAction.h"
 #include"RecorderAct.h"
 #include"LoadAction.h"
-<<<<<<< HEAD
 #include"ToPlay.h"
 #include "pickbyfill.h"
 #include "pickbytype.h"
-=======
 #include"SoundAction.h"
->>>>>>> 509b57b18b676642a70f66a2c5f1035fae7946fd
-
 #include"Redo.h"
 //Constructor
 ApplicationManager::ApplicationManager()
@@ -105,29 +101,22 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			break;
 		case UNDO:
 			pAct = new Undo(this);
-			break;
-<<<<<<< HEAD
-		
-=======
+			break;	
 		case REDO:
 			pAct = new Redo(this);
 			break;
->>>>>>> 509b57b18b676642a70f66a2c5f1035fae7946fd
 		case SAVE:
 			pAct = new SaveAction(this);
 			break;
 		case LOAD:
 			pAct = new LoadAction(this);
 			break;
-<<<<<<< HEAD
-		case MOVE:
-			pAct = new Move(this);
-		
-=======
 		case SOUND:
 			pAct = new SoundAction(this);
 			break;
->>>>>>> 509b57b18b676642a70f66a2c5f1035fae7946fd
+		case MOVE:
+			pAct = new Move(this);
+
 		case EXIT:
 			///create ExitAction here
 			break;

@@ -44,11 +44,8 @@ public:
 			f->ChngFillClr(PreClr);
 			pOut->setStyle(true);
 			pOut->setCurrentFillColor(PreClr);
-<<<<<<< HEAD
 			
-=======
 			pOut->ClearDrawArea();
->>>>>>> 509b57b18b676642a70f66a2c5f1035fae7946fd
 		}
 		else
 		{
@@ -59,9 +56,6 @@ public:
 		}
 		pManager->UpdateInterface();
 	}
-<<<<<<< HEAD
 
-=======
 	bool canUndone() { return true; }
->>>>>>> 509b57b18b676642a70f66a2c5f1035fae7946fd
 };

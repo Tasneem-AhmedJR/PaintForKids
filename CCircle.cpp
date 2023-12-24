@@ -36,13 +36,10 @@ void CCircle::PrintInfo(Output* pOut)
 	pOut->PrintMessage(("ID : ") + to_string(ID) + (" Rasius : ") + to_string(CalcRadius(&gen_P)) + ("Center : ") + to_string(Cent_P.x) + (", ") + to_string(Cent_P.y));
 }
 
-<<<<<<< HEAD
 int CCircle::getnum()
 {
 	return 2;
 }
-=======
->>>>>>> 509b57b18b676642a70f66a2c5f1035fae7946fd
 
 void CCircle::Save(ofstream& OutFile)
 {
@@ -104,7 +101,7 @@ void CCircle::DeleteFig()
 void CCircle::Movefi(Output* pOut, Point p)
 {
 	gen_P.x = gen_P.x + p.x - Cent_P.x;
-	gen_P.y = gen_P.y + p.x - Cent_P.y;
+	gen_P.y = gen_P.y + p.y - Cent_P.y;
 	Cent_P = p;
 	pOut->DrawCircle(Cent_P, gen_P, FigGfxInfo, Selected);
 }

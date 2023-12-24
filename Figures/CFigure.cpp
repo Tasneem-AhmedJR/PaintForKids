@@ -6,12 +6,9 @@ CFigure::CFigure(GfxInfo FigureGfxInfo)
 	Selected = false;
 	count++;
 	ID = count;
-<<<<<<< HEAD
 	Visible = true;
 	hide = true;
-=======
 	Preclr = UI.DrawColor;
->>>>>>> 509b57b18b676642a70f66a2c5f1035fae7946fd
 }
 
 void CFigure::SetSelected(bool s)
@@ -39,29 +36,25 @@ void CFigure::ChngDrawClr (color Dclr)
 }
 
 void CFigure::ChngFillClr(color Fclr)
-<<<<<<< HEAD
-{	if(Fclr== LIGHTGOLDENRODYELLOW)
-FigGfxInfo.isFilled = false;
-else {
-	FigGfxInfo.isFilled = true;
-	FigGfxInfo.FillClr = Fclr;
-=======
 {
 	if (Fclr == LIGHTGOLDENRODYELLOW)
 		FigGfxInfo.isFilled = false;
-	else
-	{
+	else {
 		FigGfxInfo.isFilled = true;
 		FigGfxInfo.FillClr = Fclr;
+		{
+			if (Fclr == LIGHTGOLDENRODYELLOW)
+				FigGfxInfo.isFilled = false;
+			else
+			{
+				FigGfxInfo.isFilled = true;
+				FigGfxInfo.FillClr = Fclr;
+			}
+		}
+
 	}
->>>>>>> 509b57b18b676642a70f66a2c5f1035fae7946fd
 }
 
-}
-
-void CFigure::Movefi(Output* pOut, Point p)
-{
-}
 
 void CFigure::sethide(bool l)
 {
