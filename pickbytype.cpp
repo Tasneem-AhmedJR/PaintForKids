@@ -1,4 +1,5 @@
 #include "pickbytype.h"
+#include "pickbyboth.h"
 #include "ApplicationManager.h"
 #include "GUI\input.h"
 #include "GUI\Output.h"
@@ -42,9 +43,13 @@ void pickbytype::Execute()
 		else if (pManager->getm(l) == 4)
 			arr2[4]++;
 	}
-	
+	int sum = 0;
+	for (int i = 0; i < 5; i++) {
+		sum += arr2[i];
+	}
+	int i = 0;
 	if ((arr2[0] + arr2[1] + arr2[2] + arr2[3] + arr2[4])) {
-		for (int i = 0; (arr2[0] + arr2[1] + arr2[2] + arr2[3] + arr2[4]) && flag;) {
+		for (i; i<sum && flag;) {
 			int x = rand() % 5;
 			if (arr2[x]) {
 				pOut->PrintMessage(arr[x]);
@@ -53,6 +58,8 @@ void pickbytype::Execute()
 					
 					ReadActionParameters();
 					if (p1.x <= 4*(UI.MenuItemWidth) && p1.x >= 138 && p1.y <= UI.ToolBarHeight && p1.y >= 0) {
+						pManager->unhide();
+						pManager->UpdateInterface();
 						pManager->unhide();
 						pManager->UpdateInterface();
 						pOut->CreateDrawToolBar();
@@ -64,6 +71,10 @@ void pickbytype::Execute()
 					else if(p1.x <= 2 * (UI.MenuItemWidth) && p1.x >= 46 && p1.y <= UI.ToolBarHeight && p1.y >= 0) {
 						pManager->unhide();
 						pManager->UpdateInterface();
+						incorrect = 0;
+						correct = 0;
+						pManager->unhide();
+						pManager->UpdateInterface();
 					pAct=new pickbyfill(pManager);
 					pAct->Execute();
 						flag = false;
@@ -71,16 +82,38 @@ void pickbytype::Execute()
 
 
 					}
+					else if (p1.x <= (UI.MenuItemWidth) && p1.x >= 0 && p1.y <= UI.ToolBarHeight && p1.y >= 0) {
+						pManager->unhide();
+						pManager->UpdateInterface();
+						incorrect = 0;
+						correct = 0;
+
+						pAct = new pickbytype(pManager);
+						pAct->Execute();
+						flag = false;
+						break;
+					}
+					else if (p1.x <= 3 * (UI.MenuItemWidth) && p1.x >= 92 && p1.y <= UI.ToolBarHeight && p1.y >= 0) {
+						pManager->unhide();
+						pManager->UpdateInterface();
+						pAct = new pickbyboth(pManager);
+						pAct->Execute();
+						flag = false;
+						break;
+					}
 					else if (pManager->inside2(p1, x) == 1) {
 						j++;
 						i++;
 						arr2[x]--;
 						correct++;
+						pOut->PrintMessage("you are right continue");
 						pManager->UpdateInterface();
 					}
-					else  if (pManager->inside2(p1, x) == 0)
+					else  if (pManager->inside2(p1, x) == 0) {
 
 						incorrect++;
+						pOut->PrintMessage("this is the false anwser "+(arr[x]));
+					}
 					else if (pManager->inside2(p1, x) == -1)
 						pOut->PrintMessage("please click on a fig");
 				}
@@ -89,13 +122,19 @@ void pickbytype::Execute()
 
 
 		}
-		pOut->PrintMessage("please click to get the final score");
-		pIn->GetPointClicked(p1.x, p1.y);
 		
-		pManager->unhide();
-		pManager->UpdateInterface();
-		pOut->PrintMessage("the correct anwsers" + to_string(correct) + "the incorrect anwsers" + to_string(incorrect));
-		//ptr1 = NULL;
+		
+		
+		if (i == sum)
+		{
+
+			pOut->PrintMessage("please click toget the final score");
+			pIn->GetPointClicked(p1.x, p1.y);
+			pManager->unhide();
+			pManager->UpdateInterface();
+			pOut->PrintMessage("the correct anwsers" + to_string(correct) + "the incorrect anwsers" + to_string(incorrect));
+		}
+		
 		pAct = NULL;
 	}
 	else

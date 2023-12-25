@@ -208,6 +208,11 @@ void Output::reset()
 int Output::getCrntPenWidth() const		//get current pen width
 {	return UI.PenWidth;	}
 
+window* Output::getwindo()
+{
+	return pWind;
+}
+
 //======================================================================================//
 //								Figures Drawing Functions								//
 //======================================================================================//

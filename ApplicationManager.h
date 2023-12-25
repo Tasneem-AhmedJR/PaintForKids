@@ -44,6 +44,7 @@ public:
 	int getm(int n);
 	int inside2(Point p, int y);
 	int inside(Point p,int y);
+	int inside3(Point p, int y);
 	void unhide();
 	void decrease();                    // Calls decrement Function of action list class
 	void IncrRedo();                    // Calls Increment function of action list
