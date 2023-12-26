@@ -36,9 +36,9 @@ void CCircle::PrintInfo(Output* pOut)
 	pOut->PrintMessage(("ID : ") + to_string(ID) + (" Rasius : ") + to_string(CalcRadius(&gen_P)) + ("Center : ") + to_string(Cent_P.x) + (", ") + to_string(Cent_P.y));
 }
 
-int CCircle::getnum()
+int CCircle::getconstfig()
 {
-	return 2;
+	return 2;           //the const of the circle is considerd 2
 }
 
 void CCircle::Save(ofstream& OutFile)

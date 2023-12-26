@@ -27,36 +27,36 @@ void pickbyfill::Execute()
 
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
-	string arr[6] = { "choose the all black color","choose the all yellow color" ,"choose the all orange color" ,"choose the all red color" ,"choose the all green color" ,"choose the all blue color" };
-	int arr3[6] = {0,0,0,0,0,0};
+	string arrofquestions[6] = { "choose the all black color","choose the all yellow color" ,"choose the all orange color" ,"choose the all red color" ,"choose the all green color" ,"choose the all blue color" };  //possible questions in pick by fillcolor
+	int arrofcolor[6] = {0,0,0,0,0,0};   //to save all colors of one type in it
 	for (int l = 0; l < pManager->getfigureCount(); l++) {
 
-		if (pManager->getn(l) == 0)
-			arr3[0]++;
-		else if (pManager->getn(l) == 1)
-			arr3[1]++;
-		else if (pManager->getn(l) == 2)
-			arr3[2]++;
-		else if (pManager->getn(l) == 3)
-			arr3[3]++;
-		else if (pManager->getn(l) == 4)
-			arr3[4]++;
-		else if (pManager->getn(l) == 5)
-			arr3[5]++;
+		if (pManager->getnumcolors(l) == 0)
+			arrofcolor[0]++;
+		else if (pManager->getnumcolors(l) == 1)
+			arrofcolor[1]++;
+		else if (pManager->getnumcolors(l) == 2)
+			arrofcolor[2]++;
+		else if (pManager->getnumcolors(l) == 3)
+			arrofcolor[3]++;
+		else if (pManager->getnumcolors(l) == 4)
+			arrofcolor[4]++;
+		else if (pManager->getnumcolors(l) == 5)
+			arrofcolor[5]++;
 	}
 	int sum = 0;
 	for (int i = 0; i < 6; i++) {
-		sum += arr3[i];
+		sum += arrofcolor[i];
 	}
  bool flag = true;
 
- if ((arr3[0] + arr3[1] + arr3[2] + arr3[3] + arr3[4] + arr3[5])) {
+ if ((sum)) {
 	 int i = 0;
-	 for (i; (arr3[0] + arr3[1] + arr3[2] + arr3[3] + arr3[4] + arr3[5]) && flag;) {
-		 int x = rand() % 6;
-		 if (arr3[x]) {
-			 pOut->PrintMessage(arr[x]);
-			 for (int j = 0; arr3[x]; )
+	 for (i; i<sum && flag;) {
+		 int random = rand() % 6;
+		 if (arrofcolor[random]) {
+			 pOut->PrintMessage(arrofquestions[random]);
+			 for (int j = 0; arrofcolor[random]; )
 			 {
 				 ReadActionParameters();
 				 if (p1.x <= 4 * (UI.MenuItemWidth) && p1.x >= 138 && p1.y <= UI.ToolBarHeight && p1.y >= 0) {
@@ -94,20 +94,20 @@ void pickbyfill::Execute()
 					 flag = false;
 					 break;
 				 }
-				 else if (pManager->inside(p1, x) == 1) {
+				 else if (pManager->insideofcolor(p1, random) == 1) {
 					 j++;
 					 i++;
-					 arr3[x]--;
+					 arrofcolor[random]--;
 					 correct++;
 					 pOut->PrintMessage("you are right continue");
 					 pManager->UpdateInterface();
 				 }
-				 else  if (pManager->inside(p1, x) == 0)
+				 else  if (pManager->insideofcolor(p1, random) == 0)
 				 {
 					 incorrect++;
-					 pOut->PrintMessage("this is the false anwser " + (arr[x]));
+					 pOut->PrintMessage("this is the false anwser " + (arrofquestions[random]));
 				 }
-				 else if (pManager->inside(p1, x) == -1)
+				 else if (pManager->insideofcolor(p1, random) == -1)
 					 pOut->PrintMessage("please click on a fig");
 			 }
 

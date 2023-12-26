@@ -46,9 +46,9 @@ void CTriangle::Movefi(Output* pOut, Point p)
 	pOut->DrawTria(A, B, C, FigGfxInfo, Selected);
 }
 
-int CTriangle::getnum()
+int CTriangle::getconstfig()
 {
-	return 4;
+	return 4;            //the const of the triangle is considerd 4
 }
 
 void CTriangle::DeleteFig()

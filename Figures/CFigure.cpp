@@ -71,17 +71,17 @@ bool CFigure::gethide()
 int CFigure::filledcolor() 
 {
 	if(FigGfxInfo.FillClr==BLACK)
-	    return 0;
+	    return 0;                      //the const number of the black color is 0
 	else if (FigGfxInfo.FillClr == YELLOW)
-		return 1;
+		return 1;                         //the const number of the yellow color is 1
 	else if (FigGfxInfo.FillClr == ORANGE)
-		return 2;
+		return 2;                         //the const number of the orange color is 2
 	else if (FigGfxInfo.FillClr == RED)
-		return 3;
+		return 3;                         //the const number of the red color is 3
 	else if (FigGfxInfo.FillClr == GREEN)
-		return 4;
+		return 4;                           //the const number of the green color is 4
 	else if (FigGfxInfo.FillClr == BLUE)
-		return 5;
+		return 5;                           //the const number of the blue color is 5
 	else if (FigGfxInfo.FillClr == LIGHTGOLDENRODYELLOW)
 		return 6;
 }

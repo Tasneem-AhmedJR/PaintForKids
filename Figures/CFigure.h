@@ -30,8 +30,8 @@ public:
 	virtual void Movefi(Output* pOut, Point p)=0;
 	void sethide(bool l);
 	bool gethide();
-	virtual int getnum() =0;
-	int filledcolor();
+	virtual int getconstfig() =0;              //this function considered that any shape of fig has a const number
+	int filledcolor();                         //this function considered that any color has a const number
 	color GetFillclr();                         //returns the current figure's fill color
 	color GetDrawClr();
 	bool IsFilled();

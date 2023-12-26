@@ -12,7 +12,7 @@ public:
 	void PrintInfo(Output* pOut);
 	virtual void DeleteFig();
 	virtual void Movefi(Output* pOut, Point p);
-	virtual int getnum();
+	virtual int getconstfig();
 	void Save(ofstream& OutFile);
 	void Load(ifstream& Infile);
 

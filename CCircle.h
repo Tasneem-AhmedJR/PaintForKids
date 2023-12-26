@@ -17,7 +17,7 @@ public:
 	double CalcArea(Point* p);            // Calculate Area of the circle between the center and any point
 	bool isInside(Point* p);              // checks if a given point is inside or on the circle
 	void PrintInfo(Output* pOut);
-	virtual int getnum();
+	virtual int getconstfig();
     void Save(ofstream& OutFile);
 	void Load(ifstream& Infile);
 };

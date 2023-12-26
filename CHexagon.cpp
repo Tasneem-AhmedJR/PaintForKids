@@ -43,9 +43,9 @@ void CHexagon::Movefi(Output* pOut, Point p)
 	pOut->DrawHexa(Center, FigGfxInfo, Selected);
 }
 
-int CHexagon::getnum()
+int CHexagon::getconstfig()
 {
-	return 3;
+	return 3;      //the const of the hexa is considerd 3
 }
 
 void CHexagon::Save(ofstream& OutFile)
