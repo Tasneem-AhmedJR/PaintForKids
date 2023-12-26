@@ -7,10 +7,10 @@ class pickbytype :public Action
 	int correct;
 	Point p1;
 	Action* pAct;
-	//pickbyfill* ptr1;
-public:
+	public:
 	pickbytype(ApplicationManager* pApp);
 	virtual void ReadActionParameters();
 	virtual void Execute();
+	~pickbytype();
 };
 

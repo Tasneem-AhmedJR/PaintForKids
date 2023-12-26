@@ -66,6 +66,14 @@ void CTriangle::Movefi(Output* pOut, Point p)
 	//pOut->DrawTria(A, B, C, FigGfxInfo, Selected);
 }
 
+Point CTriangle::getcenter()
+{
+	Point oldcenter;
+	oldcenter.x = A.x + B.x + C.x;
+	oldcenter.y = A.y + B.y + C.y;
+	return oldcenter;
+}
+
 int CTriangle::getconstfig()
 {
 	return 4;            //the const of the triangle is considerd 4

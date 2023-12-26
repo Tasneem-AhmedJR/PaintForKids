@@ -125,3 +125,8 @@ void CCircle::Movefi(Output* pOut, Point p)
 
 	//pOut->DrawCircle(Cent_P, gen_P, FigGfxInfo, Selected);
 }
+
+Point CCircle::getcenter()
+{
+	return Cent_P;
+}

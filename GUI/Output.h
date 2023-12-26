@@ -32,6 +32,7 @@ public:
 	color getCrntDrawColor() const;	  //get current drwawing color
 	void setCurrentDrawColor(color);  //set a given color as the current drawing color 
 	color getCrntFillColor() const;	  //get current filling color
+	bool isClicked(int& x, int& y);
 	void setCurrentFillColor(color);  //set a given color as the current filling color 
 	bool isFilled();                  //checks if the figure drawing style is filled
 	void setStyle(bool);              //sets the current drawing style of the figures (filled/frame)      

@@ -212,6 +212,14 @@ window* Output::getwindo()
 {
 	return pWind;
 }
+bool Output::isClicked(int& x, int& y)
+{
+	if (pWind->GetButtonState(LEFT_BUTTON, x, y) == BUTTON_DOWN)
+		return true;
+	else
+		return false;
+}
+
 
 //======================================================================================//
 //								Figures Drawing Functions								//

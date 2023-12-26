@@ -17,6 +17,7 @@ public:
 	bool isInside(Point* p);        
 	void PrintInfo(Output* pOut);
 	virtual void DeleteFig();
+	virtual Point getcenter();
 	virtual int getconstfig();
 	virtual void Movefi(Output* pOut, Point p);
 	//virtual CFigure* GetDeletedFig();

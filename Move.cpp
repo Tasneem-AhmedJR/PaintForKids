@@ -7,8 +7,7 @@
 
 Move::Move(ApplicationManager* pApp) :Action(pApp)
 {
-	Output* pOut = pManager->GetOutput();
-	//w = pOut;
+	
 }
 
 void Move::ReadActionParameters()

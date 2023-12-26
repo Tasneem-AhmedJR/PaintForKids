@@ -101,17 +101,21 @@ void pickbytype::Execute()
 						flag = false;
 						break;
 					}
-					else if (pManager->insideoffig(p1, random) == 1) {
+					else if (pManager->insideoffig(p1, random) == 5) {
 						j++;
 						i++;
 						arroffig[random]--;
 						correct++;
-						pOut->PrintMessage("you are right continue");
 						pManager->UpdateInterface();
-					}
+						
+							pOut->PrintMessage("you are right continue the correct is " + to_string(correct) + "the incorrect anwsers" + to_string(incorrect) );
+						}
+						
+					
 					else  if (pManager->insideoffig(p1, random) == 0) {
+						
 						incorrect++;
-						pOut->PrintMessage("this is the false anwser "+(arrofquestions[random]));
+						pOut->PrintMessage("this is the false anwser "+(arrofquestions[random])+" the correct is " + to_string(correct) + "the incorrect anwsers" + to_string(incorrect));
 					
 					}
 					else if (pManager->insideoffig(p1, random) == -1)
@@ -132,13 +136,19 @@ void pickbytype::Execute()
 			pIn->GetPointClicked(p1.x, p1.y);
 			pManager->unhide();
 			pManager->UpdateInterface();
-			pOut->PrintMessage("the correct anwsers" + to_string(correct) + "the incorrect anwsers" + to_string(incorrect));
+			pOut->PrintMessage("the final correct anwsers" + to_string(correct) + "the final incorrect anwsers" + to_string(incorrect));
 		}
 		
-		pAct = NULL;
+	//	pAct = NULL;
 	}
 	else
-		pOut->PrintMessage("please draw first");
+		pOut->PrintMessage("please draw first to can play with type");
 
 		}
-	
+
+		pickbytype::~pickbytype()
+		{
+			delete pAct;
+		}
+
+		

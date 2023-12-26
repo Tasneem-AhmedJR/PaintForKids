@@ -18,6 +18,7 @@ public:
 	bool isInside(Point*);
 	void PrintInfo(Output* pOut);
 	virtual void Movefi(Output* pOut, Point p);
+	virtual Point getcenter();
 	virtual int getconstfig();
 	virtual void DeleteFig();
 	void Save(ofstream& OutFile);

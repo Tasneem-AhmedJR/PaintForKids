@@ -33,6 +33,7 @@ public:
 	Point PrePoint();
 	void sethide(bool l);
 	bool gethide();
+	virtual Point getcenter() =0;
 	virtual int getconstfig() =0;              //this function considered that any shape of fig has a const number
 	int filledcolor();                         //this function considered that any color has a const number
 	color GetFillclr();                         //returns the current figure's fill color
