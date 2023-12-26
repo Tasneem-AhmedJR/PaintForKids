@@ -25,11 +25,11 @@ bool CHexagon::isInside(Point* p)
 	//devide the hexagon into small triangle and check if the given point is inside any of them  
 	Point p1, p2, p3, p4, p5, p6;
 	float a = 0.8660254038 * 80;
-	p1.x = Center.x + 40;      p1.y = Center.y;
-	p2.x = Center.x + 20;      p2.y = Center.y + a;
-	p3.x = Center.x - 20;      p3.y = Center.y + a;
-	p4.x = Center.x - 40;      p4.y = Center.y;
-	p5.x = p3.x;               p5.y = Center.y - a;
+	p1.x = Center.x + 80;      p1.y = Center.y;
+	p2.x = Center.x + 40;      p2.y = Center.y + a;
+	p3.x = Center.x - 40;      p3.y = Center.y + a;
+	p4.x = Center.x - 80;      p4.y = Center.y;
+	p5.x = Center.x - 40;      p5.y = Center.y - a;
 	p6.x = p2.x;               p6.y = p5.y;
 	CTriangle t1(p1, p2, Center, FigGfxInfo), t2(p2, p3, Center, FigGfxInfo), t3(p3, p4, Center, FigGfxInfo), t4(p4, p5, Center, FigGfxInfo), t5(p5, p6, Center, FigGfxInfo), t6(p6, p1, Center, FigGfxInfo);
 	if (t1.isInside(p) || t2.isInside(p) || t3.isInside(p) || t4.isInside(p) || t5.isInside(p) || t6.isInside(p))
