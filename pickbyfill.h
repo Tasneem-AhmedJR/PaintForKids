@@ -4,7 +4,6 @@
 
 class pickbyfill :public Action
 {
-//	pickbytype* ptr;
 	Action* pAct;
 	int incorrect;
 	int correct;
@@ -13,5 +12,6 @@ public:
 	pickbyfill(ApplicationManager* pApp);
 	virtual void ReadActionParameters();
 	virtual void Execute();
+	~pickbyfill();
 };
 

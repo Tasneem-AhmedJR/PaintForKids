@@ -46,6 +46,11 @@ void CSquare::Movefi(Output* pOut, Point p)
 	//pOut->DrawSquare(Center, FigGfxInfo, 1);
 }
 
+Point CSquare::getcenter()
+{
+	return Center;
+}
+
 int CSquare::getconstfig()
 {
 	return 1;                 //the const of the square is considerd 1

@@ -119,8 +119,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = new Move(this);
 
 		case EXIT:
-			///create ExitAction here
-			break;
+		{
+			ClearingFigures();
+		break;
+		}
 		case TO_DRAW:
 			pAct = new ToDraw(this);
 			break;
@@ -207,7 +209,7 @@ int ApplicationManager::getnumcolors( int n)
 
 int ApplicationManager::getnumofshape( int n)
 {
-	if (FigList[n]->getconstfig() == 1 && FigList[n]->GetVisibility())
+	if (FigList[n]->getconstfig() == 1 && FigList[n]->GetVisibility() )
 		return 1;
 	else if (FigList[n]->getconstfig() == 2 && FigList[n]->GetVisibility())
 		return 2;
@@ -225,11 +227,12 @@ int ApplicationManager::insideoffig(Point p, int y)
 	{
 		if (FigList[i]->isInside(&p) && FigList[i]->getconstfig() == y && FigList[i]->gethide()) {
 			FigList[i]->sethide(false);
-			return 1;
+			return 5;
 		}
 		else if (FigList[i]->isInside(&p) && FigList[i]->getconstfig() != y&&FigList[i]->gethide())
 		{
 			
+
 			return 0;
 		}
 
@@ -270,6 +273,7 @@ int ApplicationManager::insideofboth(Point p, int y)
 		}
 		else if (FigList[i]->isInside(&p) && FigList[i]->filledcolor() != y )
 		{
+			
 			return 0;
 		}
 		else if (FigList[i]->isInside(&p) && !(FigList[i]->IsFilled()))
