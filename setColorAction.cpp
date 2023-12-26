@@ -6,8 +6,6 @@
 
 setColorAction::setColorAction(ApplicationManager* pApp) :Action(pApp) {}
 
-void setColorAction::ReadActionParameters() {}
-
 void setColorAction::changecolorAct(bool b, CFigure* fig, color c)
 {
 	Output* pOut = pManager->GetOutput();
@@ -26,9 +24,9 @@ void setColorAction::changecolorAct(bool b, CFigure* fig, color c)
 		}
 	}
 }
-void setColorAction::setColorAct()
+void setColorAction::ReadActionParameters()
 {
-	act = pManager->GetUserAction();
+	act = pManager->GetUserAction();   //need one extra click to determine the color
 	switch (act)
 	{
 	case BLCK: Clr = BLACK; break;
@@ -43,11 +41,11 @@ void setColorAction::setColorAct()
 void setColorAction::Execute()
 {
 	Output* pOut = pManager->GetOutput();
-	fig = pManager->getSelectedFig();
-	typ = pManager->getcolorType();
+	fig = pManager->getSelectedFig();               //a pointer to the selected figure 
+	typ = pManager->getcolorType();                 //selected figure color type
 
-	if (!pManager->getRecorder()->isPlayingNow())
-		setColorAct();
+	if (!pManager->getRecorder()->isPlayingNow())  //no need to read action parameters while playing recording
+		ReadActionParameters();
 
 	changecolorAct(typ, fig, Clr);
 

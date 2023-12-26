@@ -11,15 +11,18 @@ public:
 
 	void Execute()
 	{
+		//a pointer to the output interface
 		Output* pOut = pManager->GetOutput();
 
+		//checks if any figure is selectd
 		if (pManager->getSelectedFig() == NULL) { pOut->PrintMessage("Please select a figure first "); }
 		else 
 		{
-			f = pManager->getSelectedFig();
+			f = pManager->getSelectedFig();         //a pointer to the selected figure 
 			PreClr = pOut->getCrntDrawColor();
 			pOut->PrintMessage("changing drawing color, Please choose a color");
-			pManager->setcolorType(false);
+
+			pManager->setcolorType(false);          //the selected figure's color type is drawing color
 			setColorAction::Execute(); 
 			pManager->UpdateInterface();
 			CurrentClr = pOut->getCrntDrawColor();

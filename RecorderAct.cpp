@@ -6,12 +6,12 @@
 RecorderAct::RecorderAct(ApplicationManager* pApp) :Action(pApp)
 {
 	lastRec = 0;
+	lastActType = EMPTY;
 	recording = false; 
 	NowPlaying = false;
 	for (int i = 0; i < 20; i++)
 		RecList[i] = NULL;
 }
-void RecorderAct::LastActType(ActionType t) { lastActType = t; }
 
 ActionType RecorderAct::getLastType() { return lastActType; }
 
@@ -24,6 +24,7 @@ void RecorderAct::AddrecList(Action* p, ActionType t)
 	//Get a Pointer to the Output Interfaces
 	Output* pOut = pManager->GetOutput();
 
+	//reset recording history after clear all action 
 	if (t == CLEAR_ALL)
 	{
 		for (int i = 0; i < 20; i++) RecList[i] = NULL;

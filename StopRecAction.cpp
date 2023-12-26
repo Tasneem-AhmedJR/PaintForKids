@@ -13,7 +13,7 @@ void StopRecAction::Execute()
 	//Get a Pointer to the Output Interfaces
 		Output* pOut = pManager->GetOutput();
 
-		if (pManager->getRecorder()->isRecording())
+		if (pManager->getRecorder()->isRecording())    //check if the program is currently recording
 		{
 			pManager->getRecorder()->setRecording(false);
 			pOut->PrintMessage("Recording has ended ");
