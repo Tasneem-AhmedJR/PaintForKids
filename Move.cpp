@@ -34,7 +34,8 @@ void Move::Execute()
 		if (!pManager->getRecorder()->isPlayingNow())
 			ReadActionParameters();
 		pOut->PrintMessage("aclick on move");
-		pManager->Movefig(p1);                    //calls delete func. in applicationManager to access figlist
+
+		pManager->getSelectedFig()->Movefi(pOut, p1);    //every figure is responsible for moving itself  
 		pOut->ClearDrawArea();
 
 	}

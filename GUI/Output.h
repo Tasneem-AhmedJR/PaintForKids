@@ -29,14 +29,14 @@ public:
 	
 	void PrintMessage(string msg) const;	//Print a message on Status bar
 
-	color getCrntDrawColor() const;	//get current drwawing color
-	void setCurrentDrawColor(color);
-	color getCrntFillColor() const;	//get current filling color
-	void setCurrentFillColor(color);
-	bool isFilled();
-	void setStyle(bool);
-	void reset();   //resets the programm to the default seetings 
-	int getCrntPenWidth() const;		//get current pen width
+	color getCrntDrawColor() const;	  //get current drwawing color
+	void setCurrentDrawColor(color);  //set a given color as the current drawing color 
+	color getCrntFillColor() const;	  //get current filling color
+	void setCurrentFillColor(color);  //set a given color as the current filling color 
+	bool isFilled();                  //checks if the figure drawing style is filled
+	void setStyle(bool);              //sets the current drawing style of the figures (filled/frame)      
+	void reset();                     //resets the programm to the default settings 
+	int getCrntPenWidth() const;	  //get current pen width
 	window* getwindo();
 
 	

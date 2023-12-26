@@ -11,23 +11,13 @@ CFigure::CFigure(GfxInfo FigureGfxInfo)
 	Preclr = UI.DrawColor;
 }
 
-void CFigure::SetSelected(bool s)
-{	Selected = s; }
+void CFigure::SetSelected(bool s) {	Selected = s; }
 
-bool CFigure::IsSelected() const
-{	return Selected; }
+bool CFigure::IsSelected() const { return Selected; }
 
-void CFigure::SetVisibility(bool f)
-{
-	if (this)
-		Visible = f;
-}
+void CFigure::SetVisibility(bool f) { if (this)	Visible = f; }
 
-bool CFigure::GetVisibility()
-{
-	if(this)
-	return Visible;
-}
+bool CFigure::GetVisibility() { if (this) return Visible; }
 
 void CFigure::ChngDrawClr (color Dclr)
 {

@@ -32,7 +32,7 @@ void AddTriangleAction::ReadActionParameters()
 		pIn->GetPointClicked(P3.x, P3.y);    //Read 3th Point and store in Point P3
 
 		i++;
-	} while (!tri->validate(P1, P2, P3));
+	} while (!tri->validate(P1, P2, P3));     //makes sure the triangle is not drawn outside the drawing area 
 
 	TriangleGfxInfo.isFilled = pOut->isFilled();;	//default is not filled
 	//get drawing, filling colors and pen width from the interface
@@ -44,7 +44,6 @@ void AddTriangleAction::ReadActionParameters()
 
 void AddTriangleAction::RedoAction()
 {
-	pManager->setfigureCount(pManager->getfigureCount() + 1);
 	tri->SetVisibility(true);
 	Output* pOut = pManager->GetOutput();
 	pOut->ClearDrawArea();
@@ -52,7 +51,6 @@ void AddTriangleAction::RedoAction()
 
 void AddTriangleAction::CancelAction()
 {
-	pManager->setfigureCount(pManager->getfigureCount() - 1);
 	tri->SetVisibility(false);                  //the figure sets its own visibilty to false in order not to be drawn
 	Output* pOut = pManager->GetOutput();      //and delete last added figure
 	pOut->ClearDrawArea();
@@ -62,9 +60,10 @@ bool AddTriangleAction::Undoable() { return true; }
 
 void AddTriangleAction::Execute()
 {	
-	if (!pManager->getRecorder()->isPlayingNow())
+	if (!pManager->getRecorder()->isPlayingNow())  //no need to read Action parameters while playing recording
 
-	ReadActionParameters();  //must read Action parameters first
+	ReadActionParameters();  //must read Action parameters first in case of not playing recording
+
 	//Create a Triangle with the parameters read from the user
 	tri = new CTriangle(P1, P2,P3, TriangleGfxInfo);
 

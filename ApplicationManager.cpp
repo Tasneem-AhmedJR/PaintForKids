@@ -144,10 +144,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	//Execute the created action
 	if(pAct != NULL)
 	{
-		if (!Recorder->isPlayingNow())
+		if (!Recorder->isPlayingNow())                  //cannot excute any actions while playing recording
 			pAct->Execute();                            //Execute
-		ActList->TraceAction(pAct);
-		Recorder->AddrecList(pAct, ActType);
+		ActList->TraceAction(pAct);                     //sets undo and redo history
+		Recorder->AddrecList(pAct, ActType);            //sets the array of recorded actions 
 		pAct = NULL;
 	}
 }
@@ -181,33 +181,9 @@ void ApplicationManager::WhenLoad()
 	FigCount = 0;
 }
 
-Action* ApplicationManager::GetRedoAction()
-{
-	return ActList->getRedo();
-}
-
-Action* ApplicationManager::getLastAct() { return ActList->getList(); }
-
 RecorderAct* ApplicationManager::getRecorder() { return Recorder; }
 
-ActionList* ApplicationManager::GetActionList()
-{
-	return ActList;
-}
-
-void ApplicationManager::Movefig(Point p)
-{
-	bool notfound = true;
-	for (int i = 0; i < FigCount && notfound; i++)                         //loops on figlist 
-	{
-		if (FigList[i]->IsSelected())                          //Checks which fig has selected as true
-		{
-			FigList[i]->Movefi(pOut, p);
-			notfound = false;
-
-		}
-	}
-}
+ActionList* ApplicationManager::GetActionList() { return ActList; }
 
 int ApplicationManager::getn( int n)
 {
@@ -313,22 +289,9 @@ void ApplicationManager::unhide()
 	}
 }
 
-void ApplicationManager::decrease()
-{
-	ActList->DecrementLastAct();
-}
-
-void ApplicationManager::IncrRedo()
-{
-	ActList->IncrementRedo();
-}
-
-bool ApplicationManager::Redoable()
-{
-	return ActList->canredo();
-}
-
 int ApplicationManager::getfigureCount() { return FigCount; }
+
+
 void ApplicationManager::setfigureCount(int x)
 {
 	FigCount = x;
@@ -389,12 +352,7 @@ void ApplicationManager::DeleteFig(bool ToUndo)
 		}
 	}
 }
-void ApplicationManager::reset()
-{
-	pOut->setCurrentDrawColor(BLUE);
-	pOut->setCurrentFillColor(GREEN);
-	pOut->setStyle(false);
-}
+
 void ApplicationManager::setSelectedFig(CFigure* fig) { SelectedFig = fig; }
 
 CFigure* ApplicationManager::getSelectedFig() { return SelectedFig; }
@@ -440,4 +398,5 @@ ApplicationManager::~ApplicationManager()
 	delete pIn;
 	delete pOut;
 	delete ActList;
+	delete Recorder;
 }

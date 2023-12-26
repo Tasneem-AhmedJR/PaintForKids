@@ -34,22 +34,18 @@ public:
 	void ExecuteAction(ActionType) ;    // Creates an action and executes it
 	void SaveAll(ofstream& OutFile);    // Saves all figure in drawing area 
 	void WhenLoad();
-	Action* GetRedoAction();            // Calls getredo in actionlist class 
-	Action* getLastAct();               // Returns last traced Action 
-	RecorderAct* getRecorder();
+	RecorderAct* getRecorder();         // Returns a pointer to RecorderAct array to manage recording actions
 	ActionList* GetActionList();        // Returns pointer to actlist array
 
-	void Movefig(Point p);
 	int getn( int n);
 	int getm(int n);
 	int inside2(Point p, int y);
 	int inside(Point p,int y);
 	int inside3(Point p, int y);
 	void unhide();
-	void decrease();                    // Calls decrement Function of action list class
-	void IncrRedo();                    // Calls Increment function of action list
-	bool Redoable();                    // Validates RedoIndex
+	
 	// -- Figures Management Functions
+
 	int getfigureCount();                // returns the Actual figure count
 	void setfigureCount(int);
 	void AddFigure(CFigure* pFig);       // Adds a new figure to the FigList
@@ -58,8 +54,7 @@ public:
 	CFigure* getSelectedFig();           // returns the selected Figure
 	void ClearingFigures();              // Deletes all figures in figure list
 	void DeleteFig(bool ToUndo);         // Deletes the selected figure
-	void reset();
-
+	
 	// -- Colours Management Functions 
 
 	bool getcolorType();        // Sets the selected colour mode (Fill colour / Drawing colour)

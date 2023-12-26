@@ -16,15 +16,12 @@ public:
 
 	Action(ApplicationManager* pApp) { pManager = pApp; }	//constructor
 
-	//Reads parameters required for action to execute (code depends on action type)
-	virtual void ReadActionParameters() = 0;
-	
-	//Execute action (code depends on action type)
-	virtual void Execute() = 0;
+	virtual void ReadActionParameters() = 0;     // Reads parameters required for action to execute (code depends on action type)
+	virtual void Execute() = 0;                  //Execute action (code depends on action type)
 	virtual void CancelAction(){}
 	virtual void RedoAction(){}
-	virtual bool isRecorded() { return true; }
-	virtual bool Undoable() { return false; }
+	virtual bool isRecorded() { return true; }  //returns false for actions that are required not to be recorded otherwise true 
+	virtual bool Undoable() { return false; }   //returns true for actions that can be undone otherwise false
 };
 
 #endif
