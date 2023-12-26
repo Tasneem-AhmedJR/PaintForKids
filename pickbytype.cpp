@@ -108,14 +108,14 @@ void pickbytype::Execute()
 						correct++;
 						pManager->UpdateInterface();
 						
-							pOut->PrintMessage("you are right continue the correct is " + to_string(correct) + "the incorrect anwsers" + to_string(incorrect)+ " choose " + (arrofquestions[random]));
+							pOut->PrintMessage("you are right continue the correct is " + to_string(correct) + " the incorrect anwsers " + to_string(incorrect)+ " choose " + (arrofquestions[random]));
 						}
 						
 					
 					else  if (pManager->insideoffig(p1, random) == 0) {
 						
 						incorrect++;
-						pOut->PrintMessage("this is the false anwser "+(arrofquestions[random])+" the correct is " + to_string(correct) + "the incorrect anwsers" + to_string(incorrect) + " please choose " + (arrofquestions[random]));
+						pOut->PrintMessage("this is the false anwser "+(arrofquestions[random])+" the correct is " + to_string(correct) + " the incorrect anwsers " + to_string(incorrect) + " please choose " + (arrofquestions[random]));
 					
 					}
 					else if (pManager->insideoffig(p1, random) == -1)
@@ -132,11 +132,11 @@ void pickbytype::Execute()
 		if (i == sum)
 		{
 
-			pOut->PrintMessage("please click toget the final score");
+			pOut->PrintMessage("please click to get the final score");
 			pIn->GetPointClicked(p1.x, p1.y);
 			pManager->unhide();
 			pManager->UpdateInterface();
-			pOut->PrintMessage("the final correct anwsers" + to_string(correct) + "the final incorrect anwsers" + to_string(incorrect));
+			pOut->PrintMessage("the final correct anwsers " + to_string(correct) + " the final incorrect anwsers " + to_string(incorrect));
 		}
 		
 	//	pAct = NULL;
