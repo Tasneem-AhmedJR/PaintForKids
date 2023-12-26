@@ -44,6 +44,11 @@ void CHexagon::PrintInfo(Output* pOut)
 
 }
 
+Point CHexagon::getcenter()
+{
+	return Center;
+}
+
 void CHexagon::DeleteFig()
 {
 	delete this;

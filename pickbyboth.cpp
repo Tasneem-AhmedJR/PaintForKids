@@ -147,13 +147,16 @@ void pickbyboth::Execute()
 						i++;
 						arrofboth[random]--;
 						correct++;
-						pOut->PrintMessage("you are right continue");
 						pManager->UpdateInterface();
+				
+						pOut->PrintMessage("you are right continue is " + to_string(correct) + "the incorrect anwsers" + to_string(incorrect) );
+					
+						
 					}
 					else  if (pManager->insideofboth(p1, random) == 0)
 					{
 						incorrect++;
-						pOut->PrintMessage("this is the false anwser " + (arrofquestions[random]));
+						pOut->PrintMessage("this is the false anwser " + (arrofquestions[random]) + " the correct is " + to_string(correct) + "the incorrect anwsers" + to_string(incorrect));
 					}
 					else if (pManager->insideofboth(p1, random) == -1)
 						pOut->PrintMessage("please click on a fig");
@@ -170,17 +173,22 @@ void pickbyboth::Execute()
 			pIn->GetPointClicked(p1.x, p1.y);
 			pManager->unhide();
 			pManager->UpdateInterface();
-			pOut->PrintMessage("the correct anwsers" + to_string(correct) + "the incorrect anwsers" + to_string(incorrect));
+			pOut->PrintMessage("the final correct anwsers" + to_string(correct) + "the final incorrect anwsers" + to_string(incorrect));
 		}
-		pAct = NULL;
+	//	pAct = NULL;
 
 	}
 	
  else
-	 pOut->PrintMessage("please draw and fill color first");
+	 pOut->PrintMessage("please draw and fill color first to play with fig & color");
 
 
-};
+}
+pickbyboth::~pickbyboth()
+{
+	delete pAct;
+}
+;
 
 
 

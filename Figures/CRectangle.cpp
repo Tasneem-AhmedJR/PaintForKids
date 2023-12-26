@@ -47,6 +47,13 @@ void CRectangle::DeleteFig()
 	//DeletedFig = this;
 	delete this;
 }
+Point CRectangle::getcenter()
+{
+	Point oldcenter;
+	oldcenter.x = (Corner1.x + Corner2.x) / 2;
+	oldcenter.y = (Corner1.y + Corner2.y) / 2;
+	return oldcenter;
+}
 int CRectangle::getconstfig()
 {
 	return 0;               //the const of the rectangle is considerd 0
