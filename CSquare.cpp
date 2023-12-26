@@ -13,6 +13,12 @@ void CSquare::Draw(Output* pOut)
 	pOut->DrawSquare(Center, FigGfxInfo, Selected);
 }
 
+bool CSquare::validate(Point P)
+{
+	if (P.y > 130 && P.y < 520) return true;
+	return false;
+}
+
 bool CSquare::isInside(Point* p)
 {
 	if (abs(Center.x - p->x) <= 80 && abs(Center.y - p->y <= 80)) return true;
@@ -31,8 +37,13 @@ void CSquare::DeleteFig()
 
 void CSquare::Movefi(Output* pOut, Point p)
 {
-	Center = p;
-	pOut->DrawSquare(Center, FigGfxInfo, 1);
+	if (validate(p))
+	{
+		Center = p; pOut->PrintMessage("Selected Figure Move");
+	}
+	else pOut->PrintMessage("Invalid, cannot move figure ");
+
+	//pOut->DrawSquare(Center, FigGfxInfo, 1);
 }
 
 int CSquare::getnum()
@@ -72,6 +83,7 @@ void CSquare::Load(ifstream& Infile)
 		FigGfxInfo.DrawClr = ORANGE;
 	else if (C_D == "RED")
 		FigGfxInfo.DrawClr = RED;
+	Preclr = FigGfxInfo.DrawClr;
 	Infile >> C_F;
 	if (C_F == "NO_FILL")
 		FigGfxInfo.isFilled = 0;

@@ -22,6 +22,7 @@
 #include"ToPlay.h"
 #include "pickbyfill.h"
 #include "pickbytype.h"
+#include "pickbyboth.h"
 #include"SoundAction.h"
 #include"Redo.h"
 //Constructor
@@ -129,6 +130,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case TYPE:
 			pAct = new pickbytype(this);
 			break;
+		case TYPE_COLOR:
+			pAct = new pickbyboth(this);
+			break;
 		case TO_PLAY:
 			pAct = new ToPlay(this);
 			break;
@@ -207,22 +211,7 @@ void ApplicationManager::Movefig(Point p)
 
 int ApplicationManager::getn( int n)
 {
-//	for (int i = 0; i < FigCount; i++)
-	//{
-		/*	if (FigList[i]->GetFillclr() == BLACK && FigList[i]->IsFilled() && FigList[i]->GetVisibility())
-				a[0]++;
-			else if (FigList[i]->GetFillclr() == YELLOW && FigList[i]->IsFilled() && FigList[i]->GetVisibility())
-				a[1]++;
-			else if (FigList[i]->GetFillclr() == ORANGE && FigList[i]->IsFilled() && FigList[i]->GetVisibility())
-				a[2]++;
-			else if (FigList[i]->GetFillclr() == RED && FigList[i]->IsFilled() && FigList[i]->GetVisibility())
-				a[3]++;
-			else if (FigList[i]->GetFillclr() == GREEN && FigList[i]->IsFilled() && FigList[i]->GetVisibility())
-				a[4]++;
-			else if (FigList[i]->GetFillclr() == BLUE && FigList[i]->IsFilled() && FigList[i]->GetVisibility())
-				a[5]++;
-		}
-		*/
+
 		if (FigList[n]->GetFillclr() == BLACK && FigList[n]->IsFilled() && FigList[n]->GetVisibility())
 			return 0;
 		else if (FigList[n]->GetFillclr() == YELLOW && FigList[n]->IsFilled() && FigList[n]->GetVisibility())
@@ -242,19 +231,6 @@ int ApplicationManager::getn( int n)
 
 int ApplicationManager::getm( int n)
 {
-	/*for (int i = 0; i < FigCount; i++) {
-		if (FigList[i]->getnum() == 1 && FigList[i]->GetVisibility() )
-			a[1]++;
-		else if (FigList[i]->getnum() == 2 && FigList[i]->GetVisibility() )
-			a[2]++;
-		else if (FigList[i]->getnum() == 3 && FigList[i]->GetVisibility() )
-			a[3]++;
-		else if (FigList[i]->getnum() == 4 && FigList[i]->GetVisibility() )
-			a[4]++;
-		else if (FigList[i]->getnum() == 0 && FigList[i]->GetVisibility())
-			a[0]++;
-	}
-	*/
 	if (FigList[n]->getnum() == 1 && FigList[n]->GetVisibility())
 		return 1;
 	else if (FigList[n]->getnum() == 2 && FigList[n]->GetVisibility())
@@ -271,11 +247,11 @@ int ApplicationManager::inside2(Point p, int y)
 {
 	for (int i = 0; i < FigCount; i++)
 	{
-		if (FigList[i]->isInside(&p) && FigList[i]->getnum() == y) {
+		if (FigList[i]->isInside(&p) && FigList[i]->getnum() == y && FigList[i]->gethide()) {
 			FigList[i]->sethide(false);
 			return 1;
 		}
-		else if (FigList[i]->isInside(&p) && FigList[i]->getnum() != y)
+		else if (FigList[i]->isInside(&p) && FigList[i]->getnum() != y&&FigList[i]->gethide())
 		{
 			return 0;
 		}
@@ -293,7 +269,7 @@ int ApplicationManager::inside(Point p, int y)
 			FigList[i]->sethide(false);
 			return 1;
 		}
-		else if (FigList[i]->isInside(&p) && FigList[i]->filledcolor() !=y&&FigList[i]->IsFilled())
+		else if (FigList[i]->isInside(&p) && FigList[i]->filledcolor() !=y&&FigList[i]->IsFilled() && FigList[i]->gethide())
 			{
 			return 0;
 		}
@@ -306,6 +282,27 @@ int ApplicationManager::inside(Point p, int y)
 	}
 	return -1;
 
+}
+int ApplicationManager::inside3(Point p, int y)
+{
+	for (int i = 0; i < FigCount; i++)
+	{
+		if (FigList[i]->isInside(&p) && FigList[i]->filledcolor() == (y%6)&&y<=(FigList[i]->getnum()*6+5)&&y>= (FigList[i]->getnum() * 6)&&FigList[i]->IsFilled()) {
+			FigList[i]->sethide(false);
+			return 1;
+		}
+		else if (FigList[i]->isInside(&p) && FigList[i]->filledcolor() != y )
+		{
+			return 0;
+		}
+		else if (FigList[i]->isInside(&p) && !(FigList[i]->IsFilled()))
+		{
+			return 0;
+		}
+
+
+	}
+	return -1;
 }
 void ApplicationManager::unhide()
 {

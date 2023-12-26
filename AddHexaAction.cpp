@@ -25,7 +25,7 @@ void AddHexaAction::ReadActionParameters()
 		pIn->GetPointClicked(P.x, P.y);   //Read point and store in point P1
 
 		i++;
-	} while (P.y < 130 || P.y>530);
+	} while (!hex->validate(P));
 
 	HexaGfxInfo.isFilled = pOut->isFilled();;	//default is not filled
 	//get drawing, filling colors and pen width from the interface

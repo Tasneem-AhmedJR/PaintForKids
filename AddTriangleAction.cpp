@@ -2,6 +2,7 @@
 #include "ApplicationManager.h"
 #include "GUI\input.h"
 #include "GUI\Output.h"
+#include<cmath>
 
 AddTriangleAction::AddTriangleAction( ApplicationManager* pApp):Action(pApp)
 {
@@ -31,7 +32,7 @@ void AddTriangleAction::ReadActionParameters()
 		pIn->GetPointClicked(P3.x, P3.y);    //Read 3th Point and store in Point P3
 
 		i++;
-	} while (!(P1.y > 50 && P2.y > 50 && P3.y > 50) || !(P1.y < 600 && P2.y < 600 && P3.y < 600));
+	} while (!tri->validate(P1, P2, P3));
 
 	TriangleGfxInfo.isFilled = pOut->isFilled();;	//default is not filled
 	//get drawing, filling colors and pen width from the interface

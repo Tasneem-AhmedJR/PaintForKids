@@ -7,6 +7,8 @@
 
 Move::Move(ApplicationManager* pApp) :Action(pApp)
 {
+	Output* pOut = pManager->GetOutput();
+	//w = pOut;
 }
 
 void Move::ReadActionParameters()
@@ -28,12 +30,13 @@ void Move::Execute()
 	Output* pOut = pManager->GetOutput();
 	if (pManager->getSelectedFig())                //to only be called if there is a selected fig
 	{
-		ReadActionParameters();
+		if (!pManager->getRecorder()->isPlayingNow())
+			ReadActionParameters();
 		pOut->PrintMessage("aclick on move");
 
 		pManager->Movefig(p1);                    //calls delete func. in applicationManager to access figlist
-		pOut->PrintMessage("Selected Figure Move");
 		pOut->ClearDrawArea();
 
 	}
+	else pOut->PrintMessage("Please select a figure first ");
 }

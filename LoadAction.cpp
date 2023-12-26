@@ -86,6 +86,8 @@ void LoadAction::Execute()
 			{
 				MyFig->Load(infile);
 				pManager->AddFigure(MyFig);
+				MyFig = NULL;
+				delete MyFig;
 			}
 		}
 		infile.close();

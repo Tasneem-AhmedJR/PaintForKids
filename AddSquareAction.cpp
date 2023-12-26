@@ -25,7 +25,7 @@ void AddSquareAction::ReadActionParameters()
 		pIn->GetPointClicked(P.x, P.y);      //Read one point store in point P
 
 		i++;
-	} while (!(P.y > 130 && P.y < 520));
+	} while (!sq->validate(P));
 
 	SquareGfxInfo.isFilled = pOut->isFilled();	//default is not filled
 	//get drawing, filling colors and pen width from the interface

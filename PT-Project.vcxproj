@@ -184,6 +184,7 @@
     <ClCompile Include="LoadAction.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Move.cpp" />
+    <ClCompile Include="pickbyboth.cpp" />
     <ClCompile Include="pickbyfill.cpp" />
     <ClCompile Include="pickbytype.cpp" />
     <ClCompile Include="PlayRecAction.cpp" />
@@ -244,6 +245,7 @@
     <ClInclude Include="DEFS.h" />
     <ClInclude Include="LoadAction.h" />
     <ClInclude Include="Move.h" />
+    <ClInclude Include="pickbyboth.h" />
     <ClInclude Include="pickbyfill.h" />
     <ClInclude Include="pickbytype.h" />
     <ClInclude Include="PlayRecAction.h" />

@@ -13,6 +13,7 @@ public:
 	CRectangle(Point , Point, GfxInfo FigureGfxInfo );
 	virtual void Draw(Output* pOut) ;
 	double CalcArea(Point* p);
+	bool validate(Point,Point);
 	bool isInside(Point* p);
 	void PrintInfo(Output* pOut);
 	virtual void DeleteFig();
