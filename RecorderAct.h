@@ -19,6 +19,7 @@ public:
 	Action** getRecList();                  //returns the recorded actions array 
 	int getlastRec();                       //returns the index of the last recorded action
 	bool hasRecordes();                     //checks if any recording history exists
+	bool isinthehistory(Action*);
 	void ReadActionParameters();
 	void Execute();
 	~RecorderAct();
