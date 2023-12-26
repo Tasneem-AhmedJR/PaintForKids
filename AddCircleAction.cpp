@@ -45,6 +45,7 @@ void AddCircleAction::ReadActionParameters()
 void AddCircleAction::RedoAction()
 {
 	circ->SetVisibility(true);
+	pManager->AddFigure(circ);
 	Output* pOut = pManager->GetOutput();
 	pOut->ClearDrawArea();
 }
@@ -52,11 +53,15 @@ void AddCircleAction::RedoAction()
 void AddCircleAction::CancelAction()
 {
 	circ->SetVisibility(false);                 //the figure sets its own visibilty to false in order not to be drawn
+	pManager->DeleteFig(circ);
 	Output* pOut = pManager->GetOutput();      //and delete last added figure
 	pOut->ClearDrawArea();
 }
 
-bool AddCircleAction::canUndone() { return true; }
+bool AddCircleAction::Undoable()
+{
+	return true;
+}
 
 void AddCircleAction::Execute()
 {

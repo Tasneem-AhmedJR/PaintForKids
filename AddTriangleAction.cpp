@@ -45,6 +45,7 @@ void AddTriangleAction::ReadActionParameters()
 void AddTriangleAction::RedoAction()
 {
 	tri->SetVisibility(true);
+	pManager->AddFigure(tri);
 	Output* pOut = pManager->GetOutput();
 	pOut->ClearDrawArea();
 }
@@ -54,9 +55,13 @@ void AddTriangleAction::CancelAction()
 	tri->SetVisibility(false);                  //the figure sets its own visibilty to false in order not to be drawn
 	Output* pOut = pManager->GetOutput();      //and delete last added figure
 	pOut->ClearDrawArea();
+	pManager->DeleteFig(tri);
 }
 
-bool AddTriangleAction::Undoable() { return true; }
+bool AddTriangleAction::Undoable() 
+{
+	return true; 
+}
 
 void AddTriangleAction::Execute()
 {	

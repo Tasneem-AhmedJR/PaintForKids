@@ -53,7 +53,7 @@ public:
 	void setSelectedFig(CFigure* fig);   // sets the selected figure
 	CFigure* getSelectedFig();           // returns the selected Figure
 	void ClearingFigures();              // Deletes all figures in figure list
-	void DeleteFig(bool ToUndo);         // Deletes the selected figure
+	void DeleteFig(CFigure*);           // Deletes the passed figure
 	
 	// -- Colours Management Functions 
 
