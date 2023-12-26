@@ -4,6 +4,7 @@
 
 ActionList::ActionList()
 {
+	IsRecord = false;
 	RedoIndex = -1;
 	LastAction = 0;
 	for (int i = 0; i < 5; i++)
@@ -68,8 +69,15 @@ void ActionList::DecrementRedo()
 	RedoIndex--;
 }
 
+void ActionList::SetRecord(bool x)
+{
+	IsRecord = x;
+}
+
 void ActionList::SortActions()
 {
+	if (!IsRecord)
+		delete ActList[0];
 	ActList[0] = NULL;
 	for (int i = 0; i < 4; i++)
 	{

@@ -187,6 +187,11 @@ RecorderAct* ApplicationManager::getRecorder() { return Recorder; }
 
 ActionList* ApplicationManager::GetActionList() { return ActList; }
 
+void ApplicationManager::SetRec(bool f)
+{
+	ActList->SetRecord(f);
+}
+
 int ApplicationManager::getnumcolors( int n)
 {
 
