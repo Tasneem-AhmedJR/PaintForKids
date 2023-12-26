@@ -57,7 +57,7 @@ void AddTriangleAction::CancelAction()
 	pOut->ClearDrawArea();
 }
 
-bool AddTriangleAction::canUndone() { return true; }
+bool AddTriangleAction::Undoable() { return true; }
 
 void AddTriangleAction::Execute()
 {	

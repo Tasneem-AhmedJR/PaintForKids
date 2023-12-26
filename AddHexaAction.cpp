@@ -43,7 +43,7 @@ void AddHexaAction::RedoAction()
 	pOut->ClearDrawArea();
 }
 
-bool AddHexaAction::canUndone() { return true; }
+bool AddHexaAction::Undoable() { return true; }
 
 void AddHexaAction::CancelAction()
 {

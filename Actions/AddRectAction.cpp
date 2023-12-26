@@ -40,7 +40,7 @@ void AddRectAction::ReadActionParameters()
 
 }
 
-bool AddRectAction::canUndone() { return true; }
+bool AddRectAction::Undoable() { return true; }
 
 void AddRectAction::CancelAction()
 {

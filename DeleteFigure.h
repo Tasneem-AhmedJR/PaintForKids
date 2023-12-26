@@ -11,5 +11,6 @@ public:
 	bool canUndone();
 	virtual void CancelAction();
 	virtual void Execute();
+	~DeleteFigure();
 };
 

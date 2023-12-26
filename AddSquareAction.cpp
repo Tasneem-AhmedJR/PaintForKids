@@ -35,7 +35,7 @@ void AddSquareAction::ReadActionParameters()
 	pOut->ClearStatusBar();
 }
 
-bool AddSquareAction::canUndone() { return true; }
+bool AddSquareAction::Undoable() { return true; }
 
 void AddSquareAction::RedoAction()
 {

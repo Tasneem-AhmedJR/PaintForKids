@@ -11,7 +11,7 @@ public:
 	ActionList();
 	Action* getList();
 	Action* getRedo();                          //Returns action to be redoed 
-	void TraceAction(Action*);       //traces last 5 actions done by the kid
+	void TraceAction(Action*);                  //traces last 5 actions done by the kid
 	void Validate();                            //makes sure LastAction index never exceeds scope size
 	void IncrementLastAct();                    //increments LastAction index
 	void DecrementLastAct();                    //decrements LastAction index
@@ -19,6 +19,7 @@ public:
 	void DecrementRedo();                       //decrements LastAction index
 	void SortActions();                         //deletes oldest traced action then sorts the array to overwrite in actlist[4]
 	bool canredo();                             //checks position of redo index in actlist
+	bool IsTraced(Action*);
 	~ActionList();
 };
 

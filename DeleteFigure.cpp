@@ -42,3 +42,9 @@ void DeleteFigure::Execute()
 	else
 		pOut->PrintMessage("Select a Figure to Delete");
 }
+
+DeleteFigure::~DeleteFigure()
+{
+	if (!f->GetVisibility())
+		delete f;
+}
