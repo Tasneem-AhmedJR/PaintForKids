@@ -15,4 +15,11 @@ void ToPlay::Execute()
 	pOut->PrintMessage("Switching to Play Mode, Creating simualtion tool bar");
 	pOut->ClearToolBar();
 	pOut->CreatePlayToolBar();
+	
+
+}
+
+bool ToPlay::isRecorded()
+{
+	return false;
 }

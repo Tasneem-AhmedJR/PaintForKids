@@ -184,6 +184,10 @@ void pickbyboth::Execute()
 
 
 }
+bool pickbyboth::isRecorded()
+{
+	return false;
+}
 pickbyboth::~pickbyboth()
 {
 	delete pAct;

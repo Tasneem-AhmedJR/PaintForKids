@@ -6,5 +6,7 @@ public:
 	ToPlay(ApplicationManager* pApp);
 	virtual void ReadActionParameters();
 	void Execute();
+	virtual bool isRecorded();
+
 };
 

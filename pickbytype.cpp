@@ -146,6 +146,11 @@ void pickbytype::Execute()
 
 		}
 
+		bool pickbytype::isRecorded()
+		{
+			return false;
+		}
+
 		pickbytype::~pickbytype()
 		{
 			delete pAct;

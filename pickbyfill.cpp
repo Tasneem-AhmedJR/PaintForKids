@@ -131,6 +131,11 @@ void pickbyfill::Execute()
 	 pOut->PrintMessage("please draw first and fill color to can play with color");
 }
 
+bool pickbyfill::isRecorded()
+{
+	return false;
+}
+
 pickbyfill::~pickbyfill()
 {
 	delete pAct;
