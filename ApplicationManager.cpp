@@ -297,10 +297,8 @@ void ApplicationManager::unhide()
 int ApplicationManager::getfigureCount() { return FigCount; }
 
 
-void ApplicationManager::setfigureCount(int x)
-{
-	FigCount = x;
-}
+void ApplicationManager::setfigureCount(int x) { FigCount = x; }
+
 ////////////////////////////////////////////////////////////////////////////////////
 CFigure *ApplicationManager::GetFigure(Point* p) const
 {
@@ -324,6 +322,7 @@ CFigure *ApplicationManager::GetFigure(Point* p) const
 void ApplicationManager::ClearingFigures()       //loops on fig list and calls clearfig of each class
 {
 	pOut->reset();
+	CFigure::resetcount();
 	for (int i = 0; i < FigCount; i++)
 	{
 		if (FigList[i])
@@ -332,28 +331,17 @@ void ApplicationManager::ClearingFigures()       //loops on fig list and calls c
 	FigCount = 0;
 	setSelectedFig(NULL);
 }
-void ApplicationManager::DeleteFig(bool ToUndo)
+void ApplicationManager::DeleteFig(CFigure* d)
 {
-	if (ToUndo)
+	bool notfound = true;
+	for (int i = 0; i < FigCount && notfound; i++)      //loops on figlist 
 	{
-		if (FigList[FigCount - 1])
+		if (FigList[i] == d)                           //Checks which fig was passed
 		{
-			FigList[FigCount - 1]->SetVisibility(false);
-			pOut->ClearDrawArea();
-		}
-	}
-	else
-	{
-		bool notfound = true;
-		for (int i = 0; i < FigCount && notfound; i++)    //loops on figlist 
-		{
-			if (FigList[i]->IsSelected())                 //Checks which fig has selected as true
-			{
-				swap(FigList[i], FigList[FigCount - 1]);  //swaps selected fig with last fig in order not to leave emptiness between fig ptrs when deleted
-				//FigList[FigCount - 1]->DeleteFig();     //TODO: Does the order matter??
-				FigList[FigCount - 1]->SetVisibility(false);
-				notfound = false;
-			}
+			swap(FigList[i], FigList[FigCount - 1]);  //swaps selected fig with last fig in order not to leave emptiness between fig ptrs when deleted
+			FigList[FigCount - 1] = NULL;
+			FigCount--;
+			notfound = false;
 		}
 	}
 }
@@ -380,10 +368,10 @@ void ApplicationManager::UpdateInterface() const
 	pOut->ClearDrawArea();
 	for (int i = 0; i < FigCount; i++)
 	{
-		if (FigList[i]) {
+		if (FigList[i])
+		{
 			if (FigList[i]->gethide())
-				if (FigList[i]->GetVisibility()  )        //To Only Draw Visible figures to the user
-				   FigList[i]->Draw(pOut);
+				FigList[i]->Draw(pOut);
 		}	          //Call Draw function (virtual member fn)
 	}
 }

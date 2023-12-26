@@ -24,6 +24,7 @@ public:
 	void SetSelected(bool s);	                //select/unselect the figure
 	bool IsSelected() const;	                //check whether fig is selected
 	virtual void Draw(Output* pOut)   = 0 ;		//Draw the figure
+	static void resetcount();                      //resets ID to zero
 	void SetVisibility(bool f);                 //Sets visibilty status for a figure
 	bool GetVisibility();                       //Returns visibility for a figure
 	void ChngDrawClr(color Dclr);	            //changes the figure's drawing color

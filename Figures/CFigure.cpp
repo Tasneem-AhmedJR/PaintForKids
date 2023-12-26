@@ -15,6 +15,8 @@ void CFigure::SetSelected(bool s) {	Selected = s; }
 
 bool CFigure::IsSelected() const { return Selected; }
 
+void CFigure::resetcount() { count = 0; }
+
 void CFigure::SetVisibility(bool f) { if (this)	Visible = f; }
 
 bool CFigure::GetVisibility() { if (this) return Visible; }

@@ -10,19 +10,24 @@ public:
 	Fill(ApplicationManager* pApp) :setColorAction(pApp) {}
 	void Execute()
 	{
+		//a pointer to the output interface
 		Output* pOut = pManager->GetOutput();
+
+		//checks if any figure is selectd
 
 		if (pManager->getSelectedFig() == NULL) { pOut->PrintMessage("Please select a figure first "); }
 		else
 		{
-			f = pManager->getSelectedFig();
+			f = pManager->getSelectedFig();     //a pointer to the selected figure 
 			if (f->IsFilled())
 				PreClr = f->GetFillclr();
 			else PreClr = BEIGE;
+
 			pOut->PrintMessage("Change filling color, Plese choose a color ");
-			pManager->setcolorType(true);
-			pOut->setStyle(true);
-			setColorAction::Execute();
+			pManager->setcolorType(true);       //Fill the selectd figure
+			pOut->setStyle(true);               //set drawing style FILLED
+
+			setColorAction::Execute();          //change filling color   
 			CurrentClr = pOut->getCrntFillColor();
 		}
 		pManager->UpdateInterface();

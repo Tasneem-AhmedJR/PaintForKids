@@ -15,11 +15,12 @@ void StartRecAction::Execute()
 	//Get a Pointer to the Output Interfaces
 	Output* pOut = pManager->GetOutput();
 
-	if (pManager->getRecorder()->isRecording())
+	if (pManager->getRecorder()->isRecording())          //checks if the program is already recording
 		pOut->PrintMessage("Already recording ");
 	else
 	{
-		if (pManager->getRecorder()->getLastType() == CLEAR_ALL || pManager->GetActionList()->getList() == NULL)
+		//the kid can only start recording at the start of the program or after clear all action  
+		if (pManager->getRecorder()->getLastType() == CLEAR_ALL || pManager->getRecorder()->getLastType()==EMPTY)
 		{
 			pManager->getRecorder()->setRecording(true);
 			pOut->PrintMessage("Recording started");
