@@ -30,7 +30,8 @@ void Move::Execute()
 	Output* pOut = pManager->GetOutput();
 	if (pManager->getSelectedFig())                //to only be called if there is a selected fig
 	{
-		ReadActionParameters();
+		if (!pManager->getRecorder()->isPlayingNow())
+			ReadActionParameters();
 		pOut->PrintMessage("aclick on move");
 
 		pManager->Movefig(p1);                    //calls delete func. in applicationManager to access figlist
@@ -38,4 +39,5 @@ void Move::Execute()
 		pOut->ClearDrawArea();
 
 	}
+	else pOut->PrintMessage("Please select a figure first ");
 }

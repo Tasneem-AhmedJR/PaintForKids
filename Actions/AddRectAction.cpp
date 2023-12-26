@@ -28,7 +28,7 @@ void AddRectAction::ReadActionParameters()
 		pIn->GetPointClicked(P2.x, P2.y);   //Read 2nd corner and store in point P2
 
 		i++;
-	} while (!(P1.y > 50 && P2.y > 50 && P1.y < 600 && P2.y < 600));
+	} while (!(P1.y > 50 && P2.y > 50 && P1.y < 600 && P2.y < 600) || abs(P1.x - P2.x) < 5 || abs(P1.y - P2.y) < 5);
 	
 
 	RectGfxInfo.isFilled = pOut->isFilled();;	//default is not filled
