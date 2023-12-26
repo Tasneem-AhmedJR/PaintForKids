@@ -46,15 +46,12 @@ void CSquare::Movefi(Output* pOut, Point p)
 	//pOut->DrawSquare(Center, FigGfxInfo, 1);
 }
 
-<<<<<<< HEAD
 int CSquare::getconstfig()
-=======
-
-int CSquare::getnum()
->>>>>>> d26effc32444dc4328747bcc7f9307460cd6468a
 {
 	return 1;                 //the const of the square is considerd 1
 }
+
+
 
 void CSquare::Save(ofstream& OutFile)
 {

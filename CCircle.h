@@ -14,19 +14,11 @@ public:
 	bool validate(Point, Point);                 // checks if the figure is inside the drawing area 
 	virtual void DeleteFig();
 	virtual void Movefi(Output* pOut, Point p);
-<<<<<<< HEAD
-	int CalcRadius(Point* p);              //Calculate radius of the circle between the center and any point
+	int CalcRadius(Point* p, Point* pcent);              //Calculate radius of the circle between the center and any point
 	double CalcArea(Point* p);            // Calculate Area of the circle between the center and any point
 	bool isInside(Point* p);              // checks if a given point is inside or on the circle
-	void PrintInfo(Output* pOut);
+	void PrintInfo(Output* pOut);              	               // print circle info 
 	virtual int getconstfig();
-=======
-	int CalcRadius(Point*, Point*);              //Calculate radius of the circle between the center and any point
-	double CalcArea(Point* p);                   // Calculate Area of the circle between the center and any point
-	bool isInside(Point* p);                     // checks if a given point is inside or on the circle
-	void PrintInfo(Output* pOut);                // print circle info 
-	virtual int getnum();
->>>>>>> d26effc32444dc4328747bcc7f9307460cd6468a
     void Save(ofstream& OutFile);
 	void Load(ifstream& Infile);
 };
