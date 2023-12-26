@@ -149,14 +149,14 @@ void pickbyboth::Execute()
 						correct++;
 						pManager->UpdateInterface();
 				
-						pOut->PrintMessage("you are right continue is " + to_string(correct) + "the incorrect anwsers" + to_string(incorrect) );
+						pOut->PrintMessage("you are right continue is " + to_string(correct) + "the incorrect anwsers" + to_string(incorrect)+ " choose "+(arrofquestions[random]) );
 					
 						
 					}
 					else  if (pManager->insideofboth(p1, random) == 0)
 					{
 						incorrect++;
-						pOut->PrintMessage("this is the false anwser " + (arrofquestions[random]) + " the correct is " + to_string(correct) + "the incorrect anwsers" + to_string(incorrect));
+						pOut->PrintMessage("this is the false anwser " + (arrofquestions[random]) + " the correct is " + to_string(correct) + "the incorrect anwsers" + to_string(incorrect)+" please choose "+(arrofquestions[random]));
 					}
 					else if (pManager->insideofboth(p1, random) == -1)
 						pOut->PrintMessage("please click on a fig");
