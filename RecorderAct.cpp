@@ -36,11 +36,15 @@ void RecorderAct::AddrecList(Action* p, ActionType t)
 	//reset recording history after clear all action 
 	if (t == CLEAR_ALL)
 	{
-		for (int i = 0; i < 20; i++) { delete RecList[i]; RecList[i] = NULL; }
+		for (int i = 0; i < 20; i++) 
+		{
+			if(RecList[i]!=NULL)
+			{ delete RecList[i]; RecList[i] = NULL;	}
+		}
 		lastRec = 0;
 	}
 	//delete actions that cannot be recorded/undone
-	if (!p->isRecorded() || (!recording && !pManager->GetActionList()->IsTraced(p))) 
+	if (!p->isRecorded() || (!recording && !pManager->GetActionList()->IsTraced(p)))
 	{ 
 		if (p != NULL)
 		{ delete p; p = NULL; }
@@ -77,4 +81,11 @@ bool RecorderAct::hasRecordes()
 {
 	if (RecList[0] == NULL) return false;
 	return true;
+}
+
+bool RecorderAct::isinthehistory(Action* p)
+{
+	for (int i = 0; i < 20; i++)
+		if (RecList[i] == p) return true;
+	return false;
 }
