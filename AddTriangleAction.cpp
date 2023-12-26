@@ -2,6 +2,7 @@
 #include "ApplicationManager.h"
 #include "GUI\input.h"
 #include "GUI\Output.h"
+#include<cmath>
 
 AddTriangleAction::AddTriangleAction( ApplicationManager* pApp):Action(pApp)
 {
@@ -10,6 +11,7 @@ AddTriangleAction::AddTriangleAction( ApplicationManager* pApp):Action(pApp)
 
 void AddTriangleAction::ReadActionParameters()
 {
+	double validlength = 15;
 	//Get a Pointer to the Input / Output Interfaces
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
@@ -31,7 +33,7 @@ void AddTriangleAction::ReadActionParameters()
 		pIn->GetPointClicked(P3.x, P3.y);    //Read 3th Point and store in Point P3
 
 		i++;
-	} while (!tri->validate(P1, P2, P3));
+	} while (!(P1.y > 50 && P2.y > 50 && P3.y > 50) || !(P1.y < 600 && P2.y < 600 && P3.y < 600)||pow(pow((P1.x-P2.x),2)+pow((P1.y-P2.y),2),0.5)< validlength || pow(pow((P2.x - P3.x), 2) + pow((P2.y - P3.y), 2), 0.5) < validlength|| pow(pow((P1.x - P3.x), 2) + pow((P1.y - P3.y), 2), 0.5) < validlength ||((P1.x==P2.x==P3.x)&&(P1.y==P2.y==P3.y)));
 
 	TriangleGfxInfo.isFilled = pOut->isFilled();;	//default is not filled
 	//get drawing, filling colors and pen width from the interface

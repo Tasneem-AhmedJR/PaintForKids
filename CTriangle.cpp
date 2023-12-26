@@ -109,6 +109,7 @@ void CTriangle::Load(ifstream& Infile)
 		FigGfxInfo.DrawClr = ORANGE;
 	else if (C_D == "RED")
 		FigGfxInfo.DrawClr = RED;
+	Preclr = FigGfxInfo.DrawClr;
 	Infile >> C_F;
 	if (C_F == "NO_FILL")
 		FigGfxInfo.isFilled = 0;

@@ -72,7 +72,7 @@ void CCircle::Load(ifstream& Infile)
 	Infile >> gen_P.y;
 	Infile >> C_D;
 	if (C_D == "BLUE")
-		FigGfxInfo.DrawClr = BLUE;
+	FigGfxInfo.DrawClr = BLUE;
 	else if (C_D == "BLACK")
 		FigGfxInfo.DrawClr = BLACK;
 	else if (C_D == "GREEN")
@@ -83,6 +83,7 @@ void CCircle::Load(ifstream& Infile)
 		FigGfxInfo.DrawClr = ORANGE;
 	else if (C_D == "RED")
 		FigGfxInfo.DrawClr = RED;
+	Preclr = FigGfxInfo.DrawClr;
 	Infile >> C_F;
 	if (C_F == "NO_FILL")
 		FigGfxInfo.isFilled = 0;
@@ -99,6 +100,7 @@ void CCircle::Load(ifstream& Infile)
 		FigGfxInfo.FillClr = ORANGE;
 	else if (C_F == "RED")
 		FigGfxInfo.FillClr = RED;
+	
 }
 
 void CCircle::DeleteFig()
