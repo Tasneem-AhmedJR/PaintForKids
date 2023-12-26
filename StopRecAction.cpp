@@ -16,7 +16,6 @@ void StopRecAction::Execute()
 		if (pManager->getRecorder()->isRecording())    //check if the program is currently recording
 		{
 			pManager->getRecorder()->setRecording(false);
-			pManager->SetRec(false);
 			pOut->PrintMessage("Recording has ended ");
 		}
 

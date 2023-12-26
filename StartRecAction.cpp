@@ -23,7 +23,6 @@ void StartRecAction::Execute()
 		if (pManager->getRecorder()->getLastType() == CLEAR_ALL || pManager->getRecorder()->getLastType()==EMPTY)
 		{
 			pManager->getRecorder()->setRecording(true);
-			pManager->SetRec(true);
 			pOut->PrintMessage("Recording started");
 		}
 		else pOut->PrintMessage("Error! please restart the program or clear the drawing area first ");
