@@ -39,5 +39,8 @@ public:
 		pOut->setCurrentDrawColor(PreClr);
 		pManager->UpdateInterface();
 	}
-	bool canUndone() { return true; }
+	virtual bool Undoable()
+	{
+		return true;
+	}
 };

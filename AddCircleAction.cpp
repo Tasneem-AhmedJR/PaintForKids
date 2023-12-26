@@ -31,9 +31,10 @@ void AddCircleAction::ReadActionParameters()
 		r = sqrt(pow((P1.x - P2.x), 2) + pow((P1.y - P2.y), 2));    //calculate radius of the circle
 		i++;
 		 
-	} while (!(P1.y > 50 && P1.y < 600 && P1.y - r > 50 && P1.y + r < 600));   //make sure the figure is not drawn outside drawing area
+	} while (!circ->validate(P1, P2));   //make sure the circle is not drawn outside drawing area
 	
 	CircleGfxInfo.isFilled = pOut->isFilled();;	//default is not filled
+
 	//get drawing, filling colors and pen width from the interface
 	CircleGfxInfo.DrawClr = pOut->getCrntDrawColor();
 	CircleGfxInfo.FillClr = pOut->getCrntFillColor();
@@ -43,7 +44,6 @@ void AddCircleAction::ReadActionParameters()
 
 void AddCircleAction::RedoAction()
 {
-	pManager->setfigureCount(pManager->getfigureCount() + 1);
 	circ->SetVisibility(true);
 	Output* pOut = pManager->GetOutput();
 	pOut->ClearDrawArea();
@@ -51,7 +51,6 @@ void AddCircleAction::RedoAction()
 
 void AddCircleAction::CancelAction()
 {
-	pManager->setfigureCount(pManager->getfigureCount() - 1);
 	circ->SetVisibility(false);                 //the figure sets its own visibilty to false in order not to be drawn
 	Output* pOut = pManager->GetOutput();      //and delete last added figure
 	pOut->ClearDrawArea();
@@ -61,9 +60,10 @@ bool AddCircleAction::canUndone() { return true; }
 
 void AddCircleAction::Execute()
 {
-	if (!pManager->getRecorder()->isPlayingNow())
+	if (!pManager->getRecorder()->isPlayingNow())  //no need to read Action parameters while playing recording
 
-	ReadActionParameters();  //must read Action parameters first
+	ReadActionParameters();  //must read Action parameters first in case of not playing recording
+
 	//Create a Circle with the parameters read from the user
 	circ = new CCircle(P1, P2, CircleGfxInfo);
 

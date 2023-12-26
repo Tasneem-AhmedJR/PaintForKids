@@ -16,7 +16,7 @@ public:
 
 	//Reads rectangle parameters
 	virtual void ReadActionParameters();
-	bool canUndone();
+	virtual bool Undoable();
 	virtual void CancelAction();
 	virtual void RedoAction();
 	//Add rectangle to the ApplicationManager

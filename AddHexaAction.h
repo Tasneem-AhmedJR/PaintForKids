@@ -13,7 +13,7 @@ public:
 	//Reads Hexagon parameters
 	virtual void ReadActionParameters();
 	virtual void RedoAction();
-	virtual bool canUndone();
+	virtual bool Undoable();
 	virtual void CancelAction();
 	//Add Hexagon to the ApplicationManager
 	virtual void Execute();

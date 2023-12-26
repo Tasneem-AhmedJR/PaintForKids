@@ -8,8 +8,9 @@ public:
 	DeleteFigure(ApplicationManager* pApp);
 	virtual void ReadActionParameters();
 	virtual void RedoAction();
-	bool canUndone();
+	virtual bool Undoable();
 	virtual void CancelAction();
 	virtual void Execute();
+	~DeleteFigure();
 };
 

@@ -16,7 +16,7 @@ public:
 	virtual void ReadActionParameters();
 	virtual void RedoAction();
 	virtual void CancelAction();
-	bool canUndone();
+	virtual bool Undoable();
 	//Add Triangle to the ApplicationManager
 	virtual void Execute();
 };

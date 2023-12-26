@@ -13,7 +13,8 @@ public:
 	CTriangle(){}
 	CTriangle(Point, Point, Point, GfxInfo FigureGfxInfo);
 	virtual void Draw(Output* pOut);
-	double CalcArea(Point* a, Point* b, Point* c);
+	bool validate(Point, Point, Point);       // checks if the figure is inside the drawing area
+	double CalcArea(Point* a, Point* b, Point* c);  //calculate area of the triangle
 	bool isInside(Point*);
 	void PrintInfo(Output* pOut);
 	virtual void Movefi(Output* pOut, Point p);

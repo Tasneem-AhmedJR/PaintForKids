@@ -57,5 +57,8 @@ public:
 		pManager->UpdateInterface();
 	}
 
-	bool canUndone() { return true; }
+	virtual bool Undoable()
+	{
+		return true;
+	}
 };

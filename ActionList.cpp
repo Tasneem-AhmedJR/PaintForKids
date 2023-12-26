@@ -28,7 +28,7 @@ Action* ActionList::getRedo()
 
 void ActionList::TraceAction(Action* p)
 {
-	if (p->canUndone())
+	if (p->Undoable())
 	{
 		Validate();
 		ActList[LastAction] = p;
@@ -82,6 +82,19 @@ bool ActionList::canredo()
 	if (RedoIndex == -1 || RedoIndex >= 5 || ActList[RedoIndex] == NULL)
 		return false;
 	else return true;
+}
+
+bool ActionList::IsTraced(Action* a)
+{
+	bool found = false;
+	int i = 0;
+	while (!found && i < 5)
+	{
+		if (ActList[i] == a)
+			found = true;
+		i++;
+	}
+	return found;
 }
 
 ActionList::~ActionList()

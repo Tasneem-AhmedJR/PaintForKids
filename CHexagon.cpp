@@ -5,13 +5,18 @@
 CHexagon::CHexagon(Point P, GfxInfo FigureGfxInfo):CFigure(FigureGfxInfo)
 {
 	Center = P;
-	
 }
 
 void CHexagon::Draw(Output* pOut)
 {
 	//Call Output::DrawHexa to draw a Hexagon on the screen	
 	pOut->DrawHexa(Center, FigGfxInfo, Selected);
+}
+
+bool CHexagon::validate(Point P)
+{
+	if (P.y < 130 || P.y>530) return false;
+	return true;
 }
 
 double CHexagon::CalcArea(Point* p)
@@ -39,8 +44,15 @@ void CHexagon::DeleteFig()
 
 void CHexagon::Movefi(Output* pOut, Point p)
 {
-	Center = p;
-	pOut->DrawHexa(Center, FigGfxInfo, Selected);
+	if(validate(p))
+	{
+		previous = Center;                          //to store previous point the figure was at
+		Center = p;
+		pOut->PrintMessage("Selected Figure Move");
+	}
+	else pOut->PrintMessage("Invalid, cannot move figure ");
+		
+	//pOut->DrawHexa(Center, FigGfxInfo, Selected);
 }
 
 int CHexagon::getconstfig()
@@ -80,6 +92,7 @@ void CHexagon::Load(ifstream& Infile)
 		FigGfxInfo.DrawClr = ORANGE;
 	else if (C_D == "RED")
 		FigGfxInfo.DrawClr = RED;
+	Preclr = FigGfxInfo.DrawClr;
 	Infile >> C_F;
 	if (C_F == "NO_FILL")
 		FigGfxInfo.isFilled = 0;

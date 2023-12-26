@@ -19,7 +19,11 @@ void DeleteFigure::RedoAction()
 	pOut->ClearDrawArea();
 }
 
-bool DeleteFigure::canUndone() { return true; }
+bool DeleteFigure::Undoable()
+{
+	return true;
+}
+
 
 void DeleteFigure::CancelAction()
 {
@@ -41,4 +45,10 @@ void DeleteFigure::Execute()
 	}
 	else
 		pOut->PrintMessage("Select a Figure to Delete");
+}
+
+DeleteFigure::~DeleteFigure()
+{
+	if (!f->GetVisibility())
+		delete f;
 }

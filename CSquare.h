@@ -8,6 +8,7 @@ public:
 	CSquare(){}
 	CSquare(Point, GfxInfo FigureGfxInfo);
 	virtual void Draw(Output* pOut);
+	bool validate(Point);                    // checks if the figure is inside the drawing area
 	bool isInside(Point* p);
 	void PrintInfo(Output* pOut);
 	virtual void DeleteFig();
