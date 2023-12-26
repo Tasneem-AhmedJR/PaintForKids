@@ -116,6 +116,7 @@ void CCircle::Movefi(Output* pOut, Point p)
 	p2 = p;
 	if (validate(p1, p2))
 	{
+		previous = Cent_P;         //stores centre point
 		gen_P = p1;
 		Cent_P = p2;
 		pOut->PrintMessage("Selected Figure Move");

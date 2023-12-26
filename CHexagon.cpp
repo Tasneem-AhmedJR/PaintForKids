@@ -5,7 +5,6 @@
 CHexagon::CHexagon(Point P, GfxInfo FigureGfxInfo):CFigure(FigureGfxInfo)
 {
 	Center = P;
-	
 }
 
 void CHexagon::Draw(Output* pOut)
@@ -47,6 +46,7 @@ void CHexagon::Movefi(Output* pOut, Point p)
 {
 	if(validate(p))
 	{
+		previous = Center;                          //to store previous point the figure was at
 		Center = p;
 		pOut->PrintMessage("Selected Figure Move");
 	}

@@ -15,6 +15,7 @@ protected:
 	color Preclr;
 	bool Visible;
 	bool hide;
+	Point previous;
 	/// Add more parameters if needed.
 
 public:
@@ -28,6 +29,7 @@ public:
 	void ChngDrawClr(color Dclr);	            //changes the figure's drawing color
 	void ChngFillClr(color Fclr);	            //changes the figure's filling color
 	virtual void Movefi(Output* pOut, Point p)=0;
+	Point PrePoint();
 	void sethide(bool l);
 	bool gethide();
 	virtual int getnum() =0;

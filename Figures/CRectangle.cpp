@@ -64,6 +64,8 @@ void CRectangle::Movefi(Output* pOut, Point p)
 
 	if (validate(p1,p2))
 	{
+		previous.x = (Corner1.x + Corner2.x)/2;           //stores X coordinate of centre
+		previous.y = (Corner1.y + Corner2.y)/2;           //stores Y coordinate of centre
 		Corner1 = p1;
 		Corner2 = p2;
 		pOut->PrintMessage("Selected Figure Move");

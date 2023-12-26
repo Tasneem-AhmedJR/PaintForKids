@@ -30,13 +30,32 @@ void Move::Execute()
 	Output* pOut = pManager->GetOutput();
 	if (pManager->getSelectedFig())                //to only be called if there is a selected fig
 	{
+		f = pManager->getSelectedFig();
 		if (!pManager->getRecorder()->isPlayingNow())
 			ReadActionParameters();
 		pOut->PrintMessage("aclick on move");
-
 		pManager->Movefig(p1);                    //calls delete func. in applicationManager to access figlist
 		pOut->ClearDrawArea();
 
 	}
 	else pOut->PrintMessage("Please select a figure first ");
+}
+
+bool Move::Undoable()
+{
+	return true;
+}
+
+void Move::CancelAction()
+{
+	Output* pOut = pManager->GetOutput();
+	f->Movefi(pOut, f->PrePoint());
+	pOut->ClearDrawArea();
+}
+
+void Move::RedoAction()
+{
+	Output* pOut = pManager->GetOutput();
+	f->Movefi(pOut, p1);
+	pOut->ClearDrawArea();
 }

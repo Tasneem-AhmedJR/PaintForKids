@@ -56,6 +56,8 @@ void CTriangle::Movefi(Output* pOut, Point p)
 
 	if (validate(a,b,c))
 	{
+		previous.x = (A.x + B.x + C.x) / 3;         //stores X coordinate of centre
+		previous.y = (A.y + B.y + C.y) / 3;         //stores Y coordinate of centre
 		A = a; B = b; C = c;
 		pOut->PrintMessage("Selected Figure Move");
 	}

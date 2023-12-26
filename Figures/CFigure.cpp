@@ -56,6 +56,11 @@ void CFigure::ChngFillClr(color Fclr)
 }
 
 
+Point CFigure::PrePoint()
+{
+	return previous;
+}
+
 void CFigure::sethide(bool l)
 {
 	hide = l;

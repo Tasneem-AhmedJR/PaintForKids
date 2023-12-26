@@ -4,7 +4,6 @@
 CSquare::CSquare(Point P, GfxInfo FigureGfxInfo):CFigure(FigureGfxInfo)
 {
 	Center = P;
-	
 }
 
 void CSquare::Draw(Output* pOut)
@@ -39,12 +38,14 @@ void CSquare::Movefi(Output* pOut, Point p)
 {
 	if (validate(p))
 	{
-		Center = p; pOut->PrintMessage("Selected Figure Move");
+		previous = Center;                          //to store previous point the figure was at
+		Center = p; pOut->PrintMessage("Selected Figure Moved");
 	}
 	else pOut->PrintMessage("Invalid, cannot move figure ");
 
 	//pOut->DrawSquare(Center, FigGfxInfo, 1);
 }
+
 
 int CSquare::getnum()
 {
