@@ -16,7 +16,8 @@ void CTriangle::Draw(Output* pOut)
 
 bool CTriangle::validate(Point P1 , Point P2, Point P3)
 {
-	if (!(P1.y > 50 && P2.y > 50 && P3.y > 50) || !(P1.y < 600 && P2.y < 600 && P3.y < 600))
+	double validlength = 15;
+	if (!(P1.y > 50 && P2.y > 50 && P3.y > 50) || !(P1.y < 600 && P2.y < 600 && P3.y < 600) || pow(pow((P1.x - P2.x), 2) + pow((P1.y - P2.y), 2), 0.5) < validlength || pow(pow((P2.x - P3.x), 2) + pow((P2.y - P3.y), 2), 0.5) < validlength || pow(pow((P1.x - P3.x), 2) + pow((P1.y - P3.y), 2), 0.5) < validlength || ((P1.x == P2.x == P3.x) && (P1.y == P2.y == P3.y)))
 		return false;
 	return true;
 }
