@@ -19,7 +19,7 @@ void StartRecAction::Execute()
 		pOut->PrintMessage("Already recording ");
 	else
 	{
-		if (pManager->getRecorder()->getLastType() == CLEAR_ALL || pManager->getLastAct() == NULL)
+		if (pManager->getRecorder()->getLastType() == CLEAR_ALL || pManager->GetActionList()->getList() == NULL)
 		{
 			pManager->getRecorder()->setRecording(true);
 			pOut->PrintMessage("Recording started");

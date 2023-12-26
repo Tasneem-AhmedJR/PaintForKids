@@ -28,7 +28,7 @@ void AddRectAction::ReadActionParameters()
 		pIn->GetPointClicked(P2.x, P2.y);   //Read 2nd corner and store in point P2
 
 		i++;
-	} while (!rect->validate(P1, P2));
+	} while (!rect->validate(P1, P2));    //makes sure not to draw the rectangle outside the drawing area
 	
 
 	RectGfxInfo.isFilled = pOut->isFilled();;	//default is not filled
@@ -44,7 +44,6 @@ bool AddRectAction::canUndone() { return true; }
 
 void AddRectAction::CancelAction()
 {
-	pManager->setfigureCount(pManager->getfigureCount() - 1);
 	rect->SetVisibility(false);                     //the figure sets its own visibilty to false in order not to be drawn 
 	Output* pOut = pManager->GetOutput();        
 	pOut->ClearDrawArea();
@@ -52,7 +51,6 @@ void AddRectAction::CancelAction()
 
 void AddRectAction::RedoAction()
 {
-	pManager->setfigureCount(pManager->getfigureCount() + 1);
 	rect->SetVisibility(true);
 	Output* pOut = pManager->GetOutput();
 	pOut->ClearDrawArea();
@@ -61,9 +59,10 @@ void AddRectAction::RedoAction()
 //Execute the action
 void AddRectAction::Execute() 
 {
-	if (!pManager->getRecorder()->isPlayingNow())
+	if (!pManager->getRecorder()->isPlayingNow())   //no need to read Action parameters while playing recording
 
-	ReadActionParameters();  //must read Action parameters first
+	ReadActionParameters();  //must read Action parameters first in case of not playing recording
+
 	//Create a rectangle with the parameters read from the user
 	rect = new CRectangle(P1, P2, RectGfxInfo);
 

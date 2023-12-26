@@ -25,7 +25,7 @@ void AddHexaAction::ReadActionParameters()
 		pIn->GetPointClicked(P.x, P.y);   //Read point and store in point P1
 
 		i++;
-	} while (!hex->validate(P));
+	} while (!hex->validate(P));          //make sure the hexagon is not drawn outside the drawing area 
 
 	HexaGfxInfo.isFilled = pOut->isFilled();;	//default is not filled
 	//get drawing, filling colors and pen width from the interface
@@ -37,7 +37,6 @@ void AddHexaAction::ReadActionParameters()
 
 void AddHexaAction::RedoAction()
 {
-	pManager->setfigureCount(pManager->getfigureCount() + 1);
 	hex->SetVisibility(true);
 	Output* pOut = pManager->GetOutput();
 	pOut->ClearDrawArea();
@@ -47,7 +46,6 @@ bool AddHexaAction::canUndone() { return true; }
 
 void AddHexaAction::CancelAction()
 {
-	pManager->setfigureCount(pManager->getfigureCount() - 1);
 	hex->SetVisibility(false);                 //the figure sets its own visibilty to false in order not to be drawn
 	Output* pOut = pManager->GetOutput();      //and delete last added figure
 	pOut->ClearDrawArea();
@@ -55,9 +53,10 @@ void AddHexaAction::CancelAction()
 
 void AddHexaAction::Execute()
 {
-	if (!pManager->getRecorder()->isPlayingNow())
+	if (!pManager->getRecorder()->isPlayingNow())     //no need to read Action parameters while playing recording
 
-	ReadActionParameters();  //must read Action parameters first
+	ReadActionParameters();  //must read Action parameters first in case of not playing recording
+
 	//Create a rectangle with the parameters read from the user
 	hex = new CHexagon(P,HexaGfxInfo);
 

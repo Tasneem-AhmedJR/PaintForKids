@@ -12,10 +12,10 @@ void Redo::ReadActionParameters()
 
 void Redo::Execute()
 {
-	if (pManager->Redoable())
+	if (pManager->GetActionList()->canredo())
 	{
-		pManager->GetRedoAction()->RedoAction();   //Every action is responsible for redoing itself 
-		pManager->IncrRedo();                       //
+		pManager->GetActionList()->getList();   //Every action is responsible for redoing itself 
+		pManager->GetActionList()->IncrementRedo();    
 	}
 	else
 	{

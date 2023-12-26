@@ -14,10 +14,10 @@ void Undo::ReadActionParameters()
 
 void Undo::Execute()
 {
-	if ((pManager->getLastAct()) != NULL)
+	if ((pManager->GetActionList()->getList()) != NULL)
 	{
-		pManager->getLastAct()->CancelAction();   //Every action is responsible for canceling itself 
-		pManager->decrease();                     //Decrements last Action index only if last traced action was undone
+		pManager->GetActionList()->getList()->CancelAction();   //Every action is responsible for canceling itself 
+		pManager->GetActionList()->DecrementLastAct();          //Decrements last Action index only if last traced action was undone
 
 	}
 	else

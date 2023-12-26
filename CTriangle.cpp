@@ -36,7 +36,7 @@ bool CTriangle::isInside(Point* p)
 
 void CTriangle::PrintInfo(Output* pOut)
 {
-	pOut->PrintMessage(("ID : ") + to_string(ID) + (" Corner 1: ") + to_string(A.x) + (" , ") + to_string(A.y) + (" Corner 2: ") + to_string(B.x) + (" , ") + to_string(B.y) + (" Corner 3: ") + to_string(C.x) + (" , ") + to_string(C.y));
+	pOut->PrintMessage(("ID : ") + to_string(ID) + (" Corner 1: ") + to_string(A.x) + (" , ") + to_string(A.y) + (" Corner 2: ") + to_string(B.x) + (" , ") + to_string(B.y) + (" Corner 3: ") + to_string(C.x) + (" , ") + to_string(C.y) + (" Area: ") + to_string(CalcArea(&A, &B, &C)));
 }
 
 void CTriangle::Movefi(Output* pOut, Point p)

@@ -14,7 +14,7 @@ void CRectangle::Draw(Output* pOut)
 	pOut->DrawRect(Corner1, Corner2, FigGfxInfo, Selected);
 }
 
-double CRectangle::CalcArea(Point* p)
+double CRectangle::CalcArea()
 {
 	return abs(Corner1.x - Corner2.x) * abs(Corner1.y - Corner2.y);
 }
@@ -38,7 +38,7 @@ bool CRectangle::isInside(Point* p)
 
 void CRectangle::PrintInfo(Output* pOut)
 { 
-	pOut->PrintMessage(("ID : ") + to_string(ID) + (" Corner 1: ") + to_string(Corner1.x) + (" , ") + to_string(Corner1.y) + (" Corner 2: ") + to_string(Corner2.x) + (" , ") + to_string(Corner2.y));
+	pOut->PrintMessage(("ID : ") + to_string(ID) + (" Corner 1: ") + to_string(Corner1.x) + (" , ") + to_string(Corner1.y) + (" Corner 2: ") + to_string(Corner2.x) + (" , ") + to_string(Corner2.y) + (" Area: ") + to_string(CalcArea()));
 }
 
 
