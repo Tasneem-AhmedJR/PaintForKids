@@ -14,7 +14,7 @@ void Redo::Execute()
 {
 	if (pManager->GetActionList()->canredo())
 	{
-		pManager->GetActionList()->getList();   //Every action is responsible for redoing itself 
+		pManager->GetActionList()->getRedo()->RedoAction();   //Every action is responsible for redoing itself 
 		pManager->GetActionList()->IncrementRedo();    
 	}
 	else

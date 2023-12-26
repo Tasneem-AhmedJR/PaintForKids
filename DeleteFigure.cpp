@@ -19,7 +19,11 @@ void DeleteFigure::RedoAction()
 	pOut->ClearDrawArea();
 }
 
-bool DeleteFigure::canUndone() { return true; }
+bool DeleteFigure::Undoable()
+{
+	return true;
+}
+
 
 void DeleteFigure::CancelAction()
 {
