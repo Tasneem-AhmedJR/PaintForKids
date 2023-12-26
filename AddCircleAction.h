@@ -15,7 +15,7 @@ public:
 	virtual void ReadActionParameters();
 	virtual void RedoAction();
 	virtual void CancelAction();
-	bool canUndone();
+	virtual bool Undoable();
 	//Add Circle to the ApplicationManager
 	virtual void Execute();
 };

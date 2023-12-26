@@ -38,15 +38,20 @@ void AddHexaAction::ReadActionParameters()
 void AddHexaAction::RedoAction()
 {
 	hex->SetVisibility(true);
+	pManager->AddFigure(hex);
 	Output* pOut = pManager->GetOutput();
 	pOut->ClearDrawArea();
 }
 
-bool AddHexaAction::Undoable() { return true; }
+bool AddHexaAction::Undoable()
+{
+	return true;
+}
 
 void AddHexaAction::CancelAction()
 {
 	hex->SetVisibility(false);                 //the figure sets its own visibilty to false in order not to be drawn
+	pManager->DeleteFig(hex);
 	Output* pOut = pManager->GetOutput();      //and delete last added figure
 	pOut->ClearDrawArea();
 }
