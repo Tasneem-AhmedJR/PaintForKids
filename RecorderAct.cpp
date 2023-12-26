@@ -41,7 +41,7 @@ void RecorderAct::AddrecList(Action* p, ActionType t)
 			if(RecList[i]!=NULL)
 			{ delete RecList[i]; RecList[i] = NULL;	}
 		}
-		lastRec = 0;s
+		lastRec = 0;
 	}
 	//delete actions that cannot be recorded/undone
 	if (!p->isRecorded() || (!recording && !pManager->GetActionList()->IsTraced(p)))
