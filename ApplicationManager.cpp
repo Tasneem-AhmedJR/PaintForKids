@@ -117,6 +117,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			break;
 		case MOVE:
 			pAct = new Move(this);
+			break;
 
 		case EXIT:
 		{
