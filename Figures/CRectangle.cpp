@@ -47,9 +47,9 @@ void CRectangle::DeleteFig()
 	//DeletedFig = this;
 	delete this;
 }
-int CRectangle::getnum()
+int CRectangle::getconstfig()
 {
-	return 0;
+	return 0;               //the const of the rectangle is considerd 0
 }
 void CRectangle::Movefi(Output* pOut, Point p)
 {

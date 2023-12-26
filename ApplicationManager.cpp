@@ -185,7 +185,7 @@ RecorderAct* ApplicationManager::getRecorder() { return Recorder; }
 
 ActionList* ApplicationManager::GetActionList() { return ActList; }
 
-int ApplicationManager::getn( int n)
+int ApplicationManager::getnumcolors( int n)
 {
 
 		if (FigList[n]->GetFillclr() == BLACK && FigList[n]->IsFilled() && FigList[n]->GetVisibility())
@@ -205,30 +205,31 @@ int ApplicationManager::getn( int n)
 	
 }
 
-int ApplicationManager::getm( int n)
+int ApplicationManager::getnumofshape( int n)
 {
-	if (FigList[n]->getnum() == 1 && FigList[n]->GetVisibility())
+	if (FigList[n]->getconstfig() == 1 && FigList[n]->GetVisibility())
 		return 1;
-	else if (FigList[n]->getnum() == 2 && FigList[n]->GetVisibility())
+	else if (FigList[n]->getconstfig() == 2 && FigList[n]->GetVisibility())
 		return 2;
-	else if (FigList[n]->getnum() == 3 && FigList[n]->GetVisibility())
+	else if (FigList[n]->getconstfig() == 3 && FigList[n]->GetVisibility())
 		return 3;
-	else if (FigList[n]->getnum() == 4 && FigList[n]->GetVisibility())
+	else if (FigList[n]->getconstfig() == 4 && FigList[n]->GetVisibility())
 		return 4;
-	else if (FigList[n]->getnum() == 0 && FigList[n]->GetVisibility())
+	else if (FigList[n]->getconstfig() == 0 && FigList[n]->GetVisibility())
 		return 0;
 
 }
-int ApplicationManager::inside2(Point p, int y)
+int ApplicationManager::insideoffig(Point p, int y)
 {
 	for (int i = 0; i < FigCount; i++)
 	{
-		if (FigList[i]->isInside(&p) && FigList[i]->getnum() == y && FigList[i]->gethide()) {
+		if (FigList[i]->isInside(&p) && FigList[i]->getconstfig() == y && FigList[i]->gethide()) {
 			FigList[i]->sethide(false);
 			return 1;
 		}
-		else if (FigList[i]->isInside(&p) && FigList[i]->getnum() != y&&FigList[i]->gethide())
+		else if (FigList[i]->isInside(&p) && FigList[i]->getconstfig() != y&&FigList[i]->gethide())
 		{
+			
 			return 0;
 		}
 
@@ -237,7 +238,7 @@ int ApplicationManager::inside2(Point p, int y)
 	return -1;
 	
 }
-int ApplicationManager::inside(Point p, int y)
+int ApplicationManager::insideofcolor(Point p, int y)
 {
 	for (int i = 0; i < FigCount; i++)
 	{
@@ -259,11 +260,11 @@ int ApplicationManager::inside(Point p, int y)
 	return -1;
 
 }
-int ApplicationManager::inside3(Point p, int y)
+int ApplicationManager::insideofboth(Point p, int y)
 {
 	for (int i = 0; i < FigCount; i++)
 	{
-		if (FigList[i]->isInside(&p) && FigList[i]->filledcolor() == (y%6)&&y<=(FigList[i]->getnum()*6+5)&&y>= (FigList[i]->getnum() * 6)&&FigList[i]->IsFilled()) {
+		if (FigList[i]->isInside(&p) && FigList[i]->filledcolor() == (y%6)&&y<=(FigList[i]->getconstfig()*6+5)&&y>= (FigList[i]->getconstfig() * 6)&&FigList[i]->IsFilled()) {
 			FigList[i]->sethide(false);
 			return 1;
 		}

@@ -37,11 +37,12 @@ public:
 	RecorderAct* getRecorder();         // Returns a pointer to RecorderAct array to manage recording actions
 	ActionList* GetActionList();        // Returns pointer to actlist array
 
-	int getn( int n);
-	int getm(int n);
-	int inside2(Point p, int y);
-	int inside(Point p,int y);
-	int inside3(Point p, int y);
+	void Movefig(Point p);
+	int getnumcolors( int n);         //this fuction returns a number representing each shape to save the memory of arrofcolor
+	int getnumofshape(int n);          //this fuction returns a number representing each shape to save the memory of arroffig
+	int insideoffig(Point p, int y);  //this function to know the whether the child pressed into the correct shape or not or anywhere
+	int insideofcolor(Point p,int y);  //this function to know the whether the child pressed into the correct color or not or anywhere
+	int insideofboth(Point p, int y);    //this function to know the whether the child pressed into the correct (color&fig) or not or anywhere
 	void unhide();
 	
 	// -- Figures Management Functions

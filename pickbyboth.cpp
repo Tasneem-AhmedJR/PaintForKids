@@ -26,87 +26,87 @@ void pickbyboth::Execute()
 {
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
-	string arr5[30] = { "choose the all rectangle black color","choose the all rectangle yellow color" ,"choose the all rectangle orange color" ,"choose the all rectangle red color" ,"choose the all rectangle green color" ,"choose the all rectangle blue color","choose the all square black color","choose the all square yellow color" ,"choose the all square orange color" ,"choose the all square red color" ,"choose the all square green color" ,"choose the all square blue color"
+	string arrofquestions[30] = { "choose the all rectangle black color","choose the all rectangle yellow color" ,"choose the all rectangle orange color" ,"choose the all rectangle red color" ,"choose the all rectangle green color" ,"choose the all rectangle blue color","choose the all square black color","choose the all square yellow color" ,"choose the all square orange color" ,"choose the all square red color" ,"choose the all square green color" ,"choose the all square blue color"
 	,"choose the all circle black color","choose the all circle yellow color" ,"choose the all circle orange color" ,"choose the all circle red color" ,"choose the all circle green color" ,"choose the all circle blue color"
 	,"choose the all hexa black color","choose the all hexa yellow color" ,"choose the all hexa orange color" ,"choose the all hexa red color" ,"choose the all hexa green color" ,"choose the all hexa blue color" 
 	,"choose the all triangle black color","choose the all triangle yellow color" ,"choose the all triangle orange color" ,"choose the all triangle red color" ,"choose the all triangle green color" ,"choose the all triangle blue color" };  ///the ques
-	int arr4[30] = { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 };
+	int arrofboth[30] = { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 };
 	for (int l = 0; l < pManager->getfigureCount(); l++) {
 
-		if (pManager->getn(l) == 0&& pManager->getm(l) == 0)
-			arr4[0]++;
-		else if (pManager->getn(l) == 1 && pManager->getm(l) == 0)
-			arr4[1]++;
-		else if (pManager->getn(l) == 2 && pManager->getm(l) == 0)
-			arr4[2]++;
-		else if (pManager->getn(l) == 3 && pManager->getm(l) == 0)
-			arr4[3]++;
-		else if (pManager->getn(l) == 4 && pManager->getm(l) == 0)
-			arr4[4]++;
-		else if (pManager->getn(l) == 5 && pManager->getm(l) == 0)
-			arr4[5]++;
-		else if (pManager->getn(l) == 0 && pManager->getm(l) == 1)
-			arr4[6]++;
-		else if (pManager->getn(l) == 1 && pManager->getm(l) == 1)
-			arr4[7]++;
-		else if (pManager->getn(l) == 2 && pManager->getm(l) == 1)
-			arr4[8]++;
-		else if (pManager->getn(l) == 3 && pManager->getm(l) == 1)
-			arr4[9]++;
-		else if (pManager->getn(l) == 4 && pManager->getm(l) == 1)
-			arr4[10]++;
-		else if (pManager->getn(l) == 5 && pManager->getm(l) == 1)
-			arr4[11]++;
-		else if (pManager->getn(l) == 0 && pManager->getm(l) == 2)
-			arr4[12]++;
-		else if (pManager->getn(l) == 1 && pManager->getm(l) == 2)
-			arr4[13]++;
-		else if (pManager->getn(l) == 2 && pManager->getm(l) == 2)
-			arr4[14]++;
-		else if (pManager->getn(l) == 3 && pManager->getm(l) == 2)
-			arr4[15]++;
-		else if (pManager->getn(l) == 4 && pManager->getm(l) == 2)
-			arr4[16]++;
-		else if (pManager->getn(l) == 5 && pManager->getm(l) == 2)
-			arr4[17]++;
-		else if (pManager->getn(l) == 0 && pManager->getm(l) == 3)
-			arr4[18]++;
-		else if (pManager->getn(l) == 1 && pManager->getm(l) == 3)
-			arr4[19]++;
-		else if (pManager->getn(l) == 2 && pManager->getm(l) == 3)
-			arr4[20]++;
-		else if (pManager->getn(l) == 3 && pManager->getm(l) == 3)
-			arr4[21]++;
-		else if (pManager->getn(l) == 4 && pManager->getm(l) == 3)
-			arr4[22]++;
-		else if (pManager->getn(l) == 5 && pManager->getm(l) == 3)
-			arr4[23]++;
-		else if (pManager->getn(l) == 0 && pManager->getm(l) == 4)
-			arr4[24]++;
-		else if (pManager->getn(l) == 1 && pManager->getm(l) == 4)
-			arr4[25]++;
-		else if (pManager->getn(l) == 2 && pManager->getm(l) == 4)
-			arr4[26]++;
-		else if (pManager->getn(l) == 3 && pManager->getm(l) == 4)
-			arr4[27]++;
-		else if (pManager->getn(l) == 4 && pManager->getm(l) == 4)
-			arr4[28]++;
-		else if (pManager->getn(l) == 5 && pManager->getm(l) == 4)
-			arr4[29]++;
+		if (pManager->getnumcolors(l) == 0&& pManager->getnumofshape(l) == 0)
+			arrofboth[0]++;
+		else if (pManager->getnumcolors(l) == 1 && pManager->getnumofshape(l) == 0)
+			arrofboth[1]++;
+		else if (pManager->getnumcolors(l) == 2 && pManager->getnumofshape(l) == 0)
+			arrofboth[2]++;
+		else if (pManager->getnumcolors(l) == 3 && pManager->getnumofshape(l) == 0)
+			arrofboth[3]++;
+		else if (pManager->getnumcolors(l) == 4 && pManager->getnumofshape(l) == 0)
+			arrofboth[4]++;
+		else if (pManager->getnumcolors(l) == 5 && pManager->getnumofshape(l) == 0)
+			arrofboth[5]++;
+		else if (pManager->getnumcolors(l) == 0 && pManager->getnumofshape(l) == 1)
+			arrofboth[6]++;
+		else if (pManager->getnumcolors(l) == 1 && pManager->getnumofshape(l) == 1)
+			arrofboth[7]++;
+		else if (pManager->getnumcolors(l) == 2 && pManager->getnumofshape(l) == 1)
+			arrofboth[8]++;
+		else if (pManager->getnumcolors(l) == 3 && pManager->getnumofshape(l) == 1)
+			arrofboth[9]++;
+		else if (pManager->getnumcolors(l) == 4 && pManager->getnumofshape(l) == 1)
+			arrofboth[10]++;
+		else if (pManager->getnumcolors(l) == 5 && pManager->getnumofshape(l) == 1)
+			arrofboth[11]++;
+		else if (pManager->getnumcolors(l) == 0 && pManager->getnumofshape(l) == 2)
+			arrofboth[12]++;
+		else if (pManager->getnumcolors(l) == 1 && pManager->getnumofshape(l) == 2)
+			arrofboth[13]++;
+		else if (pManager->getnumcolors(l) == 2 && pManager->getnumofshape(l) == 2)
+			arrofboth[14]++;
+		else if (pManager->getnumcolors(l) == 3 && pManager->getnumofshape(l) == 2)
+			arrofboth[15]++;
+		else if (pManager->getnumcolors(l) == 4 && pManager->getnumofshape(l) == 2)
+			arrofboth[16]++;
+		else if (pManager->getnumcolors(l) == 5 && pManager->getnumofshape(l) == 2)
+			arrofboth[17]++;
+		else if (pManager->getnumcolors(l) == 0 && pManager->getnumofshape(l) == 3)
+			arrofboth[18]++;
+		else if (pManager->getnumcolors(l) == 1 && pManager->getnumofshape(l) == 3)
+			arrofboth[19]++;
+		else if (pManager->getnumcolors(l) == 2 && pManager->getnumofshape(l) == 3)
+			arrofboth[20]++;
+		else if (pManager->getnumcolors(l) == 3 && pManager->getnumofshape(l) == 3)
+			arrofboth[21]++;
+		else if (pManager->getnumcolors(l) == 4 && pManager->getnumofshape(l) == 3)
+			arrofboth[22]++;
+		else if (pManager->getnumcolors(l) == 5 && pManager->getnumofshape(l) == 3)
+			arrofboth[23]++;
+		else if (pManager->getnumcolors(l) == 0 && pManager->getnumofshape(l) == 4)
+			arrofboth[24]++;
+		else if (pManager->getnumcolors(l) == 1 && pManager->getnumofshape(l) == 4)
+			arrofboth[25]++;
+		else if (pManager->getnumcolors(l) == 2 && pManager->getnumofshape(l) == 4)
+			arrofboth[26]++;
+		else if (pManager->getnumcolors(l) == 3 && pManager->getnumofshape(l) == 4)
+			arrofboth[27]++;
+		else if (pManager->getnumcolors(l) == 4 && pManager->getnumofshape(l) == 4)
+			arrofboth[28]++;
+		else if (pManager->getnumcolors(l) == 5 && pManager->getnumofshape(l) == 4)
+			arrofboth[29]++;
 	}
-	int o = 0;
+	int sum = 0;
 	bool flag = true;
 	for (int i = 0; i < 30; i++) {
-		o += arr4[i];
+		sum += arrofboth[i];
 	}
 	int i = 0;
-	if (o) {
+	if (sum) {
 		
-		for (i ; i<o && flag;) {
-			int x = rand() % 30;
-			if (arr4[x]) {
-				pOut->PrintMessage(arr5[x]);
-				for (int j = 0; arr4[x]; )
+		for (i ; i<sum && flag;) {
+			int random = rand() % 30;
+			if (arrofboth[random]) {
+				pOut->PrintMessage(arrofquestions[random]);
+				for (int j = 0; arrofboth[random]; )
 				{
 					ReadActionParameters();
 					if (p1.x <= 4 * (UI.MenuItemWidth) && p1.x >= 138 && p1.y <= UI.ToolBarHeight && p1.y >= 0) {
@@ -142,20 +142,20 @@ void pickbyboth::Execute()
 						flag = false;
 						break;
 					}
-					else if (pManager->inside3(p1, x)==1 ) {
+					else if (pManager->insideofboth(p1, random)==1 ) {
 						j++;
 						i++;
-						arr4[x]--;
+						arrofboth[random]--;
 						correct++;
 						pOut->PrintMessage("you are right continue");
 						pManager->UpdateInterface();
 					}
-					else  if (pManager->inside3(p1, x) == 0)
+					else  if (pManager->insideofboth(p1, random) == 0)
 					{
 						incorrect++;
-						pOut->PrintMessage("this is the false anwser " + (arr5[x]));
+						pOut->PrintMessage("this is the false anwser " + (arrofquestions[random]));
 					}
-					else if (pManager->inside3(p1, x) == -1)
+					else if (pManager->insideofboth(p1, random) == -1)
 						pOut->PrintMessage("please click on a fig");
 				}
 
@@ -164,7 +164,7 @@ void pickbyboth::Execute()
 			
 		}
 		
-		if (i == o)
+		if (i == sum)
 		{
 			pOut->PrintMessage("please click toget the final score");
 			pIn->GetPointClicked(p1.x, p1.y);

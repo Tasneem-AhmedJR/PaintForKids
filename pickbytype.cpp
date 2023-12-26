@@ -27,33 +27,33 @@ void pickbytype::Execute()
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
 
-	string arr[5] = { "choose the Rectangle","choose the Square" ,"choose the Circle" ,"choose the Hexa" ,"choose the Triangle" };
-	int arr2[5] = { 0,0,0,0,0 };
+	string arrofquestions[5] = { "choose the Rectangle","choose the Square" ,"choose the Circle" ,"choose the Hexa" ,"choose the Triangle" };  //possible questions in pick by type
+	int arroffig[5] = { 0,0,0,0,0 };  //to save all shapes of one type in it
 	bool flag = true;
 	for (int l = 0; l < pManager->getfigureCount(); l++) {
 
-		if (pManager->getm(l) == 0)
-			arr2[0]++;
-		else if (pManager->getm(l) == 1)
-			arr2[1]++;
-		else if (pManager->getm(l) == 2)
-			arr2[2]++;
-		else if (pManager->getm(l) == 3)
-			arr2[3]++;
-		else if (pManager->getm(l) == 4)
-			arr2[4]++;
+		if (pManager->getnumofshape(l) == 0)
+			arroffig[0]++;
+		else if (pManager->getnumofshape(l) == 1)
+			arroffig[1]++;
+		else if (pManager->getnumofshape(l) == 2)
+			arroffig[2]++;
+		else if (pManager->getnumofshape(l) == 3)
+			arroffig[3]++;
+		else if (pManager->getnumofshape(l) == 4)
+			arroffig[4]++;
 	}
-	int sum = 0;
+	int sum = 0;   ///the sum all shapes
 	for (int i = 0; i < 5; i++) {
-		sum += arr2[i];
+		sum += arroffig[i];
 	}
 	int i = 0;
-	if ((arr2[0] + arr2[1] + arr2[2] + arr2[3] + arr2[4])) {
+	if ((arroffig[0] + arroffig[1] + arroffig[2] + arroffig[3] + arroffig[4])) {
 		for (i; i<sum && flag;) {
-			int x = rand() % 5;
-			if (arr2[x]) {
-				pOut->PrintMessage(arr[x]);
-				for (int j = 0; arr2[x]; )
+			int random = rand() % 5;
+			if (arroffig[random]) {
+				pOut->PrintMessage(arrofquestions[random]);
+				for (int j = 0; arroffig[random]; )
 				{
 					
 					ReadActionParameters();
@@ -101,20 +101,20 @@ void pickbytype::Execute()
 						flag = false;
 						break;
 					}
-					else if (pManager->inside2(p1, x) == 1) {
+					else if (pManager->insideoffig(p1, random) == 1) {
 						j++;
 						i++;
-						arr2[x]--;
+						arroffig[random]--;
 						correct++;
 						pOut->PrintMessage("you are right continue");
 						pManager->UpdateInterface();
 					}
-					else  if (pManager->inside2(p1, x) == 0) {
-
+					else  if (pManager->insideoffig(p1, random) == 0) {
 						incorrect++;
-						pOut->PrintMessage("this is the false anwser "+(arr[x]));
+						pOut->PrintMessage("this is the false anwser "+(arrofquestions[random]));
+					
 					}
-					else if (pManager->inside2(p1, x) == -1)
+					else if (pManager->insideoffig(p1, random) == -1)
 						pOut->PrintMessage("please click on a fig");
 				}
 
