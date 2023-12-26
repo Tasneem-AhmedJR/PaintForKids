@@ -20,7 +20,7 @@ bool CSquare::validate(Point P)
 
 bool CSquare::isInside(Point* p)
 {
-	if (abs(Center.x - p->x) <= 80 && abs(Center.y - p->y <= 80)) return true;
+	if (abs(Center.x - p->x) <= 80 && abs(Center.y - p->y) <= 80) return true;
 	return false;
 }
 

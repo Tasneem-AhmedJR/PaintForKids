@@ -293,10 +293,8 @@ void ApplicationManager::unhide()
 int ApplicationManager::getfigureCount() { return FigCount; }
 
 
-void ApplicationManager::setfigureCount(int x)
-{
-	FigCount = x;
-}
+void ApplicationManager::setfigureCount(int x) { FigCount = x; }
+
 ////////////////////////////////////////////////////////////////////////////////////
 CFigure *ApplicationManager::GetFigure(Point* p) const
 {
@@ -320,6 +318,7 @@ CFigure *ApplicationManager::GetFigure(Point* p) const
 void ApplicationManager::ClearingFigures()       //loops on fig list and calls clearfig of each class
 {
 	pOut->reset();
+	CFigure::resetcount();
 	for (int i = 0; i < FigCount; i++)
 	{
 		if (FigList[i])

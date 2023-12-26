@@ -21,6 +21,6 @@ public:
 	bool hasRecordes();                     //checks if any recording history exists
 	void ReadActionParameters();
 	void Execute();
-
+	~RecorderAct();
 };
 

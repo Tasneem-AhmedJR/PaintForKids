@@ -19,6 +19,15 @@ void RecorderAct::ReadActionParameters() {}
 
 void RecorderAct::Execute() {}
 
+RecorderAct::~RecorderAct()
+{
+	for (int i = 0; i < 20; i++)
+		if (RecList[i] != NULL)
+		{
+			delete RecList[i]; RecList[i] = NULL;
+		}
+}
+
 void RecorderAct::AddrecList(Action* p, ActionType t)
 {
 	//Get a Pointer to the Output Interfaces
@@ -27,13 +36,19 @@ void RecorderAct::AddrecList(Action* p, ActionType t)
 	//reset recording history after clear all action 
 	if (t == CLEAR_ALL)
 	{
-		for (int i = 0; i < 20; i++) RecList[i] = NULL;
+		for (int i = 0; i < 20; i++) { delete RecList[i]; RecList[i] = NULL; }
 		lastRec = 0;
 	}
-	if (t != START) lastActType = t;
-	if (recording)
+	//delete actions that cannot be recorded/undone
+	if (!p->isRecorded() || (!recording && !pManager->GetActionList()->IsTraced(p))) { delete p; p = NULL; }
+
+	if (t != START) lastActType = t;  
+
+	if (recording && p)       //record actions if the program is currently recording
 	{
 		if (lastRec < 20 && p->isRecorded()) { RecList[lastRec] = p; lastRec++; }
+
+		//stops recording when the actions reach 20 
 		if (lastRec >= 20)
 		{
 			pOut->PrintMessage("Recording has ended ");
