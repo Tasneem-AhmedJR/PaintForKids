@@ -23,7 +23,7 @@ void SelectAction::Select(CFigure* f)
 	pManager->setSelectedFig(Fig);
 	f->SetSelected(true);
 	f->ChngDrawClr(UI.HighlightColor);
-//	f->PrintInfo(pOut);
+	f->PrintInfo(pOut);
 }
 
 void SelectAction::Unselect(CFigure* f)

@@ -14,6 +14,12 @@ void CHexagon::Draw(Output* pOut)
 	pOut->DrawHexa(Center, FigGfxInfo, Selected);
 }
 
+bool CHexagon::validate(Point P)
+{
+	if (P.y < 130 || P.y>530) return false;
+	return true;
+}
+
 double CHexagon::CalcArea(Point* p)
 {
 	double a = sqrt(pow(Center.x-p->x,2) + pow(Center.y-p->y,2));
@@ -39,8 +45,14 @@ void CHexagon::DeleteFig()
 
 void CHexagon::Movefi(Output* pOut, Point p)
 {
-	Center = p;
-	pOut->DrawHexa(Center, FigGfxInfo, Selected);
+	if(validate(p))
+	{
+		Center = p;
+		pOut->PrintMessage("Selected Figure Move");
+	}
+	else pOut->PrintMessage("Invalid, cannot move figure ");
+		
+	//pOut->DrawHexa(Center, FigGfxInfo, Selected);
 }
 
 int CHexagon::getnum()

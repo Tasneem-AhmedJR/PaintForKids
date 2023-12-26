@@ -14,6 +14,13 @@ void CTriangle::Draw(Output* pOut)
 	pOut->DrawTria(A, B,C, FigGfxInfo, Selected);
 }
 
+bool CTriangle::validate(Point P1 , Point P2, Point P3)
+{
+	if (!(P1.y > 50 && P2.y > 50 && P3.y > 50) || !(P1.y < 600 && P2.y < 600 && P3.y < 600))
+		return false;
+	return true;
+}
+
 double CTriangle::CalcArea(Point* a, Point* b, Point* c)
 {
 	return abs(a->x * (b->y - c->y) + b->x * (c->y - a->y) + c->x * (a->y - b->y)) * .5;
@@ -33,17 +40,27 @@ void CTriangle::PrintInfo(Output* pOut)
 
 void CTriangle::Movefi(Output* pOut, Point p)
 {
-	Point o;
+	Point o, a, b, c;
 	o.x = (A.x + B.x + C.x) / 3;
 	o.y = (A.y + B.y + C.y) / 3;
-	A.x = A.x + p.x - o.x;
 
-	A.y =A.y + p.y - o.y;
-	B.x = B.x + p.x - o.x;
-	B.y = B.y + p.y - o.y;
-	C.x = C.x + p.x - o.x;
-	C.y = C.y + p.y - o.y;
-	pOut->DrawTria(A, B, C, FigGfxInfo, Selected);
+	a.x = A.x + p.x - o.x;
+	a.y =A.y + p.y - o.y;
+
+	b.x = B.x + p.x - o.x;
+	b.y = B.y + p.y - o.y;
+
+	c.x = C.x + p.x - o.x;
+	c.y = C.y + p.y - o.y;
+
+	if (validate(a,b,c))
+	{
+		A = a; B = b; C = c;
+		pOut->PrintMessage("Selected Figure Move");
+	}
+	else pOut->PrintMessage("Invalid, cannot move figure ");
+
+	//pOut->DrawTria(A, B, C, FigGfxInfo, Selected);
 }
 
 int CTriangle::getnum()

@@ -35,7 +35,6 @@ void Move::Execute()
 		pOut->PrintMessage("aclick on move");
 
 		pManager->Movefig(p1);                    //calls delete func. in applicationManager to access figlist
-		pOut->PrintMessage("Selected Figure Move");
 		pOut->ClearDrawArea();
 
 	}

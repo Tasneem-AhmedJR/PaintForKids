@@ -13,6 +13,7 @@ public:
 	CTriangle(){}
 	CTriangle(Point, Point, Point, GfxInfo FigureGfxInfo);
 	virtual void Draw(Output* pOut);
+	bool validate(Point, Point, Point);
 	double CalcArea(Point* a, Point* b, Point* c);
 	bool isInside(Point*);
 	void PrintInfo(Output* pOut);

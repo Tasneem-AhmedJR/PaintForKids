@@ -14,15 +14,23 @@ void CCircle::Draw(Output* pOut)
 	pOut->DrawCircle(Cent_P, gen_P, FigGfxInfo, Selected);
 }
 
-int CCircle::CalcRadius(Point*p)
+bool CCircle::validate(Point P1, Point P2)
 {
-	double r = sqrt(pow((Cent_P.x - p->x), 2) + pow((Cent_P.y - p->y), 2));
+	double r = CalcRadius(&P1, &P2);
+	if (!(P1.y > 50 && P1.y < 600 && P1.y - r > 50 && P1.y + r < 600) || (P1.x == P2.x && P1.y == P2.y))
+		return false;
+	return true;
+}
+
+int CCircle::CalcRadius(Point*p,Point*pcent)
+{
+	double r = sqrt(pow((pcent->x - p->x), 2) + pow((pcent->y - p->y), 2));
 	return r;
 }
 
 double CCircle::CalcArea(Point* p)
 {
-	return 3.14 * pow(CalcRadius(p), 2);
+	return 3.14 * pow(CalcRadius(p,&Cent_P), 2);
 }
 
 bool CCircle::isInside(Point* p)
@@ -33,7 +41,7 @@ bool CCircle::isInside(Point* p)
 
 void CCircle::PrintInfo(Output* pOut)
 {
-	pOut->PrintMessage(("ID : ") + to_string(ID) + (" Rasius : ") + to_string(CalcRadius(&gen_P)) + ("Center : ") + to_string(Cent_P.x) + (", ") + to_string(Cent_P.y));
+	pOut->PrintMessage(("ID : ") + to_string(ID) + (" Radius : ") + to_string(CalcRadius(&gen_P, &Cent_P)) + ("Center : ") + to_string(Cent_P.x) + (", ") + to_string(Cent_P.y));
 }
 
 int CCircle::getnum()
@@ -100,8 +108,17 @@ void CCircle::DeleteFig()
 
 void CCircle::Movefi(Output* pOut, Point p)
 {
-	gen_P.x = gen_P.x + p.x - Cent_P.x;
-	gen_P.y = gen_P.y + p.y - Cent_P.y;
-	Cent_P = p;
-	pOut->DrawCircle(Cent_P, gen_P, FigGfxInfo, Selected);
+	Point p1, p2;
+	p1.x = gen_P.x + p.x - Cent_P.x;
+	p1.y = gen_P.y + p.y - Cent_P.y;
+	p2 = p;
+	if (validate(p1, p2))
+	{
+		gen_P = p1;
+		Cent_P = p2;
+		pOut->PrintMessage("Selected Figure Move");
+	}
+	else pOut->PrintMessage("Invalid, cannot move figure ");
+
+	//pOut->DrawCircle(Cent_P, gen_P, FigGfxInfo, Selected);
 }

@@ -8,6 +8,7 @@ public:
 	CHexagon(){}
 	CHexagon(Point, GfxInfo FigureGfxInfo);
 	virtual void Draw(Output* pOut);
+	bool validate(Point);
 	double CalcArea(Point* p);
 	bool isInside(Point* p);
 	void PrintInfo(Output* pOut);

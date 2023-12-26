@@ -19,6 +19,13 @@ double CRectangle::CalcArea(Point* p)
 	return abs(Corner1.x - Corner2.x) * abs(Corner1.y - Corner2.y);
 }
 
+bool CRectangle::validate(Point P1,Point P2)
+{
+	if (!(P1.y > 50 && P2.y > 50 && P1.y < 600 && P2.y < 600) || abs(P1.x - P2.x) < 5 || abs(P1.y - P2.y) < 5)
+		return false;
+	return true;
+}
+
 bool CRectangle::isInside(Point* p)
 {
 	int maxy = Corner1.y;  int miny = Corner2.y;
@@ -46,16 +53,23 @@ int CRectangle::getnum()
 }
 void CRectangle::Movefi(Output* pOut, Point p)
 {
-	Point o;
+	Point o, p1, p2;
 	o.x = (Corner1.x + Corner2.x) / 2;
 	o.y = (Corner1.y + Corner2.y) / 2;
-	Corner1.x = Corner1.x +p.x - o.x;
+	p1.x = Corner1.x +p.x - o.x;
 
-	Corner1.y = Corner1.y+p.y - o.y;
-	Corner2.x= Corner2.x+p.x - o.x;
-	Corner2.y = Corner2.y+p.y - o.y;
+	p1.y = Corner1.y+p.y - o.y;
+	p2.x= Corner2.x+p.x - o.x;
+	p2.y = Corner2.y+p.y - o.y;
 
-	pOut->DrawRect(Corner1, Corner2, FigGfxInfo, 1);
+	if (validate(p1,p2))
+	{
+		Corner1 = p1;
+		Corner2 = p2;
+		pOut->PrintMessage("Selected Figure Move");
+	}
+	else pOut->PrintMessage("Invalid, cannot move figure ");
+	//pOut->DrawRect(Corner1, Corner2, FigGfxInfo, 1);
 }
 /*
 CFigure* CRectangle::GetDeletedFig()

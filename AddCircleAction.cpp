@@ -31,7 +31,7 @@ void AddCircleAction::ReadActionParameters()
 		r = sqrt(pow((P1.x - P2.x), 2) + pow((P1.y - P2.y), 2));    //calculate radius of the circle
 		i++;
 		 
-	} while (!(P1.y > 50 && P1.y < 600 && P1.y - r > 50 && P1.y + r < 600) || (P1.x == P2.x && P1.y == P2.y));   //make sure the figure is not drawn outside drawing area
+	} while (!circ->validate(P1, P2));   //make sure the figure is not drawn outside drawing area
 	
 	CircleGfxInfo.isFilled = pOut->isFilled();;	//default is not filled
 	//get drawing, filling colors and pen width from the interface
