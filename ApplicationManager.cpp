@@ -273,12 +273,12 @@ int ApplicationManager::insideofboth(Point p, int y)
 			FigList[i]->sethide(false);
 			return 1;
 		}
-		else if (FigList[i]->isInside(&p) && FigList[i]->filledcolor() != y )
+		else if (FigList[i]->isInside(&p) && FigList[i]->filledcolor() != y && FigList[i]->gethide())
 		{
 			
 			return 0;
 		}
-		else if (FigList[i]->isInside(&p) && !(FigList[i]->IsFilled()))
+		else if (FigList[i]->isInside(&p) && !(FigList[i]->IsFilled()) && FigList[i]->gethide())
 		{
 			return 0;
 		}
